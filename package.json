@@ -1,7 +1,7 @@
 {
-  "name": "Rock Cancer Care ",
+  "name": "ROCK_CANCER_CARE",
   "version": "1.0.0",
-  "description": "demo",
+  "description": "Rock cancer care deployable website",
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
