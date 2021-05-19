@@ -5,7 +5,7 @@
 
 ## Table of Contents
 * [Deployed Application](https://github.com/aaronkplatt/project-2.github.io#deployed-application)</br>
-* [Screenshots](https://github.com/aaronkplatt/project-2.github.io#screenshots)</br>​​
+* [Screenshots](https://github.com/aaronkplatt/project-2.github.io#screenshots)</br>
 * [Questions](https://github.com/aaronkplatt/project-2.github.io#questions)</br>
 * [Credits](https://github.com/aaronkplatt/project-2.github.io#credits)</br>
 
