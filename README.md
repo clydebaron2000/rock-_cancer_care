@@ -12,7 +12,7 @@
 # Deployed Application
 
 Deployable for the Rock Cancer Care Wbesite with admin page.
-Deployed website is at [link.com](https://link.com)
+Deployed website is at [rock-cancer-care.herokuapp.com/](https://rock-cancer-care.herokuapp.com/)
 
 # Screeenshots
 
