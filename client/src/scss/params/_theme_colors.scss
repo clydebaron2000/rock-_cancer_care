@@ -1,0 +1,47 @@
+// backgrounds of website
+$themes:( //
+light:( // light
+bg1:white, font1:black, bg2:rgb(151, 190, 241), font2:black, bg3:rgb(46, 169, 252), font3:black), //
+//dark
+dark:( bg1:black, font1:white, bg2:rgb(46, 169, 252), font2:white, bg3:rgb(46, 169, 252), font3:white));
+// $theme-bg1-light: white;
+// $theme-bg1-dark: black;
+// $theme-font1-light: black;
+// $theme-font1-light: white;
+// // higlight1
+// $theme-bg2-light : rgb(151, 190, 241);
+// $theme-bg2-dark: rgb(46, 169, 252);
+// $theme-font2-light: black;
+// $theme-font2-light: white;
+// //highlight2
+// $theme-bg3-light:rgb(46, 169, 252);
+// $theme-bg3-dark: rgb(46, 169, 252);
+// $theme-font3-light: black;
+// $theme-font3-light: white;
+@mixin themed() {
+  @each $theme,
+  $map in $themes {
+    .theme--#{$theme} & {
+      $theme-map: () !global;
+      @each $key,
+      $submap in $map {
+        $value: map-get(map-get($themes, $theme), '#{$key}');
+        $theme-map: map-merge($theme-map, ($key: $value)) !global;
+      }
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function t($key) {
+  @return map-get($theme-map, $key);
+}
+
+// shortcuts
+$bg1:'bg1';
+$font1:'font1';
+$bg2:'bg2';
+$font2:'font2';
+$bg3:'bg3';
+$font3:'font3';

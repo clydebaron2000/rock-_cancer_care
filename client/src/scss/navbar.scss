@@ -1,0 +1,227 @@
+@import 'params/theme_colors';
+@import 'params/breakpoints';
+// nav general sizes
+$nav-font-size:1.2rem;
+// $nav-mobile-content-color:t;
+$menu-button-radius:5px;
+.nav {
+  // positioning 
+  .top {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    margin-left: 0px;
+    margin-top: 0px;
+  }
+  @include themed() {
+    background: t($bg1);
+  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: $nav-font-size;
+  .content {
+    width: 980px;
+    max-width: bp($desktop);
+    display: flex;
+    padding-bottom: 5px;
+    .logo-link {
+      .logo {
+        //   font-weight: bold;
+        font-size: 32px;
+        height: 100px;
+        justify-self: start;
+        //    margin: 20px; 
+        cursor: pointer;
+        text-decoration: none;
+      }
+    }
+    .menu {
+      display: grid;
+      grid-template-columns: repeat(4, auto);
+      grid-gap: 11px;
+      list-style: none;
+      text-align: center;
+      width: 70vw;
+      justify-content: end;
+      margin-right: 2.1rem;
+      align-items: end;
+      li {
+        .options {
+          text-decoration: none;
+          // text-decoration: none !important;
+          padding: 0.5rem 1rem;
+          &.underline {
+            $animate: all 0.2s ease-in-out;
+            transition: $animate;
+            position: relative;
+            @include themed() {
+              color: t($font1);
+            }
+            &:before,
+            &:after {
+              content: "";
+              position: absolute;
+              bottom: -10px;
+              width: 0px;
+              height: 5px;
+              margin: 5px 0 0;
+              transition: $animate;
+              transition-duration: 0.75s;
+              opacity: 0;
+              @include themed() {
+                background: t($font1);
+              }
+            }
+            &:before {
+              left: 50%;
+            }
+            &:after {
+              right: 50%;
+            }
+            &:hover {
+              cursor: pointer;
+              &:before,
+              &:after {
+                width: 50%;
+                opacity: 1;
+              }
+            }
+          }
+          &.button {
+            @include themed() {
+              color: t($bg1);
+              background: t($bg2);
+            }
+            border-radius: $menu-button-radius;
+             :hover {
+              @include themed() {
+                background: t($bg3);
+              }
+              transition: all 0.2s ease-out;
+            }
+          }
+        }
+      }
+    }
+    .collapse-icon {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width:bp($desktop)) {
+  .nav {
+    // positioning 
+    .top {
+      position: relative;
+    }
+    @include themed() {
+      background: t($bg1);
+    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: $nav-font-size;
+    .content {
+      width: 980px;
+      max-width: bp($desktop);
+      display: flex;
+      padding-bottom: 5px;
+      .logo-link {
+        .logo {
+          //   font-weight: bold;
+          font-size: 32px;
+          height: 100px;
+          justify-self: start;
+          //    margin: 20px; 
+          cursor: pointer;
+          text-decoration: none;
+        }
+      }
+      .menu {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: -500px;
+        left: 0;
+        opacity: 1;
+        transition: all 0.5s ease;
+        margin: 0px;
+        padding: 0px;
+        &.active {
+          background: #00e361;
+          top: 0;
+          left: 0;
+          opacity: 1;
+          transition: all 0.5s ease;
+          z-index: 1;
+        }
+        li {
+          .options {
+            text-decoration: none;
+            &.underline {
+              $animate: all 0.2s ease-in-out;
+              transition: $animate;
+              position: relative;
+              @include themed() {
+                color: t($font1);
+              }
+              &:before,
+              &:after {
+                content: "";
+                position: absolute;
+                bottom: -10px;
+                width: 0px;
+                height: 5px;
+                margin: 5px 0 0;
+                transition: $animate;
+                transition-duration: 0.75s;
+                opacity: 0;
+                @include themed() {
+                  background: t($font1);
+                }
+              }
+              &:before {
+                left: 50%;
+              }
+              &:after {
+                right: 50%;
+              }
+              &:hover {
+                cursor: pointer;
+                &:before,
+                &:after {
+                  width: 50%;
+                  opacity: 1;
+                }
+              }
+            }
+            &.button {
+              @include themed() {
+                color: t($bg1);
+                background: t($bg2);
+              }
+              border-radius: $menu-button-radius;
+               :hover {
+                @include themed() {
+                  background: t($bg3);
+                }
+                transition: all 0.2s ease-out;
+              }
+            }
+          }
+        }
+      }
+      .collapse-icon {
+        position: absolute;
+        right: 0;
+        padding: 15px;
+        font-size: 30px;
+        display: block;
+      }
+    }
+  }
+}
