@@ -1,3 +1,24 @@
-body {
-  margin: auto;
+@import 'params/theme_colors';
+@import 'params/breakpoints';
+* {
+  // border: none;
+  padding:0px;
+  margin:0px;
+}
+button{
+  border: none;
+}
+.action-button{
+  @include theme('background-color',$color1);
+  @include theme('color',$text3);
+  padding: 10px;
+  border-radius: 5px;
+}
+.minor-button{
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid;
+  @include theme('background-color',$text3);
+  @include theme('border-color',$color1);
+  @include theme('color',$color1);
 }

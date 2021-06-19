@@ -1,3 +1,54 @@
-body {
-  margin: auto;
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+button {
+  border: none;
+}
+
+.action-button {
+  background-color: #8865ac ;
+  color: #ffffff ;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .action-button {
+    background-color: #8865ac ;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .action-button {
+    color: #ffffff ;
+  }
+}
+
+.minor-button {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid;
+  background-color: #ffffff ;
+  border-color: #8865ac ;
+  color: #8865ac ;
+}
+
+@media (prefers-color-scheme: dark) {
+  .minor-button {
+    background-color: #ffffff ;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .minor-button {
+    border-color: #8865ac ;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .minor-button {
+    color: #8865ac ;
+  }
 }

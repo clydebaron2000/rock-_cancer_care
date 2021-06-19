@@ -1,0 +1,182 @@
+@import 'params/theme_colors';
+@import 'params/breakpoints';
+.form-page-body{
+    position: absolute;
+    top:0px;
+    left:0px;
+    z-index: -1000;
+    height: 100vh;
+    width: 100vw;
+} 
+.ReactModalPortal{
+    width:100vw;
+    height:100vh;
+    .overlay{
+        position: fixed;
+        inset: 0px;
+        @include theme('background-color',$background3);
+        display: grid;
+        place-items: center;
+        .modal{
+            @include theme('background-color',$text1);
+            border-radius: 30px;
+            padding:25px 0px;
+            z-index: -1;
+            position: absolute;
+            overflow-y: auto;
+            overflow-x: hidden;
+            // min-height: 40vh;
+            min-width: 60vw;
+            @include theme('background-color',$background1);
+            &:focus-visible{
+                outline: none;
+            }
+            .form-modal{
+                display: grid;
+                align-content: space-between;
+                height: inherit;
+                padding:0px 20px;
+                overflow-y: auto;
+                &::-webkit-scrollbar {
+                    width: 5px;   
+                    margin-right: 2px;
+                }
+                &::-webkit-scrollbar-track {
+                    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+                    border-radius:5px;
+                }
+                &::-webkit-scrollbar-thumb {
+                    border-radius:5px;
+                    background-color: darkgrey;
+                }
+                .modal-title{
+                    position: sticky;
+                    top:0px;
+                    padding-top:5px;
+                    padding-bottom: 10px;
+                    @include theme('background-color',$background1);
+                    .RSPBprogressBar{
+                        margin: 10px;
+                        @include theme('background-color',$background2);
+                        .RSPBstep{
+                            .step-container{
+                                width:40px;
+                                height:40px;
+                                svg{
+                                    height: inherit;
+                                    width: inherit;
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    ellipse{
+                                        @include theme('fill',$background1);
+                                        // @include theme('background',$background1);
+                                        stroke-width: 5px;
+                                    }
+                                    .accomplished{
+                                        @include theme('stroke',$color1);
+                                    }
+                                    .todo{
+                                        @include theme('stroke',$background2);
+                                    }
+                                }
+                                .label{
+                                    @include theme('color',$text1);
+                                    position:absolute;
+                                    display: grid;
+                                    align-items: center;
+                                    width: inherit;
+                                    height: inherit;
+                                    text-align: center;
+                                }
+                            }
+                        }
+                        .RSPBprogression{
+                            @include theme('background-color',$color1);
+                        }
+                    }
+                }
+                .form-bottom{
+                    // position: absolute;
+                    // bottom:20px;
+                    padding-top: 20px;
+                    display: grid;
+                    width: fill;
+                    grid-template-columns: 1fr 1fr;
+                    column-gap: 20px;
+                    align-content:space-between ;
+                    // margin-right: 40px;
+                }
+                .form-content{
+                    display: flex;
+                    flex-direction: row;
+                    overflow-x: hidden;
+                    *{
+                        width:fill;
+                    }
+                    input, select{
+                        height: 1.5rem;
+                        border-radius: 5px;
+                        @include theme('border-color',$text1);
+                        border-width: 1px;
+                    }
+                    .input-wrapper::after{
+                        content: '';
+                        display: block;
+                        color:black;
+                        height: 5px;
+                        margin-bottom: 10px;
+                    }
+                    .form-section{
+                        display: flex;
+                        flex-direction:column;
+                        .section-title{
+                            width: inherit;
+                        }   
+                        .section-inputs{
+                            display: flex;
+                            flex-direction: row;
+                            column-gap: 20px;
+                        }
+                    }
+                    .active{
+                        transform: translateX(0%);
+                        left:0;
+                        opacity: 1;
+                        transition: all .2s ease-in-out;
+                    }
+                    .prev{
+                        position: absolute;
+                        // left:-1000px;
+                        transform: translateX(-100%);
+                        opacity: 0;
+                        transition: all .2s ease-in-out;
+                        *{
+                            transition-delay: .25s;
+                            display: none;
+                        }
+                    }
+                    .next{
+                        position: absolute;
+                        // left:1000px;
+                        transform: translateX(100%);
+                        opacity: 0;
+                        transition: all .2s ease-in-out;
+                        *{
+                            transition-delay: .25s;
+                            display: none;
+                        }
+                    }
+                    .ghost{
+                        display: none;
+                    }
+                    @keyframes slideOutLeft {
+                        100%{
+                            transform: translateX(-1000%);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

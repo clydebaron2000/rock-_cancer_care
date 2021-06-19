@@ -7,7 +7,7 @@ import '../../css/navbar.css';
 // import {faBars,faTimes} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faCoffee, faTimes } from '@fortawesome/free-solid-svg-icons'
-import logo from '../../media/Vectorized-logo-full.png'
+import logo from '../../dist/images/logo_full.png'
 export default class Navbar extends Component {
     state = { active: false }
     handleClick = _ =>{
