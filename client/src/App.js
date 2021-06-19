@@ -1,18 +1,24 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom';
+
+// pages
+import Home from "./pages/Home"
+import Form from "./pages/PatientIntakeForm/"
+import NotFound from "./pages/NotFound/"
 
 function App() {
   return (
-    <div className="App">
-      <div className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h2>Welcome to React</h2>
-      </div>
-      <p className="App-intro">
-        To get started, edit <code>src/App.js</code> and save to reload.
-      </p>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/" exact component={Form} />
+        <Route path="/home" exact component={Home} />
+        <Route component={NotFound}/> 
+      </Switch>
+    </Router> 
   );
 }
 
