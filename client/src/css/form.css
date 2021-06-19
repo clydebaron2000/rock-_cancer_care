@@ -207,7 +207,7 @@
 .ReactModalPortal .overlay .modal .form-modal .form-content .input-wrapper::after {
   content: '';
   display: block;
-  color: black;
+  color: red;
   height: 5px;
   margin-bottom: 10px;
 }

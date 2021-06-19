@@ -38,7 +38,12 @@ function PatientIntakeForm (props) {
             let element=e.target;
             if (element.required==false){
                   if (element.value===undefined || element.value===""){
-                        console.log(element.offsetParent)
+                        console.log(element.parentElement)
+                        element.style='background:red'
+                        element.parentElement.style=`::after{content:attr(err)}`
+                  }
+                  else{
+                        element.style='background:none'
                   }
             }
       }
@@ -91,12 +96,10 @@ function PatientIntakeForm (props) {
                               <div>
                                     <div>
                                           <label htmlFor="birth"><h4>Birth Date*</h4></label>
-                                                {/* <br/> */}
-                                          <input type="text" id="birth" name="birth" required={false}/>
+                                          <input type="date" id="birth" name="birth" required={false}/>
                                     </div>
                                     <div>
                                           <label htmlFor="gender"><h4>Gender*</h4></label>
-                                                {/* <br/> */}
                                           <input type="text" id="gender" name="gender" required={false}/>
                                     </div>
                               </div>
