@@ -1,0 +1,29 @@
+.radio-box{
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+    width: stretch;
+    *{
+        height: min-content;
+    }
+    label{
+        input[type=radio]{
+            color:blue;
+            width:min-content;
+            margin: 2.5px;
+            &:focus-visible,
+            &:focus{
+                outline: auto;
+            }
+        }
+        input[type=text]{
+            width:min-content;
+        }
+    }
+}
+.horizontal{
+    flex-direction: row;
+}
+.vertical{
+    flex-direction: column;
+}

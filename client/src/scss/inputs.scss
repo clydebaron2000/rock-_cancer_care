@@ -1,0 +1,39 @@
+@import 'params/theme_colors';
+@import 'params/breakpoints';
+.input-wrapper{
+    width:stretch;
+    input, select{
+        width:stretch;
+        background-color: none;
+        height: 1.5rem;
+        border-radius: 5px;
+        @include theme('border-color',$text2);
+        // border-color: #cacaca;
+        color: black;
+        border-width: 1px;
+        border-style: solid;
+        &:focus-visible,
+        &:focus{
+            transition: all .2s ease-in;
+            @include theme('border-color',$color1);
+            outline: none;
+        }
+    }
+    input[type=radio]{
+        height: initial;
+        width: min-content;
+    }
+    .input-label{
+        color:black;
+    }
+    .error{
+        background-color: #ff00002e;
+    }
+    .input-error{
+        display: block;
+        font-size: small;
+        color:red;
+        font-size: 10px;
+        min-height: 11px;
+    }
+}
