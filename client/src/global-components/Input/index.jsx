@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useCallback } from 'react'
+import React, { useState, useEffect} from 'react'
 import { v4 as uuid } from 'uuid'
 // import Autocomplete from "react-google-autocomplete"; // for addres autocompletion
 import RadioPrompt from '../RadioPrompt';
@@ -10,22 +10,28 @@ function Input(props) {
     const [value, setValue] = useState(null)
     const [isValid, setIsValid] = useState(true)
     const [error_message, setErrorMessage] = useState(null)
-    const validate = useCallback(
-        () => {
-            if (value === null) return false
-            let err_msg = ""
-            if ((props?.required !== undefined && value === "")) err_msg = `${props.name} is required`
-            else if (props.validate !== undefined) err_msg = props?.validate(value)
-            setErrorMessage(err_msg)
-            setIsValid(err_msg === "")
-            return (err_msg === "")
-        },[props,value]
-    )
-    useEffect(_ => {
-        if (value !== null){
-            props.updateEntry?.(props.name, value, validate)
+    function validate () {
+        // console.log("validating",props.name,value)
+        let err_msg = ""
+        if (value === null){
+            return (props.required)?err_msg = `${props.name} is required`:null
         }
-    }, [value, isValid, error_message, props, validate])
+        // console.log("checking",value)
+        if ((props?.required !== undefined && value === "")) err_msg = `${props.name} is required`
+        else if (props.validate !== undefined) err_msg = props?.validate(value)
+        setErrorMessage(err_msg)
+        setIsValid(err_msg === "")
+        return (err_msg)
+        }
+    
+    useEffect(_ => {
+        // if (value !== null){
+            props.updateEntry?.(props.name, value, validate, (err_msg)=>{
+                setErrorMessage(err_msg)
+                setIsValid(err_msg === "")
+            })
+        // }
+    }, [value, error_message, props, validate])
     
     function onChange(e) {
         e.preventDefault()

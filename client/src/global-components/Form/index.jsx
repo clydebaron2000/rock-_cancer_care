@@ -14,10 +14,12 @@ function PatientIntakeForm (props) {
       function checkInputs(e){
             e.preventDefault()
             let anyfalse=false
-            for(const key in formInputs){
-                  let isValid=(formInputs[key]!==null)
-                  if (anyfalse===false && !isValid) anyfalse=true
-            }
+            for(const key in formInputs)
+                  if (formInputs[key].value===null){
+                        formInputs[key].setErr(formInputs[key].validate())
+                        if (anyfalse===false) anyfalse=true
+                  }
+            // console.log(`pass is: ${!anyfalse}`)
             if(!anyfalse)submitData(e)
       }
       function submitData(e){
@@ -28,9 +30,14 @@ function PatientIntakeForm (props) {
                   setStepsCompleted(stepNum+1)
             }
       }
-      function updateEntry(name,value,validate){
+      function updateEntry(name,value,validate,setErr){
             let output=formInputs;
-            output[name]=((validate())? value: null)
+            output[name]={
+                  value:((validate()!=="")? value: null),
+                  setErr:(value)=>setErr(value),
+                  validate:()=>validate(),
+            }
+            // console.log(name,output[name],value)
             setFormInputs(output)
       }
       return (
