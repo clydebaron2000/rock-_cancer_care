@@ -101,7 +101,7 @@
                     // bottom:20px;
                     padding-top: 20px;
                     display: grid;
-                    width: fill;
+                    width:stretch;
                     grid-template-columns: 1fr 1fr;
                     column-gap: 20px;
                     align-content:space-between ;
@@ -111,25 +111,10 @@
                     display: flex;
                     flex-direction: row;
                     overflow-x: hidden;
-                    *{
-                        width:fill;
-                    }
-                    input, select{
-                        height: 1.5rem;
-                        border-radius: 5px;
-                        @include theme('border-color',$text1);
-                        border-width: 1px;
-                    }
-                    .input-wrapper::after{
-                        content: '';
-                        display: block;
-                        color:red;
-                        height: 5px;
-                        margin-bottom: 10px;
-                    }
                     .form-section{
                         display: flex;
                         flex-direction:column;
+                        width:stretch;
                         .section-title{
                             width: inherit;
                         }   
@@ -140,12 +125,14 @@
                         }
                     }
                     .active{
+                        width:stretch;
                         transform: translateX(0%);
                         left:0;
                         opacity: 1;
                         transition: all .2s ease-in-out;
                     }
                     .prev{
+                        width:stretch;
                         position: absolute;
                         // left:-1000px;
                         transform: translateX(-100%);
@@ -157,6 +144,7 @@
                         }
                     }
                     .next{
+                        width:stretch;
                         position: absolute;
                         // left:1000px;
                         transform: translateX(100%);

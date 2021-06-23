@@ -1,0 +1,7 @@
+@import 'params/theme_colors';
+@import 'params/breakpoints';
+div[name=phoneWrapper], .error{
+    input{
+        background-color: #ff000000;
+    } 
+} 

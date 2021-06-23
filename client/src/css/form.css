@@ -175,7 +175,7 @@
 .ReactModalPortal .overlay .modal .form-modal .form-bottom {
   padding-top: 20px;
   display: grid;
-  width: fill;
+  width: stretch;
   grid-template-columns: 1fr 1fr;
   column-gap: 20px;
   align-content: space-between;
@@ -187,34 +187,10 @@
   overflow-x: hidden;
 }
 
-.ReactModalPortal .overlay .modal .form-modal .form-content * {
-  width: fill;
-}
-
-.ReactModalPortal .overlay .modal .form-modal .form-content input, .ReactModalPortal .overlay .modal .form-modal .form-content select {
-  height: 1.5rem;
-  border-radius: 5px;
-  border-color: #000505 ;
-  border-width: 1px;
-}
-
-@media (prefers-color-scheme: dark) {
-  .ReactModalPortal .overlay .modal .form-modal .form-content input, .ReactModalPortal .overlay .modal .form-modal .form-content select {
-    border-color: #000505 ;
-  }
-}
-
-.ReactModalPortal .overlay .modal .form-modal .form-content .input-wrapper::after {
-  content: '';
-  display: block;
-  color: red;
-  height: 5px;
-  margin-bottom: 10px;
-}
-
 .ReactModalPortal .overlay .modal .form-modal .form-content .form-section {
   display: flex;
   flex-direction: column;
+  width: stretch;
 }
 
 .ReactModalPortal .overlay .modal .form-modal .form-content .form-section .section-title {
@@ -228,6 +204,7 @@
 }
 
 .ReactModalPortal .overlay .modal .form-modal .form-content .active {
+  width: stretch;
   transform: translateX(0%);
   left: 0;
   opacity: 1;
@@ -235,6 +212,7 @@
 }
 
 .ReactModalPortal .overlay .modal .form-modal .form-content .prev {
+  width: stretch;
   position: absolute;
   transform: translateX(-100%);
   opacity: 0;
@@ -247,6 +225,7 @@
 }
 
 .ReactModalPortal .overlay .modal .form-modal .form-content .next {
+  width: stretch;
   position: absolute;
   transform: translateX(100%);
   opacity: 0;
