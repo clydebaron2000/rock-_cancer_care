@@ -9,6 +9,7 @@
     width: 100vw;
 } 
 .ReactModalPortal{
+    
     width:100vw;
     height:100vh;
     .overlay{
@@ -18,11 +19,14 @@
         display: grid;
         place-items: center;
         .modal{
+            h2 {
+                font-size: 17px;
+            }
             @include theme('background-color',$text1);
             border-radius: 30px;
             padding:25px 0px;
             z-index: -1;
-            position: absolute;
+            // position: absolute;
             overflow-y: auto;
             overflow-x: hidden;
             // min-height: 40vh;
@@ -49,6 +53,11 @@
                     border-radius:5px;
                     background-color: darkgrey;
                 }
+                hr{
+                    @include theme('color',$color1);
+                    border-style: solid;
+                    border-width: 2px;
+                }
                 .modal-title{
                     position: sticky;
                     top:0px;
@@ -58,20 +67,41 @@
                     .RSPBprogressBar{
                         margin: 10px;
                         @include theme('background-color',$background2);
+                        height: 5px;
+                        @include breakpoint($tablet){
+                            height: 10px;
+                        }
                         .RSPBstep{
                             .step-container{
-                                width:40px;
-                                height:40px;
+                                width:20px;
+                                height:20px;
+                                @include breakpoint($tablet){
+                                    width:40px;
+                                    height:40px;
+                                }
                                 svg{
                                     height: inherit;
                                     width: inherit;
                                     position: absolute;
-                                    top: 0;
+                                    top: 0; 
                                     left: 0;
+                                    display: grid;
+                                    place-items: center;
                                     ellipse{
                                         @include theme('fill',$background1);
+                                        cx:10px;
+                                        cy:10px;
+                                        rx:7px;
+                                        ry:7px;
+                                        @include breakpoint($tablet){
+                                            cx:20px;
+                                            cy:20px;
+                                            rx:15px;
+                                            ry:15px;
+                                        }
                                         // @include theme('background',$background1);
                                         stroke-width: 5px;
+                                        
                                     }
                                     .accomplished{
                                         @include theme('stroke',$color1);
@@ -81,13 +111,18 @@
                                     }
                                 }
                                 .label{
-                                    @include theme('color',$text1);
-                                    position:absolute;
-                                    display: grid;
-                                    align-items: center;
-                                    width: inherit;
-                                    height: inherit;
-                                    text-align: center;
+                                    display: none;
+                                }
+                                @include breakpoint($tablet){
+                                    .label{
+                                        @include theme('color',$text1);
+                                        position:absolute;
+                                        display: grid;
+                                        align-items: center;
+                                        width: inherit;
+                                        height: inherit;
+                                        text-align: center;
+                                    }
                                 }
                             }
                         }
@@ -119,9 +154,13 @@
                             width: inherit;
                         }   
                         .section-inputs{
-                            display: flex;
                             flex-direction: row;
+                            display: flex;
                             column-gap: 20px;
+                            flex-wrap: wrap;
+                            @include bp($tablet){
+                                flex-wrap: nowrap;
+                            }
                         }
                     }
                     .active{

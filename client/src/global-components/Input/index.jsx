@@ -1,68 +1,122 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect, useCallback} from 'react'
+// functions and other inputs
 import { v4 as uuid } from 'uuid'
 // import Autocomplete from "react-google-autocomplete"; // for addres autocompletion
+// cusotm components
 import RadioPrompt from '../RadioPrompt';
-import '../../css/inputs.css'
 import PhoneInput from './PhoneInput';
-// here, we will consider text areas and selects as inputs
+import '../../css/inputs.css'
+
 function Input(props) {
-    const [id] = useState(uuid())
-    const [value, setValue] = useState(null)
-    const [isValid, setIsValid] = useState(true)
-    const [error_message, setErrorMessage] = useState(null)
-    function validate () {
-        // console.log("validating",props.name,value)
-        let err_msg = ""
-        if (value === null){
-            return (props.required)?err_msg = `${props.name} is required`:null
-        }
-        // console.log("checking",value)
-        if ((props?.required !== undefined && value === "")) err_msg = `${props.name} is required`
-        else if (props.validate !== undefined) err_msg = props?.validate(value)
-        setErrorMessage(err_msg)
-        setIsValid(err_msg === "")
-        return (err_msg)
-        }
-    
-    useEffect(_ => {
-        // if (value !== null){
-            props.updateEntry?.(props.name, value, validate, (err_msg)=>{
+    // prop division to avoid usefEffect re-renders
+    const id = props?.id || uuid()
+    const name = props.name
+    const parentValidation=props?.parentValidation
+    const displayNone=props?.displayNone
+    const validate=props?.validate
+    const required= props?.required
+    // debugging variables
+    // let debugName = ` for input `+props?.name
+    // let debugName = ` for input `+id
+    const [value, setValue] = useState(null) //value of the input group: d: null, value
+    const [error_message, setErrorMessage] = useState(null)//d: null, error_message
+
+    // getting error message
+    const getErrorFromValue = useCallback(
+        (value) => {
+            let err_msg = ""
+            if (required !== undefined){
+                // console.assert(!(value === null),"value === null"+name)
+                if (value === null || value === "") err_msg = `${name} is required`
+                // else if () err_msg = `${name} is required`
+                else if (validate !== undefined) err_msg = validate(value)
+                // console.assert(err_msg!==undefined,"err_msg === undefined"+debugName)
+                if (err_msg === undefined) err_msg=""
+                // console.assert(err_msg!=="","err_msg===''"+debugName)
                 setErrorMessage(err_msg)
-                setIsValid(err_msg === "")
-            })
-        // }
-    }, [value, error_message, props, validate])
+                // return err_msg!==""
+            }
+            return err_msg
+        }, [name,validate,required]
+    )
     
+    function createEventForParent(event){
+        let outputEvent=event
+        const eventValue=event.target.value
+        // console.assert(outputEvent!==null ,"outputEvent === null"+debugName)
+        // console.assert(outputEvent!==undefined ,"outputEvent === undefined"+debugName)
+        if (outputEvent === undefined) return null
+        // console.assert(outputEvent?.target!==undefined,"outputEvent?.target===undefined"+debugName)
+        if (outputEvent?.target === undefined) return null
+        // console.assert(outputEvent?.target?.value!==undefined,"outputEvent?.target?.value===undefined"+debugName)
+        if (outputEvent?.target?.value === undefined) return null
+        // console.assert(eventValue!==undefined,"outputEvent?.target?.value===undefined"+debugName)
+        if (props.type !== "select"){
+            outputEvent.target.value = eventValue
+        }
+        return outputEvent
+    }
+
     function onChange(e) {
         e.preventDefault()
+        // e.target.value=value
+        console.log("CHANGE", e.target.value)
         setValue(e.target.value)
-        validate()
+        setErrorMessage(getErrorFromValue(e.target.value))
+        let parentEvent = createEventForParent(e)
+        console.log("CHANGE", parentEvent.target.value)
+        if (parentEvent !== null)
+            props?.onChange(parentEvent)
     }
+
     function onBlur(e) {
-        onChange(e)
+        e.preventDefault()
+        e.target.value = value
+        setErrorMessage(getErrorFromValue(value))
+        // setValue(e.target.value)
+        // console.log("BLUR",value)
+        // console.log(e.target.value)
+        let parentEvent=createEventForParent(e)
+        // console.log(parentEvent.target.value)
+        // console.log(parentEvent.target.value==="")
+        // console.log(parentEvent.target.value===null)
+        if (parentEvent !== null && parentEvent.target.value !== null)
+            props?.onBlur(parentEvent)
     }
-    function onValueChange(val){
-        setValue(val)
-        validate()
-    }
+
+    useEffect(_=>{
+        // console.assert(props?.displayNone!==true,"props?.displayNone===true"+debugName)
+        // console.log("effect: " + value)
+        if (displayNone !== true) {
+            // console.assert(props?.parentValidation!==undefined,"props?.parentValidation===undefined"+debugName)
+            parentValidation?.(name, value, getErrorFromValue, setErrorMessage)
+        }
+    },[value, getErrorFromValue, name, parentValidation, displayNone])
+ 
     function input_content(type) {
-        let center_el = (
-            <input type={props.type}
+        // default input
+        let input_element = (
+            <input
+                // {...props} 
+                type={props.type}
                 id={id}
                 name={props.name}
                 onChange={onChange}
                 onBlur={onBlur}
-                className={(isValid === true && props?.required === true) ? "" : "error"}
-                placeholder={props.placeholder} />
+                value={(value===null)?"":value}
+                className={((error_message === "" || error_message === null) && props?.required === true) ? "" : "error"}
+                placeholder={props.placeholder} 
+            />
         )
         if (type === "select") {
-            center_el = (
+            input_element = (
                 <select
                     id={id}
                     name={props.name}
                     onChange={onChange}
+                    value={(value===null)?"":value}
                     onBlur={onBlur}
-                    className={(isValid === true) ? "" : "error"}
+                    className={((error_message === "" || error_message === null) && props?.required === true) ? "" : "error"}
                     placeholder={props.placeholder}
                 >
                     {props.options.map((option, i) =>
@@ -82,35 +136,43 @@ function Input(props) {
             //     />
             // )
         } else if (type === "radio") {
-            center_el = (
+            input_element = (
                 <RadioPrompt
                     question=""
                     options={props.options}
                     name={props.name}
-                    className={(isValid === true && props?.required === true) ? "" : "error"}
-                    onValueChange={onValueChange}
+                    onBlur={onBlur}
+                    onChange={onChange}
+                    className={((error_message === "" || error_message === null) && props?.required === true) ? "" : "error"}
                 />
             )
         } else if (type === "tel") {
-            center_el = (
+            input_element = (
                 <PhoneInput
-                    className={(isValid === true && props?.required === true) ? "" : "error"}
+                    className={((error_message === "" || error_message === null) && props?.required === true) ? "" : "error"}
                     defaultCountry="US"
                     international={false}
-                    onValueChange={onValueChange}
+                    name={props.name}
+                    onBlur={onBlur}
+                    onChange={onChange}
                 />
             )
         }
-        return center_el
+        return input_element
     }
+
+    // short circuit if none
+    if (displayNone === true) return null
     return (
-        <div className="input-wrapper">
-            <label htmlFor={id}
-                className="input-label">
+        <div className = "input-wrapper">
+            <label htmlFor = {id}
+                className = "input-label">
                 {(props.required === true && typeof (props.header) === 'string') ? `${props.header}*` : props.header}
             </label>
             {input_content(props.type)}
-            <div className="input-error">{error_message}</div>
+            <div className = "input-error">
+                {error_message}
+            </div>
         </div>
     )
 }

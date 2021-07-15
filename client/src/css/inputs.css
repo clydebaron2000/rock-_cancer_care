@@ -22,7 +22,8 @@
 .input-wrapper input:focus-visible, .input-wrapper input:focus, .input-wrapper select:focus-visible, .input-wrapper select:focus {
   transition: all .2s ease-in;
   border-color: #8865ac ;
-  outline: none;
+  outline: initial;
+  outline-offset: 2px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -46,8 +47,7 @@
 
 .input-wrapper .input-error {
   display: block;
-  font-size: small;
+  font-size: .75rem;
   color: red;
-  font-size: 10px;
-  min-height: 11px;
+  min-height: 13px;
 }

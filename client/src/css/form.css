@@ -31,11 +31,14 @@
   border-radius: 30px;
   padding: 25px 0px;
   z-index: -1;
-  position: absolute;
   overflow-y: auto;
   overflow-x: hidden;
   min-width: 60vw;
   background-color: #ffffff ;
+}
+
+.ReactModalPortal .overlay .modal h2 {
+  font-size: 17px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -77,6 +80,18 @@
   background-color: darkgrey;
 }
 
+.ReactModalPortal .overlay .modal .form-modal hr {
+  color: #8865ac ;
+  border-style: solid;
+  border-width: 2px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .ReactModalPortal .overlay .modal .form-modal hr {
+    color: #8865ac ;
+  }
+}
+
 .ReactModalPortal .overlay .modal .form-modal .modal-title {
   position: sticky;
   top: 0px;
@@ -94,6 +109,7 @@
 .ReactModalPortal .overlay .modal .form-modal .modal-title .RSPBprogressBar {
   margin: 10px;
   background-color: #b5b5b5 ;
+  height: 5px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -102,9 +118,22 @@
   }
 }
 
+@media (min-width: 50em) {
+  .ReactModalPortal .overlay .modal .form-modal .modal-title .RSPBprogressBar {
+    height: 10px;
+  }
+}
+
 .ReactModalPortal .overlay .modal .form-modal .modal-title .RSPBprogressBar .RSPBstep .step-container {
-  width: 40px;
-  height: 40px;
+  width: 20px;
+  height: 20px;
+}
+
+@media (min-width: 50em) {
+  .ReactModalPortal .overlay .modal .form-modal .modal-title .RSPBprogressBar .RSPBstep .step-container {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 .ReactModalPortal .overlay .modal .form-modal .modal-title .RSPBprogressBar .RSPBstep .step-container svg {
@@ -113,16 +142,31 @@
   position: absolute;
   top: 0;
   left: 0;
+  display: grid;
+  place-items: center;
 }
 
 .ReactModalPortal .overlay .modal .form-modal .modal-title .RSPBprogressBar .RSPBstep .step-container svg ellipse {
   fill: #ffffff ;
+  cx: 10px;
+  cy: 10px;
+  rx: 7px;
+  ry: 7px;
   stroke-width: 5px;
 }
 
 @media (prefers-color-scheme: dark) {
   .ReactModalPortal .overlay .modal .form-modal .modal-title .RSPBprogressBar .RSPBstep .step-container svg ellipse {
     fill: #ffffff ;
+  }
+}
+
+@media (min-width: 50em) {
+  .ReactModalPortal .overlay .modal .form-modal .modal-title .RSPBprogressBar .RSPBstep .step-container svg ellipse {
+    cx: 20px;
+    cy: 20px;
+    rx: 15px;
+    ry: 15px;
   }
 }
 
@@ -147,16 +191,22 @@
 }
 
 .ReactModalPortal .overlay .modal .form-modal .modal-title .RSPBprogressBar .RSPBstep .step-container .label {
-  color: #000505 ;
-  position: absolute;
-  display: grid;
-  align-items: center;
-  width: inherit;
-  height: inherit;
-  text-align: center;
+  display: none;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (min-width: 50em) {
+  .ReactModalPortal .overlay .modal .form-modal .modal-title .RSPBprogressBar .RSPBstep .step-container .label {
+    color: #000505 ;
+    position: absolute;
+    display: grid;
+    align-items: center;
+    width: inherit;
+    height: inherit;
+    text-align: center;
+  }
+}
+
+@media (min-width: 50em) and (prefers-color-scheme: dark) {
   .ReactModalPortal .overlay .modal .form-modal .modal-title .RSPBprogressBar .RSPBstep .step-container .label {
     color: #000505 ;
   }
@@ -198,9 +248,16 @@
 }
 
 .ReactModalPortal .overlay .modal .form-modal .form-content .form-section .section-inputs {
-  display: flex;
   flex-direction: row;
+  display: flex;
   column-gap: 20px;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 768px) {
+  .ReactModalPortal .overlay .modal .form-modal .form-content .form-section .section-inputs {
+    flex-wrap: nowrap;
+  }
 }
 
 .ReactModalPortal .overlay .modal .form-modal .form-content .active {
