@@ -6,6 +6,7 @@ import { v4 as uuid } from 'uuid'
 import RadioPrompt from '../RadioPrompt';
 import PhoneInput from './PhoneInput';
 import '../../css/inputs.css'
+import MultiSelect from './MultiSelect'
 
 function Input(props) {
     // prop division to avoid usefEffect re-renders
@@ -58,19 +59,19 @@ function Input(props) {
     }
 
     function onChange(e) {
-        e.preventDefault()
+        e?.preventDefault()
         // e.target.value=value
         console.log("CHANGE", e.target.value)
         setValue(e.target.value)
         setErrorMessage(getErrorFromValue(e.target.value))
         let parentEvent = createEventForParent(e)
-        console.log("CHANGE", parentEvent.target.value)
+        console.log("CHANGE", parentEvent?.target?.value)
         if (parentEvent !== null)
             props?.onChange(parentEvent)
     }
 
     function onBlur(e) {
-        e.preventDefault()
+        e?.preventDefault()
         e.target.value = value
         setErrorMessage(getErrorFromValue(value))
         // setValue(e.target.value)
@@ -138,6 +139,7 @@ function Input(props) {
         } else if (type === "radio") {
             input_element = (
                 <RadioPrompt
+                    id={id}
                     question=""
                     options={props.options}
                     name={props.name}
@@ -155,6 +157,31 @@ function Input(props) {
                     name={props.name}
                     onBlur={onBlur}
                     onChange={onChange}
+                />
+            )
+        } else if (type === "textarea"){
+            input_element = (
+                <textarea
+                id={id}
+                name={props.name}
+                onChange={onChange}
+                onBlur={onBlur}
+                value={(value===null)?"":value}
+                className={((error_message === "" || error_message === null) && props?.required === true) ? "" : "error"}
+                placeholder={props.placeholder} 
+                ></textarea>
+            )
+        } else if (type === "multi-select"){
+            input_element = (
+                <MultiSelect
+                    id={id}
+                    onChange={onChange}
+                    onBlur={onBlur}
+                    value={value}
+                    isMulti={props?.isMulti}
+                    name={props?.name}
+                    className={((error_message === "" || error_message === null) && props?.required === true) ? "" : "error"}
+                    options={props?.options}
                 />
             )
         }

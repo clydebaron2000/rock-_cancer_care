@@ -11,32 +11,12 @@ import Form from "./pages/PatientIntakeForm/"
 import NotFound from "./pages/NotFound/"
 import { useState } from "react";
 import API from './utils/API'
+
+// import MultiSelect from "react-multi-select-component";
+// import CreatableSelect from 'react-select/creatable';
+import MultiSelect from './global-components/Input/MultiSelect'
 function App() {
-  // const [file,setFile]=useState(null)
-  const [dump,setDump]=useState()
-  const [first,setFirst]=useState()
-  const [last,setLast]=useState()
-  const fetch = () => {
-    console.log('fetch called')
-    API.getAllTests().then(res =>{
-     setDump(res.data)
-     console.log("fetch")
-  }).catch(err => console.log(err))
-  }
-  function submit(e){
-    e.preventDefault()
-    API.createTest({
-      info:{ 
-        name:{
-          first:first,
-          last:last, 
-        },
-      },
-    }).then(res => console.log("success"))
-      .catch(err => console.log(err))
-    fetch()
-  }
-  // fetch()
+
   return (
     <Router>
       <Switch>
@@ -44,7 +24,40 @@ function App() {
         <Route path="/home" exact component={Home} />
         <Route component={NotFound}/> 
       </Switch>
-    </Router> 
+    </Router>
+  )
+}
+
+export default App;
+ // const [file,setFile]=useState(null)
+  // const [dump,setDump]=useState()
+  // const [first,setFirst]=useState()
+  // const [last,setLast]=useState()
+  // const fetch = () => {
+  //   console.log('fetch called')
+  //   API.getAllTests().then(res =>{
+  //    setDump(res.data)
+  //    console.log("fetch")
+  // }).catch(err => console.log(err))
+  // }
+  // function submit(e){
+  //   e.preventDefault()
+  //   API.createTest({
+  //     info:{ 
+  //       name:{
+  //         first:first,
+  //         last:last, 
+  //       },
+  //     },
+  //   }).then(res => console.log("success"))
+  //     .catch(err => console.log(err))
+  //   fetch()
+  // }
+  // fetch()
+
+
+
+    // </Router> 
     // <div>
     //   <h1>posted</h1>
     //     <label>
@@ -63,8 +76,3 @@ function App() {
     //     {JSON.stringify(dump)}
     //   </p>
     // </div>
-  );
-}
-
-
-export default App;

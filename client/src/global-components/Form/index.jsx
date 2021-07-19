@@ -3,9 +3,10 @@ import Modal from 'react-modal'
 import Input from '../Input'
 import StepProgressBar from "./StepProgressBarGenerator"
 import '../../css/form.css'
+import API from '../../utils/API.js'
 
 function PatientIntakeForm (props) {
-      const isGodMode=true
+      const isGodMode=false
       // const [form,setForm]=useState({})
       const titleArray=[
             "Patient Information",
@@ -13,10 +14,11 @@ function PatientIntakeForm (props) {
             "Emergency Contact Information",
             "Program Selection",
             "Financial Information",
+            "Terms and Conditions",
             "Thank you! We will get in touch with you shortly!"
       ]
       const totalSteps=titleArray.length-1
-      const [stepNum,setStepsCompleted]=useState(0)
+      const [stepNum,setStepsCompleted]=useState(1)
       const [formInputs,setFormInputs]=useState({})
       const [renderMore,setRenderMore]=useState(false)
       function upDateValidateFunctions(name,value,getErrorFromValue,setErrorMessage){
@@ -30,7 +32,7 @@ function PatientIntakeForm (props) {
             setFormInputs(form)
       }
       function checkInputs(e){
-            e.preventDefault()
+            e?.preventDefault()
             let hasAnyFalseValue = false
             // console.log("CHECKING INPUTS")
             // console.log(formInputs)
@@ -60,8 +62,9 @@ function PatientIntakeForm (props) {
             else if (e.target.innerText==="submit"){ 
                   console.log("submistion to server")
                   //dummy loop
-                  for(let i=0;i<10000000;i++){}
-                  setStepsCompleted(stepNum+1)
+                  API.createPatient(formInputs).then(res=>{
+                        setStepsCompleted(stepNum+1)
+                  }).catch(err => console.log(err))
             }
       }
       function onChange(e){
@@ -151,7 +154,7 @@ function PatientIntakeForm (props) {
                                                       if (value.length<=2)
                                                             return "Last name must be at least 2 chatacters"
                                                 }}
-                                                name="Last name"
+                                                name="last name"
                                                 type="text"
                                                 header="Last"
                                           />
@@ -170,7 +173,7 @@ function PatientIntakeForm (props) {
                                                       if (value.length<=2)
                                                             return "Street address must be at least 2 chatacters"
                                                 }}
-                                                name="Street address"
+                                                name="street address"
                                                 type="adress"
                                                 header="Street Address"
                                           />
@@ -184,7 +187,7 @@ function PatientIntakeForm (props) {
                                                       if (value.length<=2)
                                                             return "Zip must be at least 2 chatacters"
                                                 }}
-                                                name="Zip"
+                                                name="zip"
                                                 type="zip"
                                                 header="Zip"
                                           />
@@ -335,7 +338,7 @@ function PatientIntakeForm (props) {
                                                                   if (value.length<=2)
                                                                         return "First name must be at least 2 chatacters"
                                                             }}
-                                                            name="Filler first name"
+                                                            name="filler first name"
                                                             type="text"
                                                             header="First"
                                                       />
@@ -349,7 +352,7 @@ function PatientIntakeForm (props) {
                                                                   if (value.length<=2)
                                                                         return "Last name must be at least 2 chatacters"
                                                             }}
-                                                            name="Filler Last name"
+                                                            name="filler last name"
                                                             type="text"
                                                             header="Last"
                                                       />
@@ -391,28 +394,143 @@ function PatientIntakeForm (props) {
                         </div> 
 
                         <div id='1' className={(stepNum===1)?"active":(stepNum-1===1)?"prev":(stepNum+1===1)?"next":"ghost"}>
-                        <div className="form-section">
-                                    <h4 className="section-title">TRYFUIOJ</h4>
+                              <div className="form-section">
+                                    <h4 className="section-title"></h4>
                                     <div className="section-inputs">
                                           <Input
+                                                parentValidation={upDateValidateFunctions}
+                                                onChange={onChange}
+                                                onBlur={onChange}
                                                 displayNone={stepNum!==1}
                                                 required={true}
                                                 validate={value=>{
-                                                      if (value.length<2) return "first name must be at least 2 characters"
+                                                      if (value.length<2) return "type of cancer must be at least 2 characters"
                                                 }}
-                                                name="a"
+                                                name="cancer type"
+                                                type="text"
+                                                header={<h4>Type of Cancer*</h4>}
+                                          />
+                                          <Input
+                                                parentValidation={upDateValidateFunctions}
+                                                onChange={onChange}
+                                                onBlur={onChange}
+                                                displayNone={stepNum!==1}
+                                                required={true}
+                                                validate={value=>{
+                                                }}
+                                                name="date of diagnosis"
+                                                type="date"
+                                                header={<h4>Date of Diagnosis*</h4>}
+                                          />
+                                    </div>
+                              </div>
+                              <div className="form-section">
+                                    <h4 className="section-title"></h4>
+                                    <div className="section-inputs">
+                                          <Input
+                                                parentValidation={upDateValidateFunctions}
+                                                onChange={onChange}
+                                                onBlur={onChange}
+                                                displayNone={stepNum!==1}
+                                                required={true}
+                                                validate={value=>{
+                                                }}
+                                                name="diagnosis status"
+                                                type="radio"
+                                                options={["Active Patient","Survivor"]}
+                                                header={<h4>Select from below what describes you*</h4>}
+                                          />
+
+                                    </div>
+                              </div>
+                              <div className="form-section">
+                                    <h4 className="section-title">Name of Doctor</h4>
+                                    <div className="section-inputs">
+                                          <Input
+                                                parentValidation={upDateValidateFunctions}
+                                                onChange={onChange}
+                                                onBlur={onChange}
+                                                displayNone={stepNum!==1}
+                                                required={true}
+                                                validate={value=>{
+                                                      if (value.length<2) return "type of cancer must be at least 2 characters"
+                                                }}
+                                                name="doctor first name"
                                                 type="text"
                                                 header="First"
+                                          />
+                                          <Input
+                                                parentValidation={upDateValidateFunctions}
+                                                onChange={onChange}
+                                                onBlur={onChange}
+                                                displayNone={stepNum!==1}
+                                                required={true}
+                                                validate={value=>{
+                                                }}
+                                                name="doctor last name"
+                                                type="text"
+                                                header="Last"
+                                          />
+                                    </div>
+                              </div>
+                              <div className="form-section">
+                                    <h4 className="section-title"></h4>
+                                    <div className="section-inputs">
+                                          <Input
+                                                parentValidation={upDateValidateFunctions}
+                                                onChange={onChange}
+                                                onBlur={onChange}
+                                                displayNone={stepNum!==1}
+                                                required={true}
+                                                validate={value=>{
+                                                      if (value.length<2) return "type of cancer must be at least 2 characters"
+                                                }}
+                                                name="doctor phone"
+                                                type="tel"
+                                                header={<h4>Doctor Phone*</h4>}
+                                          />
+                                          <Input
+                                                parentValidation={upDateValidateFunctions}
+                                                onChange={onChange}
+                                                onBlur={onChange}
+                                                displayNone={stepNum!==1}
+                                                required={true}
+                                                validate={value=>{
+                                                }}
+                                                name="walker, crutches, wheelchair"
+                                                type="radio"
+                                                options={["yes","no"]}
+                                                header={<h4>Do you use a walker, crutches, cane, or wheelchair on a regular basis?*</h4>}
+                                          />
+                                    </div>
+                              </div>
+                              <div className="form-section">
+                                    <h4 className="section-title"></h4>
+                                    <div className="section-inputs">
+                                          <Input
+                                                parentValidation={upDateValidateFunctions}
+                                                onChange={onChange}
+                                                onBlur={onChange}
+                                                displayNone={stepNum!==1}
+                                                required={true}
+                                                validate={value=>{
+                                                }}
+                                                isMulti={true}
+                                                name="allergies"
+                                                type="multi-select"
+                                                options={["a","b","c"]}
+                                                header={<h4>List any allergies you may have:*</h4>}
                                           />
                                     </div>
                               </div>
                         </div>
-                        <div id='5' className={(stepNum===totalSteps)?"active":(stepNum-1===5)?"prev":(stepNum+1===5)?"next":"ghost"}>
+
+                        <div id='5' className={(stepNum === totalSteps)?"active":(stepNum-1===5)?"prev":(stepNum+1===5)?"next":"ghost"}>
                               <h1>finished message</h1>
                         </div>
                         </form>
                         <div className="form-bottom">
-                              {((stepNum===0 || stepNum===totalSteps) && !isGodMode)?<div></div>:
+                              {((stepNum===0 || stepNum === totalSteps) && !isGodMode)?<div></div>:
                                     <button className="minor-button" onClick={_=>{
                                           _.preventDefault()
                                           if (stepNum>0)setStepsCompleted(stepNum-1)}}>
