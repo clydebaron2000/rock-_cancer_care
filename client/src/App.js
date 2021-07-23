@@ -17,8 +17,18 @@ import API from './utils/API'
 import Input from './global-components/Input'
 // import Checkbox from './global-components/CheckBoxPrompt'
 function App() {
-  // const[value,setValue]=useState([null,null,null,"d"])
-  
+  const[value,setValue]=useState()
+  useEffect(_=>{
+    console.log("EFFECT")
+    // fetch()
+  },[value])
+  function fetch(){
+    API.getPatients({"firstname":"l"}).then(res=>{
+      if (res.data !== value){
+        setValue(res.data)
+      }
+    })
+  }
   return (
     <Router>
       <Switch>
@@ -28,17 +38,18 @@ function App() {
       </Switch>
     </Router>
     // <>
-    // <Input
-    //   type="checkbox"
-    //   // value={value}
-    //   name="hello"
-    //   options={["a","b","c","d"]}
-    //   onChange={e=>{
-    //     // console.log(e.target.name)
-    //     // console.log(e.target.value)
-    //     // setValue(e.target.value)
-    //   }}
-    // />
+    //   <button onClick={fetch} style={{padding:"10px"}}>fetch</button>
+    //   {value?.map?.(obj=>
+    //     <div style={{padding:"20px"}}>
+    //       {JSON.stringify(obj)}
+    //     </div>
+    //     )}
+    //     <button onClick={()=>{
+    //       API.createPatientTest().then(res=>{
+    //         console.log("success!")
+    //       }).catch(err=>console.error(err))
+    //     }}>create</button>
+    // </>
     // <Input
     //   type="radio"
     //   // value={value}

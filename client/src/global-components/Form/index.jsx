@@ -7,8 +7,7 @@ import API from '../../utils/API.js'
 import options from './form'
 
 function PatientIntakeForm (props) {
-      const isGodMode=true
-      // const [form,setForm]=useState({})
+      const isGodMode=false
       const titleArray=[
             "Patient Information",
             "Patient Health Information",
@@ -19,7 +18,7 @@ function PatientIntakeForm (props) {
             "Thank you! We will get in touch with you shortly!"
       ]
       const totalSteps=titleArray.length-1
-      const [stepNum,setStepsCompleted]=useState(3)
+      const [stepNum,setStepsCompleted]=useState(0)
       const [formInputs,setFormInputs]=useState({})
       const [renderMore,setRenderMore]=useState(false)
       function upDateValidateFunctions(name,value,getErrorFromValue,setErrorMessage){

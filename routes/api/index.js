@@ -5,7 +5,7 @@ const patientIntake  = require("./patientIntake")
 // api routes
 console.log('adding /patient routes')
 router.use("/patient", patientIntake)
-console.log('adding /test routes')
+// console.log('adding /test routes')
 // router.use("/test", testRoutes)
 
 module.exports = router

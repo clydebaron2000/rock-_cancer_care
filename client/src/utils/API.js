@@ -1,7 +1,7 @@
 import axios from 'axios'
 const base = '/api/'
-let template = {'first name': "clyde",
-'last name': "rapinan",
+let template = {'first name': "l",
+'last name': "a",
 'street address': "a",
 'zip': 1,
 'birth date': "2021-07-22",
@@ -39,25 +39,35 @@ const API = {
         return axios.post(base + 'test', body)
     },
     getAllTests: function (body){
-        return axios.get(base + 'test',body)
+        return axios.get(base + 'test',{query:body})
     },
-    createPatient: function (patient){
+    getPatients: function (body){
+        console.log("getPatients recieved")
+        console.log(body)
+        return axios.get(base + 'patient/',body)
+    },
+    getAllPatients: function (body){
+        console.log("getAllPatients recieved") 
+        console.log(body) 
+        return axios.get(base + 'patient/all',body)
+    },
+    createPatient: function (body){
         console.log('received in API')
-        patient.isCheckedByAdmin = false
-        patient.lastModfied = new Date()
-        return axios.post(base + 'patient', patient)
+        body.isCheckedByAdmin = false
+        body.lastModfied = new Date()
+        return axios.post(base + 'patient', body)
     },
     createPatientTest: function (){
         console.log('received in API')
-        let patient = template
-        patient.isCheckedByAdmin = false
-        patient.lastModfied = new Date()
-        return axios.post(base + 'patient', patient)
+        let body = template
+        body.isCheckedByAdmin = false
+        body.lastModfied = new Date()
+        return axios.post(base + 'patient', body)
     },
-    updatePatient: function(patient){
-        patient.lastModfied = new Date()
-        return axios.put(base + 'patient' + patient._id,patient)
+    updatePatient: function(body){
+        body.lastModfied = new Date()
+        return axios.put(base + 'patient/' + body._id,body)
     }
      
-}
+} 
 export default API
