@@ -1,25 +1,9 @@
-const db = require('./models');
-module.exports = (router)=>{
-  router.post('/api/test', ({body}, res) => {
-    console.log("post  /api/test triggered")
-    db.test.create(body).then(dbUser => {
-      res.json(dbUser);
-    }).catch(err => {
-      res.status(404).json(err);
-    })
-  });
-  router.get('/api/user/:email', ({
-      body,
-      params
-    }, res) => {
-      db.users.find({
-        email: params.email
-      }).then(dbUser => {
-        res.send(dbUser)
-      }).catch(err => {
-        res.status(400)
-      })
-    })
+const router = require("express").Router()
+const patientController = require('./controller/patient')
+  router.route("/")
+    .post(patientController.create)
+    .get(patientController.findAll)
+  module.exports = router
   // router.put('/api/event/:_id', ({
   //   body,
   //   params
@@ -39,5 +23,5 @@ module.exports = (router)=>{
   //     res.status(400)
   //   })
   // })
-}
+
 

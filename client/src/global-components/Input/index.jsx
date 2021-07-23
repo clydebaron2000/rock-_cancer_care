@@ -19,7 +19,7 @@ function Input(props) {
     const validate=props?.validate
     const required= props?.required
     // debugging variables
-    // let debugName = ` for input `+props?.name
+    let debugName = ` for input `+props?.name
     // let debugName = ` for input `+id
     const [value, setValue] = useState(null) //value of the input group: d: null, value
     const [error_message, setErrorMessage] = useState(null)//d: null, error_message
@@ -33,16 +33,16 @@ function Input(props) {
             let err_msg = ""
             if (required !== undefined){
                 // console.assert(!(value === null),"value === null"+name)
+                // console.assert(!(value === ""),"value === \"\""+name)
                 if (value === null || value === "" || value ===[]) err_msg = `${name} is required`
-                // else if () err_msg = `${name} is required`
                 else if (validate !== undefined) err_msg = validate(value)
                 // console.assert(err_msg!==undefined,"err_msg === undefined"+debugName)
                 if (err_msg === undefined) err_msg=""
                 // console.assert(err_msg!=="","err_msg===''"+debugName)
-                setErrorMessage(err_msg)
                 // return err_msg!==""
-            }
-            return err_msg
+                setErrorMessage(err_msg)
+                return err_msg
+            } else return ""
         }, [name,validate,required]
     )
     
@@ -110,7 +110,7 @@ function Input(props) {
                 onChange={onChange}
                 onBlur={onBlur}
                 value={(value===null)?"":value}
-                className={((error_message === "" || error_message === null) && props?.required === true) ? "" : "error"}
+                className={((error_message !== "" && error_message !== null) && props?.required === true) ? "error" : ""}
                 placeholder={props.placeholder} 
             />
         )

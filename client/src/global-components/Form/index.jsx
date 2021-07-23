@@ -19,7 +19,7 @@ function PatientIntakeForm (props) {
             "Thank you! We will get in touch with you shortly!"
       ]
       const totalSteps=titleArray.length-1
-      const [stepNum,setStepsCompleted]=useState(4)
+      const [stepNum,setStepsCompleted]=useState(3)
       const [formInputs,setFormInputs]=useState({})
       const [renderMore,setRenderMore]=useState(false)
       function upDateValidateFunctions(name,value,getErrorFromValue,setErrorMessage){
@@ -63,10 +63,10 @@ function PatientIntakeForm (props) {
             else if (e.target.innerText==="submit"){ 
                   console.log("submistion to server")
                   //dummy loop
-                  setStepsCompleted(stepNum+1)
-                  // API.createPatient(formInputs).then(res=>{
-                  //       setStepsCompleted(stepNum+1)
-                  // }).catch(err => console.log(err))
+                  // setStepsCompleted(stepNum+1)
+                  API.createPatientTest().then(res=>{
+                        setStepsCompleted(stepNum+1)
+                  }).catch(err => console.log(err))
             }
       }
       function onChange(e){
@@ -698,7 +698,7 @@ function PatientIntakeForm (props) {
                                                 // required={true}
                                                 validate={value=>{
                                                       if (value.length<=2)
-                                                            return "Street address must be at least 2 chatacters"
+                                                            return "religious beliefs must be at least 2 chatacters"
                                                 }}
                                                 name="religious beliefs"
                                                 type="text"

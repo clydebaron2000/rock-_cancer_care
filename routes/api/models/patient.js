@@ -7,7 +7,7 @@ const patientSchema = new Schema({
     'last name': {type: String, required: true},
     'street address': {type: String, required: true},
     'zip': {type: String, required: true},
-    'birth date': {type: Date, required: true},
+    'birth date': {type: String, required: true},
     'gender': {type: String, required: true},
     'phone': {type: String, required: true},
     'email': {type: String, required: true},
@@ -19,7 +19,7 @@ const patientSchema = new Schema({
     'filler phone': {type: String},
     'filler email': {type: String},
     'cancer type': {type: String, required: true},
-    'date of diagnosis': {type: Date, required: true},
+    'date of diagnosis': {type: String, required: true},
     'diagnosis status': {type: String, required: true},
     'doctor first name': {type: String, required: true},
     'doctor last name': {type: String, required: true},
@@ -27,7 +27,7 @@ const patientSchema = new Schema({
     'walker, crutches, wheelchair': {type: String, required: true},
     'allergies':{type:String,required: true},
     'medical conditions':{type:[String],required: true},
-    'living conditions explanation':{type:[String],required: true},
+    'living conditions explanation':{type:String,required: true},
     'emergency contact first name': {type: String, required: true},
     'emergency contact last name': {type: String, required: true},
     'emergency contact street address': {type: String, required: true},
@@ -42,7 +42,7 @@ const patientSchema = new Schema({
     'financial income source':{type:String},
     'financial services needed':{type:[String]},
     'financial assistance explanation':{type:String},
-    'healing explanation':{type:String,required: true},
+    'financial healing explanation':{type:String},
     'applicant acknowledgement':{type:Boolean,required: true},
 })
 
@@ -50,80 +50,3 @@ const singularCollectionName = 'Patient'
 const Patient = mongoose.model(singularCollectionName, patientSchema);
 
 module.exports = Patient
-
-// const patientSchema = new Schema({
-// info:{
-//     name:{
-//         first: { type: String, required: true },
-//         last: { type: String, required: true }, 
-//     },
-//     address:{
-//         street: { type: String, required: true},
-//         zip: { type: String, required: true},
-//     },
-//     birthdate: { type: Date, required: true},
-//     phone: { type: String, required: true},
-//     email: { type: String, required: true},
-//     leaveMessage: {type: String},
-//     relationshipStatus: {type: String},
-//     filledOutBy: {type: String, required: true},
-//     fillerInfo:{
-//         name:{
-//             first: { type: String, required: true },
-//             last: { type: String, required: true }, 
-//         },
-//         address:{
-//             street: { type: String, required: true},
-//             zip: { type: String, required: true},
-//         },
-//         phone: { type: String, required: true},
-//         email: { type: String, required: true},
-//     }
-// },
-// health:{
-//         cancer:{
-//             type:{ type: String, required: true},
-//             dateOfDiagnosis: { type: Date, required: true},
-//             treatmentStatus: { type: String, required: true}
-//         },
-//         doctor:{
-//             name:{
-//                     first: { type: String, required: true },
-//                     last: { type: String, required: true }, 
-//                 },
-//         },
-//         allergiesList: { type: [String] },
-//         medicalConditions: { type: [String] },
-//         livingConditions: { type: [String], required: true },
-        
-// },
-// emergencyContact:{
-//     name:{
-//         first: { type: String, required: true },
-//         last: { type: String, required: true }, 
-//     },
-//     address:{
-//         street: { type: String, required: true},
-//         zip: { type: String, required: true},
-//     },
-//     phone: { type: String, required: true},
-//     email: { type: String, required: true},
-// },
-// programSelection: { type: [String] },
-// spiritualBelifs:{ 
-//     type: {type: String },
-//     prayer:{type: String }
-// },
-// financialInformation:{
-//     doesNeed:{ type: String, required: true},
-//     incomeInfo:{
-//         level:{ type: String},
-//         source:{ type: String},
-//     },
-//     servicesNeeded:{ type: [String] },
-//     explanationBenefits: {type: String },
-//     healingExplanation:{type: String }
-// },
-// termsAndConditionsAgree:{ type: String, required: true},
-// isCheckedByAdmin:{ type: Boolean, required: true}
-// });

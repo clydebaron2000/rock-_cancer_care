@@ -13,6 +13,8 @@ function CheckboxPrompt(props) {
         parentEvent.preventDefault=()=>{}
         parentEvent.target.name = props?.name
         parentEvent.target.value = props?.options.filter((_,i) => value[i])
+        if (props?.options.length===1)
+            parentEvent.target.value = value[0]
         props?.onChange?.(parentEvent)
     }
     function onChange(e){
