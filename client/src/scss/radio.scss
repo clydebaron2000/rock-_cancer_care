@@ -1,3 +1,5 @@
+@import 'params/theme_colors';
+@import 'params/breakpoints';
 .radio-box{
     display: flex;
     align-content: center;
@@ -6,19 +8,67 @@
     *{
         height: min-content;
     }
-    label{
-        input[type=radio]{
-            color:blue;
-            width:min-content;
-            margin: 2.5px;
-            &:focus-visible,
-            &:focus{
-                outline: auto;
-            }
+    flex-direction: column;
+    flex-wrap: wrap;
+    @include bp($phone){
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+    .radio-wrapper{
+        display: flex;
+        margin-right: 3px;
+    }
+    input[type=radio]{
+        @include theme('color',$color1);
+        // color:blue;
+        display: flex;
+        width:min-content;
+        margin: 2.5px;
+        &:focus-visible,
+        &:focus{
+            outline: auto;
         }
+        flex-wrap: wrap;
+        @include bp($phone){
+            flex-wrap: nowrap;
+        }
+        &[checked]{
+            display: grid;
+            place-items: center;
+            // transition: all 1s;
+            // &:after{
+            //     animation: both fade-in .2s;
+            //     transition: all 1s ease-in-out;
+            //     @keyframes fade-in {
+            //         0%{
+            //             width:8px;
+            //             height:8px;
+            //         }
+            //         50%{
+            //             width:10px;
+            //             height: 10px;
+            //         }
+            //         100%{
+            //             width:8px;
+            //             height: 8px;
+            //         }
+                    
+            //     }
+            //     content: '';
+            //     font-size: inherit;
+            //     line-height: normal;
+            //     @include theme('background-color',$color1);
+            //     width:8px; 
+            //     height:8px; 
+            //     @include theme('box-shadow',$color1,'true',' 0px 0px 0px 1px'); 
+            //     border-radius: 7px;
+            //     @include theme('border',$background1,'true','1.5px solid');
+            // }
+        }
+        
         input[type=text]{
             width:min-content;
-        }
+        } 
     }
 }
 .horizontal{

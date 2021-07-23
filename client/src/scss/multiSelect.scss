@@ -1,0 +1,11 @@
+@import 'params/theme_colors';
+@import 'params/breakpoints';
+
+.error{
+    .error__control{
+        background-color: #ff00002e
+    }
+    .error__menu{
+        background-color: white;
+    }
+}

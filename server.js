@@ -1,24 +1,27 @@
-const express = require("express");
-const path = require("path");
-const PORT = process.env.PORT || 3001;
-const app = express();
-
-// Define middleware here
-app.use(express.urlencoded({ extended: true }));
+// to find html template file
+const path = require("path")
+// server deps
+const express = require("express")
+const app = express()
+require('dotenv').config();
+const PORT = process.env.PORT || 3001
+// Define middleware
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
+require('./server/middleware/index')(app)
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
+  app.use(express.static("client/build"))
 }
-
-// Define API routes here
-
-// Send every other request to the React app
-// Define any API routes before this runs
+// Add API routes
+app.use(require('./routes'))
+// connect to server 
+require('./server/index.js')(app)
+// serve up html skeleton
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+  res.sendFile(path.join(__dirname, "./client/build/index.html"))
 });
-
+// serve log
 app.listen(PORT, () => {
-  console.log(`🌎 ==> API server now on port ${PORT}!`);
-});
+  console.log(`Connecting server to port ${PORT}...`)
+})

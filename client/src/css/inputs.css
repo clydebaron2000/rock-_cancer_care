@@ -2,7 +2,7 @@
   width: stretch;
 }
 
-.input-wrapper input, .input-wrapper select {
+.input-wrapper input, .input-wrapper select, .input-wrapper textarea {
   width: stretch;
   background-color: none;
   height: 1.5rem;
@@ -14,21 +14,26 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  .input-wrapper input, .input-wrapper select {
+  .input-wrapper input, .input-wrapper select, .input-wrapper textarea {
     border-color: #cacaca ;
   }
 }
 
-.input-wrapper input:focus-visible, .input-wrapper input:focus, .input-wrapper select:focus-visible, .input-wrapper select:focus {
+.input-wrapper input:focus-visible, .input-wrapper input:focus, .input-wrapper select:focus-visible, .input-wrapper select:focus, .input-wrapper textarea:focus-visible, .input-wrapper textarea:focus {
   transition: all .2s ease-in;
   border-color: #8865ac ;
-  outline: none;
+  outline: initial;
+  outline-offset: 2px;
 }
 
 @media (prefers-color-scheme: dark) {
-  .input-wrapper input:focus-visible, .input-wrapper input:focus, .input-wrapper select:focus-visible, .input-wrapper select:focus {
+  .input-wrapper input:focus-visible, .input-wrapper input:focus, .input-wrapper select:focus-visible, .input-wrapper select:focus, .input-wrapper textarea:focus-visible, .input-wrapper textarea:focus {
     border-color: #8865ac ;
   }
+}
+
+.input-wrapper textarea {
+  min-height: 4rem;
 }
 
 .input-wrapper input[type=radio] {
@@ -46,8 +51,7 @@
 
 .input-wrapper .input-error {
   display: block;
-  font-size: small;
+  font-size: .75rem;
   color: red;
-  font-size: 10px;
-  min-height: 11px;
+  min-height: 13px;
 }

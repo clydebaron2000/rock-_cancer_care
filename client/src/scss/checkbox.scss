@@ -1,0 +1,92 @@
+@import 'params/theme_colors';
+@import 'params/breakpoints';
+.checkbox-box{
+    display: grid;
+    align-content: center;
+    // justify-content: space-around;
+    justify-items: stretch;
+    width: stretch;
+    // max-width: 100%;
+    *{
+        height: min-content;
+    }
+    // flex-direction: column;
+    // flex-wrap: wrap;
+    // grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    @include bp($phone){
+        // flex-direction: row;
+        // flex-wrap: nowrap;
+        // grid-template-columns: 1fr 1fr;
+    }
+    .checkbox-wrapper{
+        display: flex; 
+        margin: 5px;
+        label{
+            // margin: 6px;
+            vertical-align: top;
+        }
+        input[type = checkbox]{
+            @include theme('color',$color1);
+            // color:blue;
+            vertical-align: top;
+            // display: flex;
+            width:min-content;
+            height:min-content;
+            margin: 10px;
+            margin-top: 2px;
+            &:focus-visible,
+            &:focus{
+                outline: auto;
+            }
+            flex-wrap: wrap;
+            @include bp($phone){
+                margin: 2.5px;
+                flex-wrap: nowrap;
+            }
+            &[checked]{
+                display: grid;
+                place-items: center;
+                // transition: all 1s;
+                &:after{
+                    animation: both fade-in .2s;
+                    transition: all 1s ease-in-out;
+                    @keyframes fade-in {
+                        0%{
+                            width:8px;
+                            height:8px;
+                        }
+                        50%{
+                            width:10px;
+                            height: 10px;
+                        }
+                        100%{
+                            width:8px;
+                            height: 8px;
+                        }
+                        
+                    }
+                    content: '';
+                    font-size: inherit;
+                    line-height: normal;
+                    width:8px; 
+                    height:8px; 
+                    @include theme('box-shadow',$color1,'true',' 0px 0px 0px 1px'); 
+                    border-radius: 7px;
+                    @include theme('border',$background1,'true','1.5px solid');
+                    @include theme('background-color',$color1);
+                }
+            }
+        }
+    }
+}
+.horizontal{
+    flex-direction: row;
+}
+.vertical{
+    flex-direction: column;
+    .checkbox-wrapper:nth-child(2n){
+        flex-basis: 100%;
+        width: 0;
+    }
+}
