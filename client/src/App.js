@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect,useState} from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -9,7 +9,7 @@ import {
 import Home from "./pages/Home"
 import Form from "./pages/PatientIntakeForm/"
 import NotFound from "./pages/NotFound/"
-
+import API from './utils/API'
 function App() {
   const[value,setValue]=useState()
   useEffect(_=>{
