@@ -18,13 +18,9 @@ function StepProgressBarGenerator(props){
                   <Step transition="scale" key={i} index={i} position={steps/(total-1)*100}>
                         {({ accomplished }) => (
                               <div className="step-container">
-                                    <svg height="40" width="40"
-                                          style={{
-                                                position: 'absolute',
-                                                top:"0",
-                                                left:"0",
-                                          }}>
-                                          <ellipse cx="20" cy="20" rx="15" ry="15" 
+                                    <svg >
+                                          <ellipse 
+                                          // cx="20" cy="20" rx="15" ry="15" 
                                                 className={`${accomplished ? "accomplished":"todo"}`}
                                           ></ellipse>
                                     </svg>

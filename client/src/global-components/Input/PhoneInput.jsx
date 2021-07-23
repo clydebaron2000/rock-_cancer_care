@@ -1,34 +1,41 @@
-import React, { useState, useEffect } from "react"
-import PhoneIn from "react-phone-number-input"
-import "react-phone-number-input/style.css"
-// import '../../css/phoneInput.css'
-import "../../css/phone.css"
+import React, { useState,forwardRef } from "react"
+import PhoneIn from 'react-phone-input-2'
+import 'react-phone-input-2/lib/style.css'
+import '../../css/phone.css'
 
 function PhoneInput(props) {
 	const [value, setValue] = useState(null)
-	useEffect(
-		(_) => {
-			props?.onValueChange(value)
-		},
-		[value, props]
-	)
-	// function retargetWrapper(event, fx) {
-	// 	event.target = event.target.parentElement.parentElement
-	// 	event.target.value = value
-	// 	return fx(event)
-	// }
+	// const {disableDropdown}=props 
+	const disableDropdown=true 
 	return (
 		<div
 			name="phoneWrapper"
-			className={props.className}
-			// onChange={(e) => retargetWrapper(e, props.onChange)}
-			// onBlur={(e) => retargetWrapper(e, props.onBlur)}
-			value={value}>
+			>
 			<PhoneIn
-				defaultCountry={props.defaultCountry}
-				international={props.international}
+				id={props.id}
+				role="phone number input with country code"
+				country={props.defaultCountry}
+				name={props?.name}
+				enableSearch={true}
+				countryCodeEditable={true}
+				disableDropdown={disableDropdown}//until we can figure out how to do it so it look proper
 				value={value}
-				onChange={setValue}
+				inputClass={props.className}
+				onChange={(value, country, e, formattedValue)=>{
+					setValue(value)
+					// console.log(props.name);
+					// console.log(e.target.name)
+					e.target.name=props?.name
+					props?.onChange?.(e)
+					}
+				}
+				onBlur={(e, country)=>{
+					setValue(e.target.value)
+					// console.log(e.target.value)
+					// console.log(e.target.value.length)
+					props?.onBlur?.(e)
+					}
+				}
 			/>
 		</div>
 	)

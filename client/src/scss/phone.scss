@@ -3,5 +3,34 @@
 div[name=phoneWrapper], .error{
     input{
         background-color: #ff000000;
-    } 
+    }
 } 
+div[name=phoneWrapper]{
+    .react-tel-input{
+        box-sizing: none;
+        font-size: inherit;
+        .form-control{
+            font-size: inherit;
+            height: auto;
+            height: 1.5rem;
+            line-height: inherit;
+            width:stretch;
+            background-color: #ff000000;
+            border-radius: 5px;
+            @include theme('border-color',$text2);
+            // border-color: #cacaca;
+            color: black;
+            border-width: 1px;
+            border-style: solid;
+            &:focus-visible,
+            &:focus{
+                transition: all .2s ease-in;
+                @include theme('border-color',$color1);
+                // outline: auto;
+           }
+        }
+        .error{
+            background-color: #ff00002e;
+        }
+    }
+}
