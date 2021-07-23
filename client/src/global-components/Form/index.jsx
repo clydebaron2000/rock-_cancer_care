@@ -38,17 +38,17 @@ function PatientIntakeForm (props) {
             // console.log(formInputs)
             for (const key in formInputs){
                   let value = formInputs[key].value
-                  console.log(key,value)
-                  console.log(formInputs[key])
+                  // console.log(key,value)
+                  // console.log(formInputs[key])
                   let err = formInputs[key].getErrorFromValue(value)
-                  console.assert(err === "","err: "+err)
+                  // console.assert(err === "","err: "+err)
                   if (err !== ""){
                         formInputs[key].setErrorMessage(err)
                         if(hasAnyFalseValue === false)
                               hasAnyFalseValue = true
                   }
             }
-            console.assert(hasAnyFalseValue === false,"FALSY")
+            // console.assert(hasAnyFalseValue === false,"FALSY")
             // debugger
             if(hasAnyFalseValue === false || isGodMode) submitData(e)
       }
@@ -56,11 +56,11 @@ function PatientIntakeForm (props) {
             e.preventDefault()
             setRenderMore(false)
             if (e.target.innerText==="next") {
-                  console.log("next step!")
+                  // console.log("next step!")
                   setStepsCompleted(stepNum+1)
             }
             else if (e.target.innerText==="submit"){ 
-                  console.log("submistion to server")
+                  // console.log("submistion to server")
                   //dummy loop
                   // setStepsCompleted(stepNum+1)
                   API.createPatientTest().then(res=>{
@@ -69,7 +69,7 @@ function PatientIntakeForm (props) {
             }
       }
       function onChange(e){
-            console.assert(e!==undefined,"e undefined")
+            // console.assert(e!==undefined,"e undefined")
             let name = e.target.name
             if (name === undefined || name === "")return
             let value = e.target.value
@@ -77,12 +77,12 @@ function PatientIntakeForm (props) {
             if (form[name] === undefined)form[name]={value:value}
             else {
                   // console.assert(form[name]["value"]!==value,"form value is the same "+form[name]["value"])
-                  console.log(name)
-                  console.log(form[name])
-                  console.log(form[name]["value"])
-                  console.log(value)
+                  // console.log(name)
+                  // console.log(form[name])
+                  // console.log(form[name]["value"])
+                  // console.log(value)
                   if (form[name]["value"]!==value) {
-                        console.log(name+" changed")
+                        // console.log(name+" changed")
                         form[name]["value"]=value
                         if (name === "filled out by"){
                               if (value !== null && value !== "" && value !== "Patient"){
@@ -98,8 +98,8 @@ function PatientIntakeForm (props) {
                                     setRenderMore(false)
                               }
                         } else if (name === "Financial assistance"){
-                              console.log("FINANCIAL")
-                              console.log(value)
+                              // console.log("FINANCIAL")
+                              // console.log(value)
                               if (value === "yes"){
                                     setRenderMore(true)
                               } else {
@@ -115,7 +115,7 @@ function PatientIntakeForm (props) {
                         } 
                   }
             }
-            console.log(form[name])
+            // console.log(form[name])
             setFormInputs(form)
       }
       return (

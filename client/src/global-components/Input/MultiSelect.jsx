@@ -7,23 +7,23 @@ function MultiSelect(props){
     const [gvalue,setValue]=useState()
     
     function onChange(val){
-        console.log(val)
+        // console.log(val)
         let value = val?.map?.(obj=>obj.value)
         if (value === undefined) value = val.value
         if (value !== undefined) setValue(value)
         let e={target:{},preventDefault:()=>{}}
         e.target.value=value
         e.target.name=props?.name
-        console.log(e)
+        // console.log(e)
         props?.onChange(e)
     }
     function onBlur(event){
-        console.log(gvalue)
+        // console.log(gvalue)
         let e={target:{},preventDefault:()=>{}}
         e.target.value=gvalue
         e.target.name=props?.name
-        console.log(e)
-        console.log(e.target.value)
+        // console.log(e)
+        // console.log(e.target.value)
         props?.onBlur(e)
     }
     return (

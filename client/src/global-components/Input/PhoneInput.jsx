@@ -23,15 +23,15 @@ function PhoneInput(props) {
 				inputClass={props.className}
 				onChange={(value, country, e, formattedValue)=>{
 					setValue(value)
-					console.log(props.name);
-					console.log(e.target.name)
+					// console.log(props.name);
+					// console.log(e.target.name)
 					e.target.name=props?.name
 					props?.onChange?.(e)
 					}
 				}
 				onBlur={(e, country)=>{
 					setValue(e.target.value)
-					console.log(e.target.value)
+					// console.log(e.target.value)
 					// console.log(e.target.value.length)
 					props?.onBlur?.(e)
 					}
