@@ -22,19 +22,26 @@ function RadioPrompt(props) {
                             id={option}
                             value={option}
                             name={props.name}
+                            onFocus={
+                                (e)=>{
+                                    setChoice(e.target.value)
+                                    // console.log(e.target.value)
+                                    props?.onChange?.(e)
+                                }
+                            }
                             onChange={(e)=>{
                                 setChoice(e.target.value)
-                                console.log(e.target.value)
+                                // console.log(e.target.value)
                                 props?.onChange?.(e)
                             }}
                             onBlur={(e)=>{
                                 setChoice(e.target.value)
-                                console.log(e.target.value)
+                                // console.log(e.target.value)
                                 props?.onBlur?.(e)
                             }}
-                            tabIndex={choice === null ? 0 : choice === option ? 0 : -1}
+                            tabIndex={choice === "" ? 0 : choice === option ? 0 : -1}
                             checked={choice === option}
-                            autoFocus={(choice === option && text === "") || choice === null}
+                            autoFocus={(choice === option && (text === "" || text === null)) || choice === null}
                             required={props.required}
                             {...otherProps}
                         />
@@ -48,12 +55,12 @@ function RadioPrompt(props) {
                                     autoFocus={text !== null}
                                     onChange={(e)=>{
                                         setText(e.target.value)
-                                        console.log(e.target.value)
+                                        // console.log(e.target.value)
                                         props?.onChange?.(e)
                                     }}
                                     onBlur={(e)=>{
                                         setText(e.target.value)
-                                        console.log(e.target.value)
+                                        // console.log(e.target.value)
                                         props?.onBlur?.(e)
                                     }}
                                     placeholder="other"

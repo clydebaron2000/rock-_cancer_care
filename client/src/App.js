@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -14,9 +14,11 @@ import API from './utils/API'
 
 // import MultiSelect from "react-multi-select-component";
 // import CreatableSelect from 'react-select/creatable';
-import MultiSelect from './global-components/Input/MultiSelect'
+import Input from './global-components/Input'
+// import Checkbox from './global-components/CheckBoxPrompt'
 function App() {
-
+  // const[value,setValue]=useState([null,null,null,"d"])
+  
   return (
     <Router>
       <Switch>
@@ -25,6 +27,30 @@ function App() {
         <Route component={NotFound}/> 
       </Switch>
     </Router>
+    // <>
+    // <Input
+    //   type="checkbox"
+    //   // value={value}
+    //   name="hello"
+    //   options={["a","b","c","d"]}
+    //   onChange={e=>{
+    //     // console.log(e.target.name)
+    //     // console.log(e.target.value)
+    //     // setValue(e.target.value)
+    //   }}
+    // />
+    // <Input
+    //   type="radio"
+    //   // value={value}
+    //   name="hi"
+    //   options={["a","b","c","d"]}
+    //   onChange={e=>{
+    //     // console.log(e.target.name)
+    //     // console.log(e.target.value)
+    //     // setValue(e.target.value)
+    //   }}
+    // />
+    // </>
   )
 }
 

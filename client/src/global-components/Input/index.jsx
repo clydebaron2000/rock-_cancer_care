@@ -7,10 +7,12 @@ import RadioPrompt from '../RadioPrompt';
 import PhoneInput from './PhoneInput';
 import '../../css/inputs.css'
 import MultiSelect from './MultiSelect'
+import CheckboxPrompt from '../CheckBoxPrompt';
 
 function Input(props) {
     // prop division to avoid usefEffect re-renders
     const id = props?.id || uuid()
+    // const id = null
     const name = props.name
     const parentValidation=props?.parentValidation
     const displayNone=props?.displayNone
@@ -21,14 +23,17 @@ function Input(props) {
     // let debugName = ` for input `+id
     const [value, setValue] = useState(null) //value of the input group: d: null, value
     const [error_message, setErrorMessage] = useState(null)//d: null, error_message
-
+    useEffect(_=>{
+        // console.log("input effect")
+        // console.log(value)
+    },[value])
     // getting error message
     const getErrorFromValue = useCallback(
         (value) => {
             let err_msg = ""
             if (required !== undefined){
                 // console.assert(!(value === null),"value === null"+name)
-                if (value === null || value === "") err_msg = `${name} is required`
+                if (value === null || value === "" || value ===[]) err_msg = `${name} is required`
                 // else if () err_msg = `${name} is required`
                 else if (validate !== undefined) err_msg = validate(value)
                 // console.assert(err_msg!==undefined,"err_msg === undefined"+debugName)
@@ -61,13 +66,13 @@ function Input(props) {
     function onChange(e) {
         e?.preventDefault()
         // e.target.value=value
-        console.log("CHANGE", e.target.value)
+        // console.log("CHANGE", e.target.value)
         setValue(e.target.value)
         setErrorMessage(getErrorFromValue(e.target.value))
         let parentEvent = createEventForParent(e)
-        console.log("CHANGE", parentEvent?.target?.value)
+        // console.log("CHANGE", parentEvent?.target?.value)
         if (parentEvent !== null)
-            props?.onChange(parentEvent)
+            props?.onChange?.(parentEvent)
     }
 
     function onBlur(e) {
@@ -82,7 +87,7 @@ function Input(props) {
         // console.log(parentEvent.target.value==="")
         // console.log(parentEvent.target.value===null)
         if (parentEvent !== null && parentEvent.target.value !== null)
-            props?.onBlur(parentEvent)
+            props?.onBlur?.(parentEvent)
     }
 
     useEffect(_=>{
@@ -182,6 +187,17 @@ function Input(props) {
                     name={props?.name}
                     className={((error_message === "" || error_message === null) && props?.required === true) ? "" : "error"}
                     options={props?.options}
+                />
+            )
+        } else if (type === "checkbox"){
+            input_element = (
+                <CheckboxPrompt
+                    id={id}
+                    options={props.options}
+                    onChange={onChange}
+                    onBlur={onBlur}
+                    name={props.name}
+                    className={((error_message === "" || error_message === null) && props?.required === true) ? "" : "error"}
                 />
             )
         }

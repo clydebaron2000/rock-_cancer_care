@@ -36,34 +36,34 @@
             display: grid;
             place-items: center;
             // transition: all 1s;
-            &:after{
-                animation: both fade-in .2s;
-                transition: all 1s ease-in-out;
-                @keyframes fade-in {
-                    0%{
-                        width:8px;
-                        height:8px;
-                    }
-                    50%{
-                        width:10px;
-                        height: 10px;
-                    }
-                    100%{
-                        width:8px;
-                        height: 8px;
-                    }
+            // &:after{
+            //     animation: both fade-in .2s;
+            //     transition: all 1s ease-in-out;
+            //     @keyframes fade-in {
+            //         0%{
+            //             width:8px;
+            //             height:8px;
+            //         }
+            //         50%{
+            //             width:10px;
+            //             height: 10px;
+            //         }
+            //         100%{
+            //             width:8px;
+            //             height: 8px;
+            //         }
                     
-                }
-                content: '';
-                font-size: inherit;
-                line-height: normal;
-                @include theme('background-color',$color1);
-                width:8px; 
-                height:8px; 
-                @include theme('box-shadow',$color1,'true',' 0px 0px 0px 1px'); 
-                border-radius: 7px;
-                @include theme('border',$background1,'true','1.5px solid');
-            }
+            //     }
+            //     content: '';
+            //     font-size: inherit;
+            //     line-height: normal;
+            //     @include theme('background-color',$color1);
+            //     width:8px; 
+            //     height:8px; 
+            //     @include theme('box-shadow',$color1,'true',' 0px 0px 0px 1px'); 
+            //     border-radius: 7px;
+            //     @include theme('border',$background1,'true','1.5px solid');
+            // }
         }
         
         input[type=text]{

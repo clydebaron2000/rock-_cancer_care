@@ -37,9 +37,10 @@ function MultiSelect(props){
             options={options}
             styles={
                 {
-                    menu:()=>({
-                        'z-index':10000
-                    })
+                    // menuList:()=>({
+                    //     // 'z-index':1,
+                    //     // 'height':"300 px"
+                    // })
                 }
             }
             

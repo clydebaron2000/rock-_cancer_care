@@ -2,7 +2,7 @@
 @import 'params/breakpoints';
 .input-wrapper{
     width:stretch;
-    input, select{
+    input, select, textarea{
         width:stretch;
         background-color: none;
         height: 1.5rem;
@@ -19,6 +19,9 @@
             outline: initial;
             outline-offset: 2px;
         }
+    }
+    textarea{
+        min-height: 4rem;
     }
     input[type=radio]{
         height: initial;
