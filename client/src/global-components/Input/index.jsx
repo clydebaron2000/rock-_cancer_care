@@ -19,7 +19,7 @@ function Input(props) {
     const validate=props?.validate
     const required= props?.required
     // debugging variables
-    let debugName = ` for input `+props?.name
+    // let debugName = ` for input `+props?.name
     // let debugName = ` for input `+id
     const [value, setValue] = useState(null) //value of the input group: d: null, value
     const [error_message, setErrorMessage] = useState(null)//d: null, error_message

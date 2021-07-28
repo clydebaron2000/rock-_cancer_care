@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState} from 'react'
 import Modal from 'react-modal'
 import Input from '../Input'
 import StepProgressBar from "./StepProgressBarGenerator"
@@ -61,9 +61,8 @@ function PatientIntakeForm (props) {
             }
             else if (e.target.innerText==="submit"){ 
                   // console.log("submistion to server")
-                  //dummy loop
                   // setStepsCompleted(stepNum+1)
-                  API.createPatientTest().then(res=>{
+                  API.createPatient(formInputs).then(res=>{
                         setStepsCompleted(stepNum+1)
                   }).catch(err => console.log(err))
             }
@@ -150,7 +149,7 @@ function PatientIntakeForm (props) {
                                                 displayNone={stepNum!==0}
                                                 required={true}
                                                 validate={value=>{
-                                                      if (value.length<=2)
+                                                      if (value.length<2)
                                                             return "First name must be at least 2 chatacters"
                                                 }}
                                                 name="first name"
@@ -164,7 +163,7 @@ function PatientIntakeForm (props) {
                                                 displayNone={stepNum!==0}
                                                 required={true}
                                                 validate={value=>{
-                                                      if (value.length<=2)
+                                                      if (value.length<2)
                                                             return "Last name must be at least 2 chatacters"
                                                 }}
                                                 name="last name"
@@ -183,7 +182,7 @@ function PatientIntakeForm (props) {
                                                 displayNone={stepNum!==0}
                                                 required={true}
                                                 validate={value=>{
-                                                      if (value.length<=2)
+                                                      if (value.length<2)
                                                             return "Street address must be at least 2 chatacters"
                                                 }}
                                                 name="street address"
@@ -197,7 +196,7 @@ function PatientIntakeForm (props) {
                                                 displayNone={stepNum!==0}
                                                 required={true}
                                                 validate={value=>{
-                                                      if (value.length<=2)
+                                                      if (value.length<2)
                                                             return "Zip must be at least 2 chatacters"
                                                 }}
                                                 name="zip"
@@ -348,7 +347,7 @@ function PatientIntakeForm (props) {
                                                             displayNone={renderMore === false && stepNum!==0}
                                                             required={true}
                                                             validate={value=>{
-                                                                  if (value.length<=2)
+                                                                  if (value.length<2)
                                                                         return "First name must be at least 2 chatacters"
                                                             }}
                                                             name="filler first name"
@@ -362,7 +361,7 @@ function PatientIntakeForm (props) {
                                                             displayNone={renderMore === false && stepNum!==0}
                                                             required={true}
                                                             validate={value=>{
-                                                                  if (value.length<=2)
+                                                                  if (value.length<2)
                                                                         return "Last name must be at least 2 chatacters"
                                                             }}
                                                             name="filler last name"
@@ -406,7 +405,7 @@ function PatientIntakeForm (props) {
 
                         <div id='1' className={(stepNum===1)?"active":(stepNum-1===1)?"prev":(stepNum+1===1)?"next":"ghost"}>
                               <div className="form-section">
-                                    <h2 className="section-title"></h2>
+                                    {/* <h2 className="section-title"></h2> */}
                                     <div className="section-inputs">
                                           <Input
                                                 parentValidation={upDateValidateFunctions}
@@ -436,7 +435,7 @@ function PatientIntakeForm (props) {
                                     </div>
                               </div>
                               <div className="form-section">
-                                    <h2 className="section-title"></h2>
+                                    {/* <h2 className="section-title"></h2> */}
                                     <div className="section-inputs">
                                           <Input
                                                 parentValidation={upDateValidateFunctions}
@@ -485,7 +484,7 @@ function PatientIntakeForm (props) {
                                     </div>
                               </div>
                               <div className="form-section">
-                                    <h2 className="section-title"></h2>
+                                    {/* <h2 className="section-title"></h2> */}
                                     <div className="section-inputs">
                                           <Input
                                                 parentValidation={upDateValidateFunctions}
@@ -516,7 +515,7 @@ function PatientIntakeForm (props) {
                                     </div>
                               </div>
                               <div className="form-section">
-                                    <h2 className="section-title"></h2>
+                                    {/* <h2 className="section-title"></h2> */}
                                     <div className="section-inputs">
                                           <Input
                                                 parentValidation={upDateValidateFunctions}
@@ -535,7 +534,7 @@ function PatientIntakeForm (props) {
                                     </div>
                               </div>
                               <div className="form-section">
-                                    <h2 className="section-title"></h2>
+                                    {/* <h2 className="section-title"></h2> */}
                                     <div className="section-inputs">
                                           <Input
                                                 parentValidation={upDateValidateFunctions}
@@ -552,7 +551,7 @@ function PatientIntakeForm (props) {
                                     </div>
                               </div>
                               <div className="form-section">
-                                    <h2 className="section-title"></h2>
+                                    {/* <h2 className="section-title"></h2> */}
                                     <div className="section-inputs">
                                           <Input
                                                 parentValidation={upDateValidateFunctions}
@@ -581,7 +580,7 @@ function PatientIntakeForm (props) {
                                                 displayNone={stepNum!==2}
                                                 required={true}
                                                 validate={value=>{
-                                                      if (value.length<=2)
+                                                      if (value.length<2)
                                                             return "First name must be at least 2 chatacters"
                                                 }}
                                                 name="emergency contact first name"
@@ -595,7 +594,7 @@ function PatientIntakeForm (props) {
                                                 displayNone={stepNum!==2}
                                                 required={true}
                                                 validate={value=>{
-                                                      if (value.length<=2)
+                                                      if (value.length<2)
                                                             return "Last name must be at least 2 chatacters"
                                                 }}
                                                 name="emergency contact last name"
@@ -614,7 +613,7 @@ function PatientIntakeForm (props) {
                                                 displayNone={stepNum!==2}
                                                 required={true}
                                                 validate={value=>{
-                                                      if (value.length<=2)
+                                                      if (value.length<2)
                                                             return "Street address must be at least 2 chatacters"
                                                 }}
                                                 name="emergency contact street address"
@@ -628,7 +627,7 @@ function PatientIntakeForm (props) {
                                                 displayNone={stepNum!==2}
                                                 required={true}
                                                 validate={value=>{
-                                                      if (value.length<=2)
+                                                      if (value.length<2)
                                                             return "Zip must be at least 2 chatacters"
                                                 }}
                                                 name="emergency contact zip"
@@ -670,7 +669,7 @@ function PatientIntakeForm (props) {
  
                         <div id='3' className={(stepNum===3)?"active":(stepNum-1===3)?"prev":(stepNum+1===1)?"next":"ghost"}>
                               <div className="form-section">
-                                    <h2 className="section-title"></h2>
+                                    {/* <h2 className="section-title"></h2> */}
                                     <div className="section-inputs">
                                           <Input
                                                 parentValidation={upDateValidateFunctions}
@@ -696,7 +695,7 @@ function PatientIntakeForm (props) {
                                                 displayNone={stepNum!==3}
                                                 // required={true}
                                                 validate={value=>{
-                                                      if (value.length<=2)
+                                                      if (value.length<2)
                                                             return "religious beliefs must be at least 2 chatacters"
                                                 }}
                                                 name="religious beliefs"
@@ -719,7 +718,7 @@ function PatientIntakeForm (props) {
                         </div>
                         <div id='4' className={(stepNum===4)?"active":(stepNum-1===4)?"prev":(stepNum+1===1)?"next":"ghost"}>
                               <div className="form-section">
-                                    <h2 className="section-title"></h2>
+                                    {/* <h2 className="section-title"></h2> */}
                                     <div className="section-inputs">
                                           <Input
                                                 parentValidation={upDateValidateFunctions}
@@ -737,7 +736,7 @@ function PatientIntakeForm (props) {
                               {(renderMore === true && stepNum === 4)?(
                                     <>
                                           <div className="form-section">
-                                                <h2 className="section-title"></h2>
+                                                {/* <h2 className="section-title"></h2> */}
                                                 <div className="section-inputs">
                                                       <Input
                                                             parentValidation={upDateValidateFunctions}
@@ -746,7 +745,7 @@ function PatientIntakeForm (props) {
                                                             displayNone={renderMore === false && stepNum!==0}
                                                             required={true}
                                                             validate={value=>{
-                                                                  if (value.length<=2)
+                                                                  if (value.length<2)
                                                                         return "First name must be at least 2 chatacters"
                                                             }}
                                                             name="financial income level"
@@ -761,7 +760,7 @@ function PatientIntakeForm (props) {
                                                             displayNone={renderMore === false && stepNum!==0}
                                                             required={true}
                                                             validate={value=>{
-                                                                  if (value.length<=2)
+                                                                  if (value.length<2)
                                                                         return "First name must be at least 2 chatacters"
                                                             }}
                                                             name="financial income source"
@@ -836,7 +835,7 @@ function PatientIntakeForm (props) {
                                                             
                         <div id='5' className={(stepNum===5)?"active":(stepNum-1===5)?"prev":(stepNum+1===1)?"next":"ghost"}>
                               <div className="form-section">
-                                    <h2 className="section-title"></h2>
+                                    {/* <h2 className="section-title"></h2> */}
                                     <p>In consideration of my reciept of Rock Cancer Ministry Funds (herin RCC), the undersigned applicant (or gaurdian, if applicable) understands and agrees that:
                                     </p>
                                     <ul style={{paddingLeft: "20px"}}>
@@ -866,14 +865,14 @@ function PatientIntakeForm (props) {
                                                 name="applicant acknowledgement"
                                                 type="checkbox"
                                                 options={["I agree to the terms and conditions*"]}
-                                                header={<h2></h2>}
+                                                header=""
                                           />
                                     </div>
                               </div>
                         </div>
                         <div id='7' className={(stepNum === totalSteps)?"active":(stepNum-1===7)?"prev":(stepNum+1===5)?"next":"ghost"}>
                               <p>Thank you for your application. A Rock Cancer C.A.R.E. Ministry (RCC) Leader will review this application and contact the applicant. Funds are limited and based on availability. All information is strictly confidential and is intended for RCC use only except as noted in the applicant acknowledgment section.</p>
-                              <p>Please email a copy of the <a href=''>intake signature form</a> to <a href="mailto:example@rockcancercare.org">example@rockcancercare.org</a> and we will process your application shortly.</p>
+                              <p>Please email a copy of the <a href='https://rockcancercare.org/'>intake signature form</a> to <a href="mailto:example@rockcancercare.org">example@rockcancercare.org</a> and we will process your application shortly.</p>
                         </div>
                         </form>
                         <div className="form-bottom">

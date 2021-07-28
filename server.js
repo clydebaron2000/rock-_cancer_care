@@ -23,5 +23,7 @@ app.get("*", (req, res) => {
 });
 // serve log
 app.listen(PORT, () => {
+  if (process.env.NODE_ENV!=="productionn")
+    console.log(`process.env.NODE_ENV = ${process.env.NODE_ENV}`)
   console.log(`Connecting server to port ${PORT}...`)
 })

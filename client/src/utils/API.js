@@ -1,4 +1,5 @@
 import axios from 'axios'
+import devConsole from './devConsole'
 const base = '/api/'
 let template = {'first name': "l",
 'last name': "a",
@@ -33,32 +34,27 @@ let template = {'first name': "l",
 'Financial assistance':"no",
 'applicant acknowledgement':true,}
 const API = {
-    createTest: function (body){
-        console.log('received in API')
-        body.isCheckedByAdmin = false
-        return axios.post(base + 'test', body)
-    },
-    getAllTests: function (body){
-        return axios.get(base + 'test',{query:body})
-    },
+    // Partient
     getPatients: function (body){
-        console.log("getPatients recieved")
-        console.log(body)
-        return axios.get(base + 'patient/',body)
+        devConsole.log("getPatients")
+        devConsole.log(body)
+        return axios.get(base + 'patient/',{params:body})
     },
     getAllPatients: function (body){
-        console.log("getAllPatients recieved") 
-        console.log(body) 
-        return axios.get(base + 'patient/all',body)
+        devConsole.log("getAllPatients") 
+        devConsole.log(body) 
+        return axios.get(base + 'patient/all',{params:body})
     },
     createPatient: function (body){
-        console.log('received in API')
+        devConsole.log('create patient')
+        // comment below for testing
+        body = template
         body.isCheckedByAdmin = false
         body.lastModfied = new Date()
         return axios.post(base + 'patient', body)
     },
     createPatientTest: function (){
-        console.log('received in API')
+        devConsole.log('create patient test')
         let body = template
         body.isCheckedByAdmin = false
         body.lastModfied = new Date()
@@ -67,7 +63,27 @@ const API = {
     updatePatient: function(body){
         body.lastModfied = new Date()
         return axios.put(base + 'patient/' + body._id,body)
+    },
+// USER
+    createUser: (body)=>{
+        devConsole.log("create")
+        body.authorization="admin"
+        body.change_permissions=false
+      return axios.post(base+'user', body)  
+    },
+    verifyUser: (body)=>{
+      devConsole.log("verify")
+      devConsole.log(body)
+      return axios.get(base+'user/verify', {params:body})  
+    },
+    getAllUsers:()=>{
+      devConsole.log("get all users")
+      return axios.get(base+'user/admin')
+    },
+    deleteById:(id)=>{
+      devConsole.log("delete")
+      devConsole.log(id)
+      return axios.delete(base+'user/admin?_id=' + id)
     }
-     
 } 
 export default API

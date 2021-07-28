@@ -1,10 +1,10 @@
 @import 'params/theme_colors';
 @import 'params/breakpoints';
 * {
-  // border: none;
   padding:0px;
   margin:0px;
-}
+  font-family: sans-serif;
+} 
 button{
   border: none;
 }
