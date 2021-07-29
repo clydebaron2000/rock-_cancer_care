@@ -1,40 +1,9 @@
 import axios from 'axios'
 import devConsole from './devConsole'
+import {volunteer,patient} from './API_data_template'
 const base = '/api/'
-let template = {'first name': "l",
-'last name': "a",
-'street address': "a",
-'zip': 1,
-'birth date': "2021-07-22",
-'gender': "male",
-'phone': "1",
-'email': "a",
-'leave a message': "no",
-'relationship status': "boi",
-'filled out by': "me",
-'cancer type': "school",
-'date of diagnosis': "2021-07-22",
-'diagnosis status': "yes",
-'doctor first name': "a",
-'doctor last name': "b",
-'doctor phone': "c",
-'walker, crutches, wheelchair': "no",
-'allergies':"no",
-'medical conditions':[],
-'living conditions explanation':"nope",
-'emergency contact first name': "u",
-'emergency contact last name': "u",
-'emergency contact street address': "me",
-'emergency contact zip': "zip",
-'emergency contact phone': "1",
-'emergency contact email': "a",
-'program selection':["none"],
-'religious beliefs':"y u ask",
-'open to prayer':"no",
-'Financial assistance':"no",
-'applicant acknowledgement':true,}
 const API = {
-    // Partient
+    // Patient
     getPatients: function (body){
         devConsole.log("getPatients")
         devConsole.log(body)
@@ -48,14 +17,14 @@ const API = {
     createPatient: function (body){
         devConsole.log('create patient')
         // comment below for testing
-        body = template
+        // body = template
         body.isCheckedByAdmin = false
         body.lastModfied = new Date()
         return axios.post(base + 'patient', body)
     },
     createPatientTest: function (){
         devConsole.log('create patient test')
-        let body = template
+        let body = patient
         body.isCheckedByAdmin = false
         body.lastModfied = new Date()
         return axios.post(base + 'patient', body)
@@ -63,6 +32,36 @@ const API = {
     updatePatient: function(body){
         body.lastModfied = new Date()
         return axios.put(base + 'patient/' + body._id,body)
+    },
+    // Volunteer
+    getVolunteers: function (body){
+        devConsole.log("getVolunteers")
+        devConsole.log(body)
+        return axios.get(base + 'volunteer/',{params:body})
+    },
+    getAllVolunteers: function (body){
+        devConsole.log("getAllVolunteers") 
+        devConsole.log(body) 
+        return axios.get(base + 'volunteer/all',{params:body})
+    },
+    createVolunteer: function (body){
+        devConsole.log('create volunteer')
+        // comment below for testing
+        body = volunteer
+        body.isCheckedByAdmin = false
+        body.lastModfied = new Date()
+        return axios.post(base + 'volunteer', body)
+    },
+    createVolunteerTest: function (){
+        devConsole.log('create volunteer test')
+        let body = volunteer
+        body.isCheckedByAdmin = false
+        body.lastModfied = new Date()
+        return axios.post(base + 'volunteer', body)
+    },
+    updateVolunteer: function(body){
+        body.lastModfied = new Date()
+        return axios.put(base + 'Volunteer/' + body._id,body)
     },
 // USER
     createUser: (body)=>{

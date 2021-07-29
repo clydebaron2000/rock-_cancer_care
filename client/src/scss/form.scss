@@ -9,15 +9,17 @@
     width: 100vw;
 } 
 .ReactModalPortal{
-    
     width:100vw;
     height:100vh;
     .overlay{
+        overflow-y: auto;
         position: fixed;
         inset: 0px;
         @include theme('background-color',$background3);
-        display: grid;
-        place-items: center;
+        @include breakpoint($tablet){
+            display: grid;
+            place-items: center;
+        }
         .modal{
             h2 {
                 font-size: 17px;

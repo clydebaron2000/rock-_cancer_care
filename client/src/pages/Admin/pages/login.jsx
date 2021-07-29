@@ -4,7 +4,7 @@ import devConsole from "../../../utils/devConsole"
 import '../../../css/login.css'
 import API from "../../../utils/API"
 function Dashboard(){
-    const [_,setUserID]=useUserState()
+    // const [_,setUserID]=useUserState()
     const [uname,setUname]=useState("")
     const [pword,setPword]=useState("")
     const [err_msg,setErr]=useState("")

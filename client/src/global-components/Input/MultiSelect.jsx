@@ -1,11 +1,11 @@
 import React, { useState} from "react"
-
+import devConsole from "../../utils/devConsole";
 import CreatableSelect from 'react-select/creatable';
 import '../../css/multiSelect.css'
 function MultiSelect(props){
     const options = props?.options?.map(option => {return {label: option, value: option}})
     const [gvalue,setValue]=useState()
-    
+    devConsole.log(props.className)
     function onChange(val){
         // console.log(val)
         let value = val?.map?.(obj=>obj.value)

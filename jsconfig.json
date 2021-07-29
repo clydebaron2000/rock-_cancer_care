@@ -1,0 +1,17 @@
+// jsconfig.json
+
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      //Assuming your components/utilities live in ./src
+      //Update this path as necessary
+      "@/components/*": ["./client/src/components/*"],
+      "@/utils/*": ["./client/src/utils/*"],
+      "@/pages/*": ["./client/src/pages/*"],
+      "@/css/*": ["./client/src/css/*"],
+    }
+  },
+  //Add any build/compiled folders here to stop vscode searching those
+  "exclude": ["node_modules", "server","database_csv"]
+}

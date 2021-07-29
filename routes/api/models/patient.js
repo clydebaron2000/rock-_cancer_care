@@ -3,6 +3,7 @@ const Schema = mongoose.Schema
 const patientSchema = new Schema({
     isCheckedByAdmin: {type: Boolean, required: true},
     campus: {type: String},
+    'patient ids paired with': {type: [String]},
     lastModfied: {type: Date, required: true},
     'first name': {type: String, required: true},
     'last name': {type: String, required: true},

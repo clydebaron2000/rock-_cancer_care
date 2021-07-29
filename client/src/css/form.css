@@ -13,16 +13,22 @@
 }
 
 .ReactModalPortal .overlay {
+  overflow-y: auto;
   position: fixed;
   inset: 0px;
   background-color: #4f4f4f ;
-  display: grid;
-  place-items: center;
 }
 
 @media (prefers-color-scheme: dark) {
   .ReactModalPortal .overlay {
     background-color: #4f4f4f ;
+  }
+}
+
+@media (min-width: 50em) {
+  .ReactModalPortal .overlay {
+    display: grid;
+    place-items: center;
   }
 }
 

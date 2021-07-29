@@ -1,6 +1,7 @@
 
 module.exports = {
   Patient: require("./patient"),
+  Volunteer: require("./volunteer"),
   Test: require("./test"),
   User: require("./user"),
 };
