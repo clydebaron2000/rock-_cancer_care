@@ -14,18 +14,18 @@ import NotFound from "./pages/NotFound/"
 import VolunteerForm from "./pages/VolunteerIntakeForm"
 function App() {
   return (
-    <Router>
-      <Switch>
-        <UserProvider>
-          {/* <Route path="/" exact component={Admin} /> */}
+    <UserProvider>
+      <Router>
+        <Switch>
+          <Route path="/" exact component={Admin} />
           {/* <Route path="/" exact component={Admin} /> */}
           <Route path="/volunteer-form" exact component={VolunteerForm} />
           <Route path="/patient-form" exact component={PatientForm} />
           <Route path="/admin" exact component={Admin} />
           <Route component={NotFound}/> 
-        </UserProvider>
-      </Switch>
-    </Router>
+        </Switch>
+      </Router>
+    </UserProvider>
   )
 }
 
