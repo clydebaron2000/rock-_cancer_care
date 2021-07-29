@@ -60,7 +60,7 @@ function PatientIntakeForm (props) {
             else if (e.target.innerText==="submit"){ 
                   // console.log("submistion to server")
                   // setStepsCompleted(stepNum+1)
-                  API.createVolunteerTest(formInputs).then(res=>{
+                  API.createVolunteer(formInputs).then(res=>{
                         setStepsCompleted(stepNum+1)
                   }).catch(err => console.log(err))
             }

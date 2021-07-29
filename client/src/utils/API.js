@@ -17,7 +17,7 @@ const API = {
     createPatient: function (body){
         devConsole.log('create patient')
         // comment below for testing
-        // body = template
+        // body = patient
         body.isCheckedByAdmin = false
         body.lastModfied = new Date()
         return axios.post(base + 'patient', body)
@@ -47,7 +47,7 @@ const API = {
     createVolunteer: function (body){
         devConsole.log('create volunteer')
         // comment below for testing
-        body = volunteer
+        // body = volunteer
         body.isCheckedByAdmin = false
         body.lastModfied = new Date()
         return axios.post(base + 'volunteer', body)
