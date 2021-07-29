@@ -1,9 +1,9 @@
 const db = require("../models")
-const col = db.Patient
+const col = db.Volunteer
 const devConsole = require('../../../server/utils/devConsole')
 module.exports = {
     findAll: (req,res) => {
-        devConsole.log("in patient controller findall")
+        devConsole.log("in volunteer controller findall")
         devConsole.log(req.body)
         devConsole.log(req.query)
         col
@@ -12,7 +12,7 @@ module.exports = {
             .catch(err => res.status(422).json(err))
     }, 
     find: (req,res) => {
-        devConsole.log("in patient controller find")
+        devConsole.log("in volunteer controller find")
         devConsole.log(req.body)
         devConsole.log(req.query)
         col

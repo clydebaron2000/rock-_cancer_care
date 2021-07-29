@@ -1,0 +1,55 @@
+@import 'params/theme_colors';
+@import 'params/breakpoints';
+body{
+    @include theme('background-color',$background3);
+    width: 100vw; 
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    .login-card{
+        @include theme('background-color',$background1);
+        padding: 10px;
+        border-radius: 10px;
+        form{
+            margin:5px;
+            width: 300px;
+            label{
+                @include theme('color',$color1); 
+                font-family: Arial, Helvetica, sans-serif;
+                padding: 10px 0;
+                position: relative;
+                top:10px;
+            }
+            input{
+                margin-top:20px;
+                width:stretch;
+                background-color: none;
+                height: 1.5rem;
+                border-radius: 5px;
+                @include theme('border-color',$text2);
+                // border-color: #cacaca;
+                color: black;
+                border-width: 1px;
+                border-style: solid;
+                &:focus-visible,
+                &:focus{
+                    transition: all .2s ease-in;
+                    @include theme('border-color',$color1);
+                    outline: initial;
+                    outline-offset: 2px;
+                }
+            }
+            .button-container{
+                display: flex;
+                flex-direction: row-reverse;
+            }
+            .error{
+                display: block;
+                font-size: 13px;
+                color:red;
+                min-height: 13px;
+                height: 13px;
+            }
+        }
+    }
+} 

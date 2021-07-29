@@ -19,7 +19,7 @@ function Input(props) {
     const validate=props?.validate
     const required= props?.required
     // debugging variables
-    let debugName = ` for input `+props?.name
+    // let debugName = ` for input `+props?.name
     // let debugName = ` for input `+id
     const [value, setValue] = useState(null) //value of the input group: d: null, value
     const [error_message, setErrorMessage] = useState(null)//d: null, error_message
@@ -122,7 +122,7 @@ function Input(props) {
                     onChange={onChange}
                     value={(value===null)?"":value}
                     onBlur={onBlur}
-                    className={((error_message === "" || error_message === null) && props?.required === true) ? "" : "error"}
+                    className={((error_message !== "" && error_message !== null) && props?.required === true) ? "error" : ""}
                     placeholder={props.placeholder}
                 >
                     {props.options.map((option, i) =>
@@ -150,13 +150,13 @@ function Input(props) {
                     name={props.name}
                     onBlur={onBlur}
                     onChange={onChange}
-                    className={((error_message === "" || error_message === null) && props?.required === true) ? "" : "error"}
+                    className={((error_message !== "" && error_message !== null) && props?.required === true) ? "error" : ""}
                 />
             )
         } else if (type === "tel") {
             input_element = (
                 <PhoneInput
-                    className={((error_message === "" || error_message === null) && props?.required === true) ? "" : "error"}
+                    className={((error_message !== "" && error_message !== null) && props?.required === true) ? "error" : ""}
                     defaultCountry="US"
                     international={false}
                     name={props.name}
@@ -172,7 +172,7 @@ function Input(props) {
                 onChange={onChange}
                 onBlur={onBlur}
                 value={(value===null)?"":value}
-                className={((error_message === "" || error_message === null) && props?.required === true) ? "" : "error"}
+                className={((error_message !== "" && error_message !== null) && props?.required === true) ? "error" : ""}
                 placeholder={props.placeholder} 
                 ></textarea>
             )
@@ -185,7 +185,7 @@ function Input(props) {
                     value={value}
                     isMulti={props?.isMulti}
                     name={props?.name}
-                    className={((error_message === "" || error_message === null) && props?.required === true) ? "" : "error"}
+                    className={((error_message !== "" && error_message !== null) && props?.required === true) ? "error" : ""}
                     options={props?.options}
                 />
             )
@@ -197,7 +197,7 @@ function Input(props) {
                     onChange={onChange}
                     onBlur={onBlur}
                     name={props.name}
-                    className={((error_message === "" || error_message === null) && props?.required === true) ? "" : "error"}
+                    className={((error_message !== "" && error_message !== null) && props?.required === true) ? "error" : ""}
                 />
             )
         }

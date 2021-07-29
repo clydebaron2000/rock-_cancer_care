@@ -7,10 +7,10 @@ module.exports = async (app)=>{
         useCreateIndex: true,
         useFindAndModify: false
       }
-    await mongoose.connect(require('../config/uri')(),connectionSettings)
+    await mongoose.connect(require('./config/uri')(),connectionSettings)
     console.log('Connected to Database!')
   } catch(err){ 
-    console.log('Connection Error:')
+    console.error('Connection Error:')
     console.error(err)
   }
 }  
