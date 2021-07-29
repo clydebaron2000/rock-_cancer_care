@@ -14,9 +14,9 @@
 
 Deployable for the Rock Cancer Care Website with admin page.
 Deployed website is at [rock-cancer-care.herokuapp.com/](https://rock-cancer-care.herokuapp.com/)
-Patient intake form is at [rock-cancer-care.herokuapp.com/](https://rock-cancer-care.herokuapp.com/patient-form)
-Volunteer intake form is at [rock-cancer-care.herokuapp.com/](https://rock-cancer-care.herokuapp.com/volunteer-form)
-Admin site is at [rock-cancer-care.herokuapp.com/](https://rock-cancer-care.herokuapp.com/admin)
+Patient intake form is at [rock-cancer-care.herokuapp.com/patient-form](https://rock-cancer-care.herokuapp.com/patient-form)
+Volunteer intake form is at [rock-cancer-care.herokuapp.com/volunteer-form](https://rock-cancer-care.herokuapp.com/volunteer-form)
+Admin site is at [rock-cancer-care.herokuapp.com/admin](https://rock-cancer-care.herokuapp.com/admin)
 
 # Figma Reference
 
