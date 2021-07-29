@@ -12,7 +12,7 @@ router.use("/volunteer", volunteer)
 console.log('adding /user routes')
 router.use("/user", user)
 //if no route in api hit, send 
-router.use((req, res)=> {
-    res.status(400)
-});
+// router.use((req, res)=> {
+//     res.status(400)
+// });
 module.exports = router
