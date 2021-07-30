@@ -276,10 +276,6 @@ function PatientIntakeForm (props) {
                                                 onBlur={onChange}
                                                 displayNone={stepNum!==0}
                                                 required={true}
-                                                // validate={value=>{
-                                                //       if (value.length!==17)
-                                                //             return "enter a phone number in the format +1 (XXX) XXX-XXXX"
-                                                // }}
                                                 name="preferred point of contact"
                                                 type="checkbox"
                                                 options={
@@ -297,10 +293,6 @@ function PatientIntakeForm (props) {
                                                 onBlur={onChange}
                                                 displayNone={stepNum!==0}
                                                 required={true}
-                                                // validate={value=>{
-                                                //       if (value.length!==17)
-                                                //             return "enter a phone number in the format +1 (XXX) XXX-XXXX"
-                                                // }}
                                                 name="best time to contact"
                                                 type="time"
                                                 header={<h2>Best time to reach you?*</h2>}
@@ -473,8 +465,8 @@ function PatientIntakeForm (props) {
                                                 displayNone={stepNum!==1}
                                                 required={true}
                                                 validate={value=>{
-                                                      if (value.length!==17)
-                                                            return "enter a phone number in the format +1 (XXX) XXX-XXXX"
+                                                      if (value.length<2)
+                                                            return "please enter the reference's relationship to the volunteer"
                                                 }}
                                                 name="reference relationship to volunteer"
                                                 type="text"
@@ -527,10 +519,6 @@ function PatientIntakeForm (props) {
                                                 onBlur={onChange}
                                                 displayNone={stepNum!==2}
                                                 required={true}
-                                                // validate={value=>{
-                                                //       if (value.length<2)
-                                                //             return "Street address must be at least 2 chatacters"
-                                                // }}
                                                 name="rock campus"
                                                 type="radio"
                                                 options={["Point Loma", "San Marcos","East County","San Ysidro","Mircosite"]}
@@ -550,7 +538,7 @@ function PatientIntakeForm (props) {
                                                 name="program selection"
                                                 type="checkbox"
                                                 options={["Leaership Role","Rock Kidz",...options.services]}
-                                                header={<h2>What services do you need?*</h2>}
+                                                header={<h2>In which areas are you interested in serving?*</h2>}
                                           />
                                     </div>
                               </div>
@@ -622,6 +610,7 @@ function PatientIntakeForm (props) {
                                                 options={["yes","no"]}
                                                 header={<h2>Have you ever been convicted of a felony?*</h2>}
                                           />
+                                          <div></div>
                                     </div>
                               </div>
                         </div>
@@ -683,7 +672,7 @@ function PatientIntakeForm (props) {
                                                 required={true}
                                                 name="most difficult for volunteering question"
                                                 type="textarea"
-                                                header={<h2>What do you think will be most difficultfor you working as a volunteer who serves cancer patients?*</h2>}
+                                                header={<h2>What do you think will be most difficult for you working as a volunteer who serves cancer patients?*</h2>}
                                           />
                                     </div>
                               </div>
