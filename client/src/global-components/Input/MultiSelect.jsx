@@ -1,5 +1,5 @@
 import React, { useState} from "react"
-import devConsole from "../../utils/devConsole";
+// import devConsole from "../../utils/devConsole";
 import CreatableSelect from 'react-select/creatable';
 import '../../css/multiSelect.css'
 function MultiSelect(props){
