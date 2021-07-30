@@ -7,7 +7,7 @@ import {
 import './css/main.css'
 import { UserProvider } from "./pages/Admin/contexts/user";
 // pages 
-// import Home from "./pages/Home"
+import Home from "./pages/Home"
 import PatientForm from "./pages/PatientIntakeForm/"
 import Admin from "./pages/Admin/"
 import NotFound from "./pages/NotFound/"
@@ -17,7 +17,7 @@ function App() {
     <UserProvider>
       <Router>
         <Switch>
-          <Route path="/" exact component={Admin} />
+          <Route path="/" exact component={Home} />
           {/* <Route path="/" exact component={Admin} /> */}
           <Route path="/volunteer-form" exact component={VolunteerForm} />
           <Route path="/patient-form" exact component={PatientForm} />

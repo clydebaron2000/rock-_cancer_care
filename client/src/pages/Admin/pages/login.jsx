@@ -46,7 +46,7 @@ function Dashboard(){
                     <input type="text" id="password" name="password" value={pword} onChange={({target})=>setPword(target.value)}/>
                     <div className="error">{err_msg}</div>
                     <div className="button-container">
-                        <button className="action-button" onClick={onSubmit}>login</button>
+                        {(process.env.NODE_ENV==="development")?<button className="action-button" onClick={onSubmit}>login</button>:null}
                         <button className="minor-button" onClick={createUser}>create</button>
                     </div>
                 </form>

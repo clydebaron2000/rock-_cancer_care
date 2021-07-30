@@ -4,7 +4,7 @@ function HomePage () {
 	return (
 		<div>
 			<div>
-				HI everybody
+				Rock Cancer Care Home Page under construction
 			</div>
 		</div>
 	)
