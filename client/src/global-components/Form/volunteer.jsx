@@ -5,9 +5,10 @@ import StepProgressBar from "./StepProgressBarGenerator"
 import '../../css/form.css'
 import API from '../../utils/API.js'
 import options from './form'
+import devConsole from '../../utils/devConsole'
 
 function PatientIntakeForm (props) {
-      const isGodMode=true
+      const isGodMode=false
       const titleArray=[
             "Volunteer Information",
             "Reference Information",
@@ -32,27 +33,26 @@ function PatientIntakeForm (props) {
       function checkInputs(e){
             e?.preventDefault()
             let hasAnyFalseValue = false
-            // console.log("CHECKING INPUTS")
+            devConsole.log("CHECKING INPUTS")
             // console.log(formInputs)
             for (const key in formInputs){
                   let value = formInputs[key].value
                   // console.log(key,value)
                   // console.log(formInputs[key])
                   let err = formInputs[key].getErrorFromValue(value)
-                  // console.assert(err === "","err: "+err)
+                  devConsole.assert(err === "","err: "+err)
                   if (err !== ""){
                         formInputs[key].setErrorMessage(err)
                         if(hasAnyFalseValue === false)
                               hasAnyFalseValue = true
                   }
             }
-            // console.assert(hasAnyFalseValue === false,"FALSY")
+            devConsole.assert(hasAnyFalseValue === false,"FALSY")
             // debugger
             if(hasAnyFalseValue === false || isGodMode) submitData(e)
       }
       function submitData(e){
             e.preventDefault()
-            setRenderMore(false)
             if (e.target.innerText==="next") {
                   // console.log("next step!")
                   setStepsCompleted(stepNum+1)
@@ -60,7 +60,14 @@ function PatientIntakeForm (props) {
             else if (e.target.innerText==="submit"){ 
                   // console.log("submistion to server")
                   // setStepsCompleted(stepNum+1)
-                  API.createVolunteer(formInputs).then(res=>{
+                  devConsole.log(formInputs)
+                  let data={...formInputs}
+                  devConsole.log(data)
+                  Object.keys(formInputs).forEach(key=>{
+                        data[key]=data[key].value
+                  })
+                  devConsole.log(data)
+                  API.createVolunteer(data).then(res=>{
                         setStepsCompleted(stepNum+1)
                   }).catch(err => console.log(err))
             }
@@ -81,35 +88,6 @@ function PatientIntakeForm (props) {
                   if (form[name]["value"]!==value) {
                         // console.log(name+" changed")
                         form[name]["value"]=value
-                        if (name === "filled out by"){
-                              if (value !== null && value !== "" && value !== "Patient"){
-                                    setRenderMore(true)
-                              } else {
-                                    for (const key in formInputs){
-                                          let form=formInputs
-                                          if (key.indexOf("filler") !== -1 || key.indexOf("Fille") !== -1){
-                                                delete form[key]
-                                          }
-                                          setFormInputs(form)
-                                    }
-                                    setRenderMore(false)
-                              }
-                        } else if (name === "Financial assistance"){
-                              // console.log("FINANCIAL")
-                              // console.log(value)
-                              if (value === "yes"){
-                                    setRenderMore(true)
-                              } else {
-                                    for (const key in formInputs){
-                                          let form=formInputs
-                                          if (key.indexOf("financial") !== -1 || key.indexOf("Fille") !== -1){
-                                                delete form[key]
-                                          }
-                                          setFormInputs(form)
-                                    }
-                                    setRenderMore(false)
-                              }
-                        } 
                   }
             }
             // console.log(form[name])
@@ -216,7 +194,7 @@ function PatientIntakeForm (props) {
                                                 //       if (value.length!==17)
                                                 //             return "enter a phone number in the format +1 (XXX) XXX-XXXX"
                                                 // }}
-                                                name="bday"
+                                                name="birth date"
                                                 type="date"
                                                 header={<h2>Birth Date*</h2>}
                                           />

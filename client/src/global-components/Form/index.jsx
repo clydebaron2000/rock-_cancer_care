@@ -5,6 +5,7 @@ import StepProgressBar from "./StepProgressBarGenerator"
 import '../../css/form.css'
 import API from '../../utils/API.js'
 import options from './form'
+import devConsole from '../../utils/devConsole'
 
 function PatientIntakeForm (props) {
       const isGodMode=false
@@ -62,7 +63,14 @@ function PatientIntakeForm (props) {
             else if (e.target.innerText==="submit"){ 
                   // console.log("submistion to server")
                   // setStepsCompleted(stepNum+1)
-                  API.createPatient(formInputs).then(res=>{
+                  devConsole.log(formInputs)
+                  let data={...formInputs}
+                  devConsole.log(data)
+                  Object.keys(formInputs).forEach(key=>{
+                        data[key]=data[key].value
+                  })
+                  devConsole.log(data)
+                  API.createPatient(data).then(res=>{
                         setStepsCompleted(stepNum+1)
                   }).catch(err => console.log(err))
             }
@@ -218,7 +226,7 @@ function PatientIntakeForm (props) {
                                                 //       if (value.length!==17)
                                                 //             return "enter a phone number in the format +1 (XXX) XXX-XXXX"
                                                 // }}
-                                                name="bday"
+                                                name="birth date"
                                                 type="date"
                                                 header={<h2>Birth Date*</h2>}
                                           />
@@ -522,14 +530,14 @@ function PatientIntakeForm (props) {
                                                 onChange={onChange}
                                                 onBlur={onChange}
                                                 displayNone={stepNum!==1}
-                                                required={true}
+                                                // required={true}
                                                 validate={value=>{
                                                 }}
                                                 isMulti={true}
                                                 name="medical conditions"
                                                 type="multi-select"
                                                 options={options['health issues']}
-                                                header={<h2>List any medical conditions you may have:*</h2>}
+                                                header={<h2>List any medical conditions you may have:</h2>}
                                           />
                                     </div>
                               </div>
@@ -541,12 +549,12 @@ function PatientIntakeForm (props) {
                                                 onChange={onChange}
                                                 onBlur={onChange}
                                                 displayNone={stepNum!==1}
-                                                required={true}
-                                                validate={value=>{
-                                                }}
-                                                name="medical conditions"
+                                                // required={true}
+                                                // validate={value=>{
+                                                // }}
+                                                name="allergies"
                                                 type="textarea"
-                                                header={<h2>List any medical conditions you may have:*</h2>}
+                                                header={<h2>List any allergies you may have:</h2>}
                                           />
                                     </div>
                               </div>
