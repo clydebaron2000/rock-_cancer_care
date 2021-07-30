@@ -5,9 +5,10 @@ import StepProgressBar from "./StepProgressBarGenerator"
 import '../../css/form.css'
 import API from '../../utils/API.js'
 import options from './form'
+import devConsole from '../../utils/devConsole'
 
 function PatientIntakeForm (props) {
-      const isGodMode=true
+      const isGodMode=false
       const titleArray=[
             "Volunteer Information",
             "Reference Information",
@@ -32,27 +33,26 @@ function PatientIntakeForm (props) {
       function checkInputs(e){
             e?.preventDefault()
             let hasAnyFalseValue = false
-            // console.log("CHECKING INPUTS")
+            devConsole.log("CHECKING INPUTS")
             // console.log(formInputs)
             for (const key in formInputs){
                   let value = formInputs[key].value
                   // console.log(key,value)
                   // console.log(formInputs[key])
                   let err = formInputs[key].getErrorFromValue(value)
-                  // console.assert(err === "","err: "+err)
+                  devConsole.assert(err === "","err: "+err)
                   if (err !== ""){
                         formInputs[key].setErrorMessage(err)
                         if(hasAnyFalseValue === false)
                               hasAnyFalseValue = true
                   }
             }
-            // console.assert(hasAnyFalseValue === false,"FALSY")
+            devConsole.assert(hasAnyFalseValue === false,"FALSY")
             // debugger
             if(hasAnyFalseValue === false || isGodMode) submitData(e)
       }
       function submitData(e){
             e.preventDefault()
-            setRenderMore(false)
             if (e.target.innerText==="next") {
                   // console.log("next step!")
                   setStepsCompleted(stepNum+1)
@@ -60,7 +60,14 @@ function PatientIntakeForm (props) {
             else if (e.target.innerText==="submit"){ 
                   // console.log("submistion to server")
                   // setStepsCompleted(stepNum+1)
-                  API.createVolunteer(formInputs).then(res=>{
+                  devConsole.log(formInputs)
+                  let data={...formInputs}
+                  devConsole.log(data)
+                  Object.keys(formInputs).forEach(key=>{
+                        data[key]=data[key].value
+                  })
+                  devConsole.log(data)
+                  API.createVolunteer(data).then(res=>{
                         setStepsCompleted(stepNum+1)
                   }).catch(err => console.log(err))
             }
@@ -81,35 +88,6 @@ function PatientIntakeForm (props) {
                   if (form[name]["value"]!==value) {
                         // console.log(name+" changed")
                         form[name]["value"]=value
-                        if (name === "filled out by"){
-                              if (value !== null && value !== "" && value !== "Patient"){
-                                    setRenderMore(true)
-                              } else {
-                                    for (const key in formInputs){
-                                          let form=formInputs
-                                          if (key.indexOf("filler") !== -1 || key.indexOf("Fille") !== -1){
-                                                delete form[key]
-                                          }
-                                          setFormInputs(form)
-                                    }
-                                    setRenderMore(false)
-                              }
-                        } else if (name === "Financial assistance"){
-                              // console.log("FINANCIAL")
-                              // console.log(value)
-                              if (value === "yes"){
-                                    setRenderMore(true)
-                              } else {
-                                    for (const key in formInputs){
-                                          let form=formInputs
-                                          if (key.indexOf("financial") !== -1 || key.indexOf("Fille") !== -1){
-                                                delete form[key]
-                                          }
-                                          setFormInputs(form)
-                                    }
-                                    setRenderMore(false)
-                              }
-                        } 
                   }
             }
             // console.log(form[name])
@@ -216,7 +194,7 @@ function PatientIntakeForm (props) {
                                                 //       if (value.length!==17)
                                                 //             return "enter a phone number in the format +1 (XXX) XXX-XXXX"
                                                 // }}
-                                                name="bday"
+                                                name="birth date"
                                                 type="date"
                                                 header={<h2>Birth Date*</h2>}
                                           />
@@ -276,10 +254,6 @@ function PatientIntakeForm (props) {
                                                 onBlur={onChange}
                                                 displayNone={stepNum!==0}
                                                 required={true}
-                                                // validate={value=>{
-                                                //       if (value.length!==17)
-                                                //             return "enter a phone number in the format +1 (XXX) XXX-XXXX"
-                                                // }}
                                                 name="preferred point of contact"
                                                 type="checkbox"
                                                 options={
@@ -297,10 +271,6 @@ function PatientIntakeForm (props) {
                                                 onBlur={onChange}
                                                 displayNone={stepNum!==0}
                                                 required={true}
-                                                // validate={value=>{
-                                                //       if (value.length!==17)
-                                                //             return "enter a phone number in the format +1 (XXX) XXX-XXXX"
-                                                // }}
                                                 name="best time to contact"
                                                 type="time"
                                                 header={<h2>Best time to reach you?*</h2>}
@@ -473,8 +443,8 @@ function PatientIntakeForm (props) {
                                                 displayNone={stepNum!==1}
                                                 required={true}
                                                 validate={value=>{
-                                                      if (value.length!==17)
-                                                            return "enter a phone number in the format +1 (XXX) XXX-XXXX"
+                                                      if (value.length<2)
+                                                            return "please enter the reference's relationship to the volunteer"
                                                 }}
                                                 name="reference relationship to volunteer"
                                                 type="text"
@@ -527,10 +497,6 @@ function PatientIntakeForm (props) {
                                                 onBlur={onChange}
                                                 displayNone={stepNum!==2}
                                                 required={true}
-                                                // validate={value=>{
-                                                //       if (value.length<2)
-                                                //             return "Street address must be at least 2 chatacters"
-                                                // }}
                                                 name="rock campus"
                                                 type="radio"
                                                 options={["Point Loma", "San Marcos","East County","San Ysidro","Mircosite"]}
@@ -550,7 +516,7 @@ function PatientIntakeForm (props) {
                                                 name="program selection"
                                                 type="checkbox"
                                                 options={["Leaership Role","Rock Kidz",...options.services]}
-                                                header={<h2>What services do you need?*</h2>}
+                                                header={<h2>In which areas are you interested in serving?*</h2>}
                                           />
                                     </div>
                               </div>
@@ -622,6 +588,7 @@ function PatientIntakeForm (props) {
                                                 options={["yes","no"]}
                                                 header={<h2>Have you ever been convicted of a felony?*</h2>}
                                           />
+                                          <div></div>
                                     </div>
                               </div>
                         </div>
@@ -683,7 +650,7 @@ function PatientIntakeForm (props) {
                                                 required={true}
                                                 name="most difficult for volunteering question"
                                                 type="textarea"
-                                                header={<h2>What do you think will be most difficultfor you working as a volunteer who serves cancer patients?*</h2>}
+                                                header={<h2>What do you think will be most difficult for you working as a volunteer who serves cancer patients?*</h2>}
                                           />
                                     </div>
                               </div>
