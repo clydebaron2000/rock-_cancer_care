@@ -37,7 +37,7 @@ const patientSchema = new Schema({
     'emergency contact phone': {type: String, required: true},
     'emergency contact email': {type: String, required: true},
     'program selection':{type:[String],required: true},
-    'religious beliefs':{type:String,required: true},
+    'religious beliefs':{type:String},
     'open to prayer':{type:String,required: true},
     'Financial assistance':{type:String,required: true},
     'financial income level':{type:String},

@@ -19,7 +19,7 @@ function PatientIntakeForm (props) {
       const totalSteps=titleArray.length-1
       const [stepNum,setStepsCompleted]=useState(0)
       const [formInputs,setFormInputs]=useState({})
-      const [renderMore,setRenderMore]=useState(false)
+      // const [renderMore,setRenderMore]=useState(false)
       function upDateValidateFunctions(name,value,getErrorFromValue,setErrorMessage){
             let form = formInputs
             // console.log(name+" updating with ",value)
@@ -36,15 +36,17 @@ function PatientIntakeForm (props) {
             devConsole.log("CHECKING INPUTS")
             // console.log(formInputs)
             for (const key in formInputs){
-                  let value = formInputs[key].value
-                  // console.log(key,value)
-                  // console.log(formInputs[key])
-                  let err = formInputs[key].getErrorFromValue(value)
-                  devConsole.assert(err === "","err: "+err)
-                  if (err !== ""){
-                        formInputs[key].setErrorMessage(err)
-                        if(hasAnyFalseValue === false)
-                              hasAnyFalseValue = true
+                  if(formInputs[key].section===stepNum){
+                        let value = formInputs[key].value
+                        devConsole.log(key,value)
+                        devConsole.log(formInputs[key])
+                        let err = formInputs[key].getErrorFromValue(value)
+                        devConsole.assert(err === "","err: "+err)
+                        if (err !== ""){
+                              formInputs[key].setErrorMessage(err)
+                              if(hasAnyFalseValue === false)
+                                    hasAnyFalseValue = true
+                        }
                   }
             }
             devConsole.assert(hasAnyFalseValue === false,"FALSY")
@@ -78,7 +80,7 @@ function PatientIntakeForm (props) {
             if (name === undefined || name === "")return
             let value = e.target.value
             let form = formInputs
-            if (form[name] === undefined)form[name]={value:value}
+            if (form[name] === undefined)form[name]={value:value,section:stepNum}
             else {
                   // console.assert(form[name]["value"]!==value,"form value is the same "+form[name]["value"])
                   // console.log(name)
@@ -434,7 +436,7 @@ function PatientIntakeForm (props) {
                                     </div>
                               </div>
                               <div className="form-section">
-                                    <h2 className="section-title">Relationship to Volunteer*</h2>
+                                    {/* <h2 className="section-title">Relationship to Volunteer*</h2> */}
                                     <div className="section-inputs">
                                           <Input
                                                 parentValidation={upDateValidateFunctions}
@@ -448,7 +450,7 @@ function PatientIntakeForm (props) {
                                                 }}
                                                 name="reference relationship to volunteer"
                                                 type="text"
-                                                header={<h2></h2>}
+                                                header={<h2>Relationship to Volunteer*</h2>}
                                           />
                                     </div>
                               </div>

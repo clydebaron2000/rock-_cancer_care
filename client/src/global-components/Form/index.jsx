@@ -35,21 +35,23 @@ function PatientIntakeForm (props) {
       function checkInputs(e){
             e?.preventDefault()
             let hasAnyFalseValue = false
-            // console.log("CHECKING INPUTS")
-            // console.log(formInputs)
+            devConsole.log("CHECKING INPUTS")
+            devConsole.log(formInputs)
             for (const key in formInputs){
-                  let value = formInputs[key].value
-                  // console.log(key,value)
-                  // console.log(formInputs[key])
-                  let err = formInputs[key].getErrorFromValue(value)
-                  // console.assert(err === "","err: "+err)
-                  if (err !== ""){
-                        formInputs[key].setErrorMessage(err)
-                        if(hasAnyFalseValue === false)
-                              hasAnyFalseValue = true
+                  if(formInputs[key].section===stepNum){
+                        let value = formInputs[key].value
+                        devConsole.log(key,value)
+                        devConsole.log(formInputs[key])
+                        let err = formInputs[key].getErrorFromValue(value)
+                        devConsole.assert(err === "","err: "+err)
+                        if (err !== ""){
+                              formInputs[key].setErrorMessage(err)
+                              if(hasAnyFalseValue === false)
+                                    hasAnyFalseValue = true
+                        }
                   }
             }
-            // console.assert(hasAnyFalseValue === false,"FALSY")
+            devConsole.assert(hasAnyFalseValue === false,"FALSY")
             // debugger
             if(hasAnyFalseValue === false || isGodMode) submitData(e)
       }
@@ -81,7 +83,7 @@ function PatientIntakeForm (props) {
             if (name === undefined || name === "")return
             let value = e.target.value
             let form = formInputs
-            if (form[name] === undefined)form[name]={value:value}
+            if (form[name] === undefined)form[name]={value:value,section:stepNum}
             else {
                   // console.assert(form[name]["value"]!==value,"form value is the same "+form[name]["value"])
                   // console.log(name)
