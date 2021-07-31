@@ -3,7 +3,7 @@ import { v4 as uuid } from "uuid"
 import "../../css/radio.css"
 function RadioPrompt(props) {
     const {key,type,id,onChange,required,name,...otherProps}=props
-    const [choice, setChoice] = useState("")
+    const [choice, setChoice] = useState(props?.value||"")
     const [text, setText] = useState(null)
     return (
         // <>
