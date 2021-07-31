@@ -18,14 +18,14 @@ function Dashboard(){
                 setErr("invalid username or password")
             }else{
                 setErr("")
-                // if (res.data) setUserID(res.data)
             }
         }).catch(err=>{
-            console.error(err)
-            console.log(Object.keys(err))
-            console.log(err.toJSON)
-            console.log(err.response.data)
-            setErr(err.response.data)
+            devConsole.error(err)
+            devConsole.log(Object.keys(err))
+            devConsole.log(err.toJSON)
+            devConsole.log(err.response.data)
+            if (typeof err.response.data === "string")
+                setErr(err.response.data)
         })
     }
     function createUser(){
@@ -46,8 +46,8 @@ function Dashboard(){
                     <input type="text" id="password" name="password" value={pword} onChange={({target})=>setPword(target.value)}/>
                     <div className="error">{err_msg}</div>
                     <div className="button-container">
-                        {(process.env.NODE_ENV==="development")?<button className="action-button" onClick={onSubmit}>login</button>:null}
-                        <button className="minor-button" onClick={createUser}>create</button>
+                        <button className="action-button" onClick={onSubmit}>login</button>
+                        {(process.env.NODE_ENV==="development")?<button className="minor-button" onClick={createUser}>create</button>:null}
                     </div>
                 </form>
             </div>

@@ -121,6 +121,7 @@ function PatientIntakeForm (props) {
                                     <h2 className="section-title">Name</h2>
                                     <div className="section-inputs">
                                           <Input
+                                                value={formInputs["first name"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
@@ -135,6 +136,7 @@ function PatientIntakeForm (props) {
                                                 header="First"
                                           />
                                           <Input
+                                                value={formInputs["last name"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
@@ -154,6 +156,7 @@ function PatientIntakeForm (props) {
                                     <h2 className="section-title">Address</h2>
                                     <div className="section-inputs">
                                           <Input
+                                                value={formInputs["street address"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
@@ -168,6 +171,7 @@ function PatientIntakeForm (props) {
                                                 header="Street Address"
                                           />
                                           <Input
+                                                value={formInputs["zip"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
@@ -187,6 +191,7 @@ function PatientIntakeForm (props) {
                                     {/* <h2 className="section-title"></h2> */}
                                     <div className="section-inputs">
                                           <Input
+                                                value={formInputs["birth date"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
@@ -201,6 +206,7 @@ function PatientIntakeForm (props) {
                                                 header={<h2>Birth Date*</h2>}
                                           />
                                           <Input
+                                                value={formInputs["gender"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
@@ -222,6 +228,7 @@ function PatientIntakeForm (props) {
                                     {/* <h2 className="section-title"></h2> */}
                                     <div className="section-inputs">
                                           <Input
+                                                value={formInputs["phone"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
@@ -236,6 +243,7 @@ function PatientIntakeForm (props) {
                                                 header={<h2>Phone*</h2>}
                                           />
                                           <Input
+                                                value={formInputs["email"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
@@ -251,6 +259,7 @@ function PatientIntakeForm (props) {
                                     {/* <h2 className="section-title"></h2> */}
                                     <div className="section-inputs">
                                           <Input
+                                                value={formInputs["preferred point of contact"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
@@ -268,6 +277,7 @@ function PatientIntakeForm (props) {
                                                 header={<h2>Contact Preference*</h2>}
                                           />
                                           <Input
+                                                value={formInputs["best time to contact"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
@@ -283,6 +293,7 @@ function PatientIntakeForm (props) {
                                     {/* <h2 className="section-title"></h2> */}
                                     <div className="section-inputs">
                                           <Input
+                                                value={formInputs["relationship status"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
@@ -301,6 +312,7 @@ function PatientIntakeForm (props) {
                                                 header={<h2>Relationship Status*</h2>}
                                           />
                                           <Input
+                                                value={formInputs["children volunteers"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
@@ -316,6 +328,7 @@ function PatientIntakeForm (props) {
                                     {/* <h2 className="section-title"></h2> */}
                                     <div className="section-inputs">
                                           <Input
+                                                value={formInputs["financial occupation"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
@@ -326,6 +339,7 @@ function PatientIntakeForm (props) {
                                                 header={<h2>Occupation (type N/A if none)*</h2>}
                                           />
                                           <Input
+                                                value={formInputs["employer"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
@@ -344,6 +358,7 @@ function PatientIntakeForm (props) {
                                     <h2 className="section-title">Name</h2>
                                     <div className="section-inputs">
                                           <Input
+                                                value={formInputs["reference first name"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
@@ -358,6 +373,7 @@ function PatientIntakeForm (props) {
                                                 header="First"
                                           />
                                           <Input
+                                                value={formInputs["reference last name"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
@@ -377,6 +393,7 @@ function PatientIntakeForm (props) {
                                     <h2 className="section-title">Address</h2>
                                     <div className="section-inputs">
                                           <Input
+                                                value={formInputs["reference street address"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
@@ -391,6 +408,7 @@ function PatientIntakeForm (props) {
                                                 header="Street Address"
                                           />
                                           <Input
+                                                value={formInputs["reference zip"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
@@ -410,6 +428,7 @@ function PatientIntakeForm (props) {
                                     {/* <h2 className="section-title"></h2> */}
                                     <div className="section-inputs">
                                           <Input
+                                                value={formInputs["reference phone"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
@@ -424,6 +443,7 @@ function PatientIntakeForm (props) {
                                                 header={<h2>Phone*</h2>}
                                           />
                                           <Input
+                                                value={formInputs["reference email"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
@@ -439,6 +459,7 @@ function PatientIntakeForm (props) {
                                     {/* <h2 className="section-title">Relationship to Volunteer*</h2> */}
                                     <div className="section-inputs">
                                           <Input
+                                                value={formInputs["reference relationship to volunteer"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
@@ -461,6 +482,7 @@ function PatientIntakeForm (props) {
                                     {/* <h2 className="section-title">Name</h2> */}
                                     <div className="section-inputs">
                                           <Input
+                                                value={formInputs["been a christian"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
@@ -475,6 +497,7 @@ function PatientIntakeForm (props) {
                                                 header="How long have you been a Christian?"
                                           />
                                           <Input
+                                                value={formInputs["rock attendance"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
@@ -494,6 +517,7 @@ function PatientIntakeForm (props) {
                                     <h2 className="section-title">Address</h2>
                                     <div className="section-inputs">
                                           <Input
+                                                value={formInputs["rock campus"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
@@ -510,6 +534,7 @@ function PatientIntakeForm (props) {
                                     {/* <h2 className="section-title"></h2> */}
                                     <div className="section-inputs">
                                           <Input
+                                                value={formInputs["program selection"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
@@ -526,6 +551,7 @@ function PatientIntakeForm (props) {
                                     {/* <h2 className="section-title"></h2> */}
                                     <div className="section-inputs">
                                           <Input
+                                                value={formInputs["spiritual gifts test"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
@@ -537,6 +563,7 @@ function PatientIntakeForm (props) {
                                                 header={<h2>Have you taken the Spiritual Gifts test?*</h2>}
                                           />
                                           <Input
+                                                value={formInputs["consider leader"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
@@ -553,6 +580,7 @@ function PatientIntakeForm (props) {
                                     {/* <h2 className="section-title"></h2> */}
                                     <div className="section-inputs">
                                           <Input
+                                                value={formInputs["commit to 6 months of service"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
@@ -564,6 +592,7 @@ function PatientIntakeForm (props) {
                                                 header={<h2>Are you willing to commit to 6 months of service?*</h2>}
                                           />
                                           <Input
+                                                value={formInputs["past volunteer experience"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
@@ -580,6 +609,7 @@ function PatientIntakeForm (props) {
                                     {/* <h2 className="section-title"></h2> */}
                                     <div className="section-inputs">
                                           <Input
+                                                value={formInputs["convicted of a felony"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
@@ -600,6 +630,7 @@ function PatientIntakeForm (props) {
                                     {/* <h2 className="section-title"></h2> */}
                                     <div className="section-inputs">
                                           <Input
+                                                value={formInputs["testimony of being saved"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
@@ -615,6 +646,7 @@ function PatientIntakeForm (props) {
                                     {/* <h2 className="section-title"></h2> */}
                                     <div className="section-inputs">
                                           <Input
+                                                value={formInputs["testimony of cancer"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
@@ -630,6 +662,7 @@ function PatientIntakeForm (props) {
                                     {/* <h2 className="section-title"></h2> */}
                                     <div className="section-inputs">
                                           <Input
+                                                value={formInputs["why volunteer question"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
@@ -645,6 +678,7 @@ function PatientIntakeForm (props) {
                                     {/* <h2 className="section-title"></h2> */}
                                     <div className="section-inputs">
                                           <Input
+                                                value={formInputs["most difficult for volunteering question"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
@@ -660,6 +694,7 @@ function PatientIntakeForm (props) {
                                     {/* <h2 className="section-title"></h2> */}
                                     <div className="section-inputs">
                                           <Input
+                                                value={formInputs["describe a difficult situation question"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
@@ -676,6 +711,7 @@ function PatientIntakeForm (props) {
                                     {/* <h2 className="section-title"></h2> */}
                                     <div className="section-inputs">
                                           <Input
+                                                value={formInputs["healthy boundaries question"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
@@ -703,7 +739,6 @@ function PatientIntakeForm (props) {
                                                 prev
                                     </button>
                               }
-
                               {(stepNum===totalSteps)?"":
                               <button className="action-button" onClick={checkInputs}>
                                     {(stepNum===totalSteps-1)?"submit":"next"}

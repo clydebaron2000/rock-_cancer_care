@@ -3,7 +3,7 @@ const col = db.User
 const bcyrpt = require('bcrypt')
 module.exports = {
     findAll: (req,res) => {
-        console.log("in patient controller findall")
+        console.log("in user controller find all")
         console.log(req.body)
         console.log(req.query)
         col
@@ -12,7 +12,7 @@ module.exports = {
             .catch(err => res.status(422).json(err))
     }, 
     find: (req,res) => {
-        console.log("in patient controller find")
+        console.log("in user controller find")
         console.log(req.body)
         console.log(req.query)
         col
@@ -23,16 +23,25 @@ module.exports = {
     create: async(req,res) => { 
         console.log("create")
         console.log(req.body)
+        console.log(req.query)
         try{
-            const username = req.query.username
-            const password = req.query.password
+            const username = req.body.username
+            const password = req.body.password
+            const found = await col.findOne({username:username}).exec()
+            console.log(found)
+            if (found!=={})return res.status(409).json("username exists in database")
+            console.log("creating")
+            // TODO comment out after testing
+            req.body.authorization="admin"
+            // req.body.authorization="manager"
+            req.body.change_permissions=false
             if (username === undefined || password === undefined ||
                 username === "" || password === "")
                 return res.status(422).json("username and password required")
             req.body.password = await bcyrpt.hash(password,10)
             col
                 .create(req.body)
-                .then(model => res.json(model))
+                .then(model => res.res(201).json(model))
                 .catch(err => res.status(422).json(err))
         }catch{
             res.status(500).send()
@@ -45,6 +54,9 @@ module.exports = {
          .deleteOne(req.body)
          .then(model => res.json(model))
          .catch(err => res.status(422).json(err))
+        }
+        else{
+            res.status(401).json()
         }
     },
     verify: async (req,res)=>{
@@ -64,11 +76,17 @@ module.exports = {
             .then(model=>{
                 console.log(password)
                 bcyrpt.compare(password,model.password).then(result=>{
-                    if(result) res.json(model._id)
-                    else res.json(null)
-                }).catch(err => res.status(422).json("invalid username or password"))
+                    if(result) {
+                        console.log("success")
+                        res.status(202).json(model._id)
+                    }
+                    else {
+                        console.log("fail")
+                        res.status(401).json("invalid username or password")
+                    }
+                }).catch(err => res.status(404).json("invalid username or password"))
             })
-            .catch(err => res.status(422).json(err))// should not be reached
+            .catch(err => res.status(401).json(err))// should not be reached
         }catch{
             res.status(500).send()
         }
