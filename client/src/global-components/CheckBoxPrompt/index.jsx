@@ -1,18 +1,14 @@
-import React, { useState, useEffect, Fragment as div } from "react"
+import React, { useState} from "react"
 // import { v4 as uuid } from "uuid"
 import "../../css/checkbox.css"
 function CheckboxPrompt(props) {
     const {inputProps}=props
-    const [value, setValue] = useState(props?.options.map(_=>false))
-    useEffect(_=>{
-        // console.log("EFFECT")
-        // console.log(value)
-    },[value,])
+    const [value, setValue] = useState(props?.value?.map?.((val)=>props?.options?.indexOf(val)>-1) || props?.options.map(_=>false))
     function createEventForParent(e,value){
-        let parentEvent = {...e}
+        let parentEvent = {...e,target:{}}
         parentEvent.preventDefault=()=>{}
         parentEvent.target.name = props?.name
-        parentEvent.target.value = props?.options.filter((_,i) => value[i])
+        delete parentEvent.target.value
         if (props?.options.length===1)
             parentEvent.target.value = value[0]
         props?.onChange?.(parentEvent)
@@ -30,14 +26,6 @@ function CheckboxPrompt(props) {
             className="checkbox-box horizontal"
         >
             { props?.options.map((option, i) => {
-                // const onChange=(e)=>{
-                //     let temp = value
-                //     temp[i] = !temp[i] 
-                //     // e.target.checked= temp[i] 
-                //     console.log(temp)
-                //     // createEventForParent(e,temp)
-                //     setValue(temp)
-                // }
                 return(
             <div className="checkbox-wrapper" key={i}>
                 <input

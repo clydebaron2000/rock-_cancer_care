@@ -21,7 +21,7 @@ function Input(props) {
     // debugging variables
     // let debugName = ` for input `+props?.name
     // let debugName = ` for input `+id
-    const [value, setValue] = useState(null) //value of the input group: d: null, value
+    const [value, setValue] = useState(props?.value|| null) //value of the input group: d: null, value
     const [error_message, setErrorMessage] = useState(null)//d: null, error_message
     useEffect(_=>{
         // console.log("input effect")
@@ -146,6 +146,7 @@ function Input(props) {
                 <RadioPrompt
                     id={id}
                     question=""
+                    value={value}
                     options={props.options}
                     name={props.name}
                     onBlur={onBlur}
@@ -156,6 +157,7 @@ function Input(props) {
         } else if (type === "tel") {
             input_element = (
                 <PhoneInput
+                    value={value}
                     className={((error_message !== "" && error_message !== null) && props?.required === true) ? "error" : ""}
                     defaultCountry="US"
                     international={false}
@@ -193,6 +195,7 @@ function Input(props) {
             input_element = (
                 <CheckboxPrompt
                     id={id}
+                    value={value}
                     options={props.options}
                     onChange={onChange}
                     onBlur={onBlur}

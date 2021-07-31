@@ -4,7 +4,7 @@ import 'react-phone-input-2/lib/style.css'
 import '../../css/phone.css'
 
 function PhoneInput(props) {
-	const [value, setValue] = useState(null)
+	const [value, setValue] = useState(props?.value||null)
 	// const {disableDropdown}=props 
 	const disableDropdown=true 
 	return (

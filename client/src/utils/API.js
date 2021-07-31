@@ -66,8 +66,6 @@ const API = {
 // USER
     createUser: (body)=>{
         devConsole.log("create")
-        body.authorization="admin"
-        body.change_permissions=false
       return axios.post(base+'user', body)  
     },
     verifyUser: (body)=>{

@@ -29,7 +29,7 @@ function MultiSelect(props){
          <CreatableSelect
             className={props.className}
             classNamePrefix={props.className}
-            value={props?.value?.forEach?.(value=>{return{label:value,value:value}})}
+            value={props?.value?.map?.(value=>{return{label:value,value:value}})}
             isMulti={props?.isMulti}
             onChange={onChange}
             onBlur={onBlur}
