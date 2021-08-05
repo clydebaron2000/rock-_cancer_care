@@ -832,7 +832,7 @@ function PatientIntakeForm (props) {
                                                             // }}
                                                             name="financial services needed"
                                                             type="checkbox"
-                                                            options={options.services}
+                                                            options={options.financialServices}
                                                             header={<h2>What type of financial services do you need?*</h2>}
                                                       />
                                                 </div>
