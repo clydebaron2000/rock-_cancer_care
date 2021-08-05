@@ -23,7 +23,9 @@ function PatientIntakeForm (props) {
       function upDateValidateFunctions(name,value,getErrorFromValue,setErrorMessage){
             let form = formInputs
             // console.log(name+" updating with ",value)
+            // devConsole.log(form[name])
             form[name]={
+                  section:stepNum,
                   value:value,
                   getErrorFromValue:(value) => getErrorFromValue(value),
                   setErrorMessage:(err) => setErrorMessage(err)
@@ -34,9 +36,9 @@ function PatientIntakeForm (props) {
             e?.preventDefault()
             let hasAnyFalseValue = false
             devConsole.log("CHECKING INPUTS")
-            // console.log(formInputs)
+            devConsole.log(formInputs) 
             for (const key in formInputs){
-                  if(formInputs[key].section===stepNum){
+                  if(formInputs[key].section === stepNum){
                         let value = formInputs[key].value
                         devConsole.log(key,value)
                         devConsole.log(formInputs[key])
@@ -75,7 +77,8 @@ function PatientIntakeForm (props) {
             }
       }
       function onChange(e){
-            // console.assert(e!==undefined,"e undefined")
+            devConsole.assert(e!==undefined,"e undefined")
+            devConsole.log(e.target.value)
             let name = e.target.name
             if (name === undefined || name === "")return
             let value = e.target.value
@@ -85,8 +88,8 @@ function PatientIntakeForm (props) {
                   // console.assert(form[name]["value"]!==value,"form value is the same "+form[name]["value"])
                   // console.log(name)
                   // console.log(form[name])
-                  // console.log(form[name]["value"])
-                  // console.log(value)
+                  // console.log(form[name]["value"]) 
+                  devConsole.log(value)
                   if (form[name]["value"]!==value) {
                         // console.log(name+" changed")
                         form[name]["value"]=value

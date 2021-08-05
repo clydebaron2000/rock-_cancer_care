@@ -3,25 +3,26 @@ import { v4 as uuid } from "uuid"
 import "../../css/radio.css"
 import devConsole from "../../utils/devConsole"
 function RadioPrompt(props) {
-    const {key,type,id,onChange,required,name,...otherProps}=props
+    // const {key,type,id,onChange,required,name}=props
     // const [choice, setChoice] = useState("")
     const [choice, setChoice] = useState(props?.value||"")
     const [text, setText] = useState(null)
     useEffect(_=>{
-        devConsole.log(`radio ${props.name} choice: ${choice} props.value: ${props?.value}`)
+        // devConsole.log(`radio ${props.name} choice: ${choice} props.value: ${props?.value}`)
     },[choice]) 
     return (
-        // <>
+        // <> 
             <div
                 className="radio-box horizontal"
                 role="radiogroup"
             >
-                {props.options.map((option, i) => (
-                    <div className="radio-wrapper" key={i}>
+                {props.options.map((option, i) => {
+                    const id= uuid().slice(0,10)
+                    return <div className="radio-wrapper" key={i}>
                         <input
                             key={uuid()}
                             type="radio"
-                            id={option}
+                            id={id}
                             value={option}
                             name={props.name}
                             onFocus={
@@ -48,7 +49,7 @@ function RadioPrompt(props) {
                             autoFocus={(choice === option && (text === "" || text === null)) || choice === null}
                             required={props.required}
                         />
-                        <label key={i} htmlFor={option}>
+                        <label key={i} htmlFor={id}>
                             {option !== "other" ? (
                                 option
                             ) : (
@@ -71,7 +72,7 @@ function RadioPrompt(props) {
                             )}
                         </label>
                     </div>
-                ))}
+                })}
             </div>
         // </>
     )

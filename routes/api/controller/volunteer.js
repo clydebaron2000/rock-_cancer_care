@@ -23,9 +23,13 @@ module.exports = {
     create: (req,res) => { 
         devConsole.log("recieved")
         devConsole.log(req.body)
+        console.log(req.body)
         col
             .create(req.body)
             .then(model => res.json(model))
-            .catch(err => res.status(422).json(err))
+            .catch(err => {
+                console.log(err )
+                res.status(422).json(err)
+            })
     },
 }
