@@ -248,11 +248,10 @@ function PatientIntakeForm (props) {
                                                 type="radio"
                                                 options={
                                                       ["male",
-                                                      "female",
-                                                      "other",
+                                                      "female"
                                                       ]
                                                 }
-                                                header={<h2>Gender*</h2>}
+                                                header={<h2>Gender (Biological)*</h2>}
                                           />
                                     </div>
                               </div>

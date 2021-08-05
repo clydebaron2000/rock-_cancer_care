@@ -1,18 +1,20 @@
-import React, { useState } from "react"
+import React, { useState,useEffect } from "react"
 import { v4 as uuid } from "uuid"
 import "../../css/radio.css"
+import devConsole from "../../utils/devConsole"
 function RadioPrompt(props) {
     const {key,type,id,onChange,required,name,...otherProps}=props
+    // const [choice, setChoice] = useState("")
     const [choice, setChoice] = useState(props?.value||"")
     const [text, setText] = useState(null)
+    useEffect(_=>{
+        devConsole.log(`radio ${props.name} choice: ${choice} props.value: ${props?.value}`)
+    },[choice]) 
     return (
         // <>
             <div
                 className="radio-box horizontal"
                 role="radiogroup"
-                // value={value !== "other" ? value : `other:${value}`}
-                // onChange={props.onChange}
-                // onBlur={props.onBlur}
             >
                 {props.options.map((option, i) => (
                     <div className="radio-wrapper" key={i}>
@@ -25,13 +27,15 @@ function RadioPrompt(props) {
                             onFocus={
                                 (e)=>{
                                     setChoice(e.target.value)
-                                    // console.log(e.target.value)
                                     props?.onChange?.(e)
                                 }
                             }
                             onChange={(e)=>{
                                 setChoice(e.target.value)
-                                // console.log(e.target.value)
+                                console.log(option)
+                                devConsole.log(e.target.value)
+                                console.log(e.target)
+                                devConsole.log(choice)
                                 props?.onChange?.(e)
                             }}
                             onBlur={(e)=>{
@@ -43,7 +47,6 @@ function RadioPrompt(props) {
                             checked={choice === option}
                             autoFocus={(choice === option && (text === "" || text === null)) || choice === null}
                             required={props.required}
-                            {...otherProps}
                         />
                         <label key={i} htmlFor={option}>
                             {option !== "other" ? (
@@ -52,7 +55,7 @@ function RadioPrompt(props) {
                                 <input
                                     type="text"
                                     disabled={choice !== "other"}
-                                    autoFocus={text !== null}
+                                    autoFocus={(text !== null || text !=="") && choice === "other"}
                                     onChange={(e)=>{
                                         setText(e.target.value)
                                         // console.log(e.target.value)

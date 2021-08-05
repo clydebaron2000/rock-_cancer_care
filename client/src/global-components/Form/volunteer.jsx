@@ -217,7 +217,7 @@ function PatientIntakeForm (props) {
                                                 options={
                                                       ["male",
                                                       "female",
-                                                      "other",
+                                                      // "other",
                                                       ]
                                                 }
                                                 header={<h2>Gender*</h2>}
