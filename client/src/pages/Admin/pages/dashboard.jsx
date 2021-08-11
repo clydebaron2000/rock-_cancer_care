@@ -28,14 +28,12 @@ function Dashboard(props){
     useEffect(_=>{
         if(searchType==="patient"){
             API.getAllPatients((nameSearch==="")?null:{"first name":{$regex:nameSearch}}).then(res=>{
-                // console.log(res.data)
                 setSearchResults(res.data)
-            })
+            }).catch(console.err)
         }else if(searchType==="volunteer"){
             API.getAllVolunteers((nameSearch==="")?null:{"first name":{$regex:nameSearch}}).then(res=>{
-                // console.log(res.data)
                 setSearchResults(res.data)
-            })
+            }).catch(console.err)
         }
     },[nameSearch,searchType])
     return (
