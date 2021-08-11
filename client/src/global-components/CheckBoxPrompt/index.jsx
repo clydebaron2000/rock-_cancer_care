@@ -4,7 +4,7 @@ import "../../css/checkbox.css"
 import devConsole from "../../utils/devConsole"
 function CheckboxPrompt(props) {
     const {inputProps}=props
-    const [value, setValue] = useState(props?.value?.map?.((val)=>props?.options?.indexOf(val)>-1) || props?.options.map(_=>false))
+    const [value, setValue] = useState(props?.options?.map(val=>props.value?.indexOf?.(val)>-1) || props?.options.map(_=>false))
     function createEventForParent(e,value){
         let parentEvent = {...e,target:{}}
         parentEvent.preventDefault=()=>{}

@@ -545,7 +545,7 @@ function PatientIntakeForm (props) {
                                                 required={true}
                                                 name="program selection"
                                                 type="checkbox"
-                                                options={["Leaership Role","Rock Kidz",...options.services]}
+                                                options={["Leadership Role","Rock Kidz",...options.services]}
                                                 header={<h2>In which areas are you interested in serving?*</h2>}
                                           />
                                     </div>

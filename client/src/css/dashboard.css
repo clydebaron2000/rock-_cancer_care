@@ -1,0 +1,88 @@
+.background {
+  background-color: #4f4f4f ;
+  width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (prefers-color-scheme: dark) {
+  .background {
+    background-color: #4f4f4f ;
+  }
+}
+
+nav {
+  background-color: #ffffff ;
+}
+
+@media (prefers-color-scheme: dark) {
+  nav {
+    background-color: #ffffff ;
+  }
+}
+
+nav .userName {
+  padding: .5rem;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  height: fill;
+}
+
+.content .search {
+  background-color: #ffffff ;
+  overflow: auto;
+  border-right: solid 5px;
+  border-color: #8865ac ;
+}
+
+@media (prefers-color-scheme: dark) {
+  .content .search {
+    background-color: #ffffff ;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .content .search {
+    border-color: #8865ac ;
+  }
+}
+
+.content .search .searchBar {
+  display: flex;
+  flex-direction: row;
+}
+
+.content .search .list-container {
+  padding-top: 10px;
+}
+
+.content .search .list-container ul {
+  padding: 0;
+  margin: 0;
+  margin-left: 3px;
+  list-style-type: none;
+}
+
+.content .search .list-container ul li {
+  margin: 2px;
+}
+
+.content .search .list-container ul li button {
+  width: fill;
+  height: fill;
+}
+
+.content .doc {
+  background-color: #ffffff ;
+}
+
+@media (prefers-color-scheme: dark) {
+  .content .doc {
+    background-color: #ffffff ;
+  }
+}

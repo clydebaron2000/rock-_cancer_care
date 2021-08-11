@@ -4,10 +4,21 @@ const devConsole = require('../../../server/utils/devConsole')
 module.exports = {
     findAll: (req,res) => {
         devConsole.log("in patient controller findall")
-        devConsole.log(req.body)
-        devConsole.log(req.query)
+        devConsole.log("req.query",req.query)
+        let query=req.query
+        if(Object.keys(req.query).length!==0){
+            // console.log('query:',query)
+            Object.keys(query).forEach(key=>{
+                console.log(query[key])
+                if(query[key]?.indexOf("{")!==-1){
+                    query[key]=JSON.parse(query[key])
+                }
+            })
+            // console.log(query["first name"])
+        }
+        devConsole.log("query",query)
         col
-            .find(req.query)
+            .find(query)
             .then(model =>res.json(model))
             .catch(err => res.status(422).json(err))
     }, 

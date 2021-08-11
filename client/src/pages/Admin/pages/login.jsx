@@ -1,10 +1,12 @@
 import { useState } from "react"
-// import {useUserState} from '../contexts/user' 
+import {useUserState} from '../contexts/user' 
 import devConsole from "../../../utils/devConsole"
 import '../../../css/login.css'
 import API from "../../../utils/API"
 function Dashboard(){
-    // const [_,setUserID]=useUserState()
+    const [_,setUserID]=useUserState()
+    //for admin panel override
+    // setUserID("6111cb2d9fb9be3d9c3b2dc5")
     const [uname,setUname]=useState("")
     const [pword,setPword]=useState("")
     const [err_msg,setErr]=useState("")
@@ -33,11 +35,13 @@ function Dashboard(){
         devConsole.log(uname)
         devConsole.log(pword)
         API.createUser({username:uname,password:pword}).then(res=>{
+            devConsole.log(res)
             devConsole.log(res.data)
             devConsole.log("created successfully")
         }).catch(console.error)
     }
     return (
+        <div className="overlay">
             <div className="login-card">
                 <form onSubmit={e=>e.preventDefault()}>
                     <label htmlFor="username">Username</label>
@@ -51,6 +55,7 @@ function Dashboard(){
                     </div>
                 </form>
             </div>
+        </div>
     ) 
 }  
 export default Dashboard 

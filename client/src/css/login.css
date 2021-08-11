@@ -1,4 +1,4 @@
-body {
+.overlay {
   background-color: #4f4f4f ;
   width: 100vw;
   height: 100vh;
@@ -7,29 +7,29 @@ body {
 }
 
 @media (prefers-color-scheme: dark) {
-  body {
+  .overlay {
     background-color: #4f4f4f ;
   }
 }
 
-body .login-card {
+.overlay .login-card {
   background-color: #ffffff ;
   padding: 10px;
   border-radius: 10px;
 }
 
 @media (prefers-color-scheme: dark) {
-  body .login-card {
+  .overlay .login-card {
     background-color: #ffffff ;
   }
 }
 
-body .login-card form {
+.overlay .login-card form {
   margin: 5px;
   width: 300px;
 }
 
-body .login-card form label {
+.overlay .login-card form label {
   color: #8865ac ;
   font-family: Arial, Helvetica, sans-serif;
   padding: 10px 0;
@@ -38,12 +38,12 @@ body .login-card form label {
 }
 
 @media (prefers-color-scheme: dark) {
-  body .login-card form label {
+  .overlay .login-card form label {
     color: #8865ac ;
   }
 }
 
-body .login-card form input {
+.overlay .login-card form input {
   margin-top: 20px;
   width: stretch;
   background-color: none;
@@ -56,12 +56,12 @@ body .login-card form input {
 }
 
 @media (prefers-color-scheme: dark) {
-  body .login-card form input {
+  .overlay .login-card form input {
     border-color: #cacaca ;
   }
 }
 
-body .login-card form input:focus-visible, body .login-card form input:focus {
+.overlay .login-card form input:focus-visible, .overlay .login-card form input:focus {
   transition: all .2s ease-in;
   border-color: #8865ac ;
   outline: initial;
@@ -69,17 +69,17 @@ body .login-card form input:focus-visible, body .login-card form input:focus {
 }
 
 @media (prefers-color-scheme: dark) {
-  body .login-card form input:focus-visible, body .login-card form input:focus {
+  .overlay .login-card form input:focus-visible, .overlay .login-card form input:focus {
     border-color: #8865ac ;
   }
 }
 
-body .login-card form .button-container {
+.overlay .login-card form .button-container {
   display: flex;
   flex-direction: row-reverse;
 }
 
-body .login-card form .error {
+.overlay .login-card form .error {
   display: block;
   font-size: 13px;
   color: red;

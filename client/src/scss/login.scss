@@ -1,6 +1,6 @@
 @import 'params/theme_colors';
 @import 'params/breakpoints';
-body{
+.overlay{
     @include theme('background-color',$background3);
     width: 100vw; 
     height: 100vh;

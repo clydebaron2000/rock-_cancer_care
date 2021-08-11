@@ -3,13 +3,13 @@ const userController = require('./controller/user')
 
 // '/api/user'
 router.route("/")
-  .post(userController.create)
-  .get(userController.find)
 router.route("/verify")
-  .get(userController.verify)
+.get(userController.verify)
 router.route("/admin")
+  .get(userController.find)
   .delete(userController.delete)
-  .get(userController.findAll)
+  .post(userController.create)
+  // .get(userController.findAll)
 //   .update(userController.update)
 module.exports = router; 
   
