@@ -11,7 +11,7 @@ const API = {
     },
     getAllPatients: function (body){
         devConsole.log("getAllPatients") 
-        devConsole.log(body) 
+        // devConsole.log(body) 
         return axios.get(base + 'patient/all',{params:body})
     },
     createPatient: function (body){

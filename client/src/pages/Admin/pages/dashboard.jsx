@@ -17,21 +17,38 @@ function Dashboard(props){
     const [nameSearch,setNameSearch]=useState("")
 
     useEffect(_=>{
-        devConsole.log(userId)
+        devConsole.log("userID:",userId)
             API.findUserById(userId).then(res=>{
                 setUserInfo(res.data)
-                if (res.data.$regex.username===undefined)setUserID("")
-                // console.log(res.data)
+                if (res.data.username===undefined)setUserID("")
+                devConsole.log("res.data",res.data)
             })
-            .catch(err=>setUserID(""))
+            .catch(err=>{
+                devConsole.error(err)
+                setUserID("")
+            })
     },[userId])
     useEffect(_=>{
         if(searchType==="patient"){
-            API.getAllPatients((nameSearch==="")?null:{"first name":{$regex:nameSearch}}).then(res=>{
+            API.getAllPatients((nameSearch==="")?null: { "$expr": {
+                "$regexMatch": {
+                  "input": { "$concat": ["$first name", " ", "$last name"] },
+                  "regex": nameSearch,  //Your text search here
+                  "options": "i"
+                }
+              }
+            }).then(res=>{
                 setSearchResults(res.data)
             }).catch(console.err)
         }else if(searchType==="volunteer"){
-            API.getAllVolunteers((nameSearch==="")?null:{"first name":{$regex:nameSearch}}).then(res=>{
+            API.getAllVolunteers((nameSearch==="")?null:(nameSearch==="")?null: { "$expr": {
+                "$regexMatch": {
+                  "input": { "$concat": ["$first name", " ", "$last name"] },
+                  "regex": nameSearch,  //Your text search here
+                  "options": "i"
+                }
+              }
+            }).then(res=>{
                 setSearchResults(res.data)
             }).catch(console.err)
         }
@@ -79,14 +96,24 @@ function Dashboard(props){
                     <div className="list-container">
                         <ul>{
                             searchResults.map((item)=><li >
-                                <button onClick={_=>setSelected(item)}>{item["first name"]}</button>
+                                <button onClick={_=>setSelected(item)}>{item["last name"]+", "+item["first name"]}</button>
                             </li>)
                         }</ul>
                     </div>
                 </div>
                 <div className="doc">
                     <div>
-                        {JSON.stringify(selected)}
+                        {Object.keys(selected).map(key=>{
+                            if (key!=="_id" && key!=="__v")
+                            if (selected[key]!=="" && 
+                                selected[key]!==null && 
+                                selected[key]!==undefined && 
+                                selected[key]?.length!==0){
+                                console.log(key,selected[key],typeof(selected[key]))
+                                return <div>{key}:{`${selected[key]}`}</div>
+                            }
+                            return null
+                        })}
                     </div>
                 </div>
             </div>
