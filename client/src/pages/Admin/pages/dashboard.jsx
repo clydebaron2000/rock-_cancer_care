@@ -17,12 +17,13 @@ function Dashboard(props){
     const [nameSearch,setNameSearch]=useState("")
 
     useEffect(_=>{
-        console.log(userId)
+        devConsole.log(userId)
             API.findUserById(userId).then(res=>{
                 setUserInfo(res.data)
+                if (res.data.$regex.username===undefined)setUserID("")
                 // console.log(res.data)
             })
-            .catch(err=>setUserID(undefined))
+            .catch(err=>setUserID(""))
     },[userId])
     useEffect(_=>{
         if(searchType==="patient"){
