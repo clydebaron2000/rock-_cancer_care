@@ -59,11 +59,11 @@ function PatientIntakeForm (props) {
       function previous(e){
             e.preventDefault()
             if (stepNum>0)setStepsCompleted(stepNum-1)
-            if(stepNum-1===4 && formInputs["Financial assistance"]?.value==="yes")setRenderMore(true)
+            if(stepNum-1===4 && formInputs?.["Financial assistance"]?.value==="yes")setRenderMore(true)
             else if(stepNum-1===0 && 
-                  (formInputs["filled out by"].value!=="Patient" &&
-                   formInputs["filled out by"].value!=="" && 
-                   formInputs["filled out by"].value!==undefined))setRenderMore(true)
+                  (formInputs?.["filled out by"].value!=="Patient" &&
+                   formInputs?.["filled out by"].value!=="" && 
+                   formInputs?.["filled out by"].value!==undefined))setRenderMore(true)
             else setRenderMore(false)
       }
       function submitData(e){

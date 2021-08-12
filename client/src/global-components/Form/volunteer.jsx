@@ -625,7 +625,7 @@ function PatientIntakeForm (props) {
                                                 options={["yes","no"]}
                                                 header={<h2>Have you ever been convicted of a felony?*</h2>}
                                           />
-                                          <div></div>
+                                          <div className="input-wrapper"></div>
                                     </div>
                               </div>
                         </div>
