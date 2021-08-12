@@ -3,11 +3,10 @@ import {useUserState} from '../contexts/user'
 import API from "../../../utils/API"
 import devConsole from "../../../utils/devConsole"
 import Navbar from 'react-bootstrap/Navbar'
-import Tabs from 'react-bootstrap/Tabs'
-import Tab from 'react-bootstrap/Tab'
 import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
 import "../../../css/dashboard.css"
+import { Document, Page, Text, View, StyleSheet, PDFDownloadLink} from '@react-pdf/renderer';
 function Dashboard(props){
     const [userId,setUserID]=useUserState()
     const [userInfo,setUserInfo]=useState({})
@@ -103,6 +102,29 @@ function Dashboard(props){
                 </div>
                 <div className="doc">
                     <div>
+                        {
+                            (Object.keys(selected).length<1)?null:<PDFDownloadLink
+                        document={<Document>
+                            <Page >
+                            {Object.keys(selected).map(key=>{
+                            if (key!=="_id" && key!=="__v")
+                            if (selected[key]!=="" && 
+                                selected[key]!==null && 
+                                selected[key]!==undefined && 
+                                selected[key]?.length!==0){
+                                console.log(key,selected[key],typeof(selected[key]))
+                                return <Text>{key}:{`${selected[key]}`}</Text>
+                            }
+                            return null
+                        })}
+                            </Page>
+                        </Document>}
+                        fileName={`${selected?.["first name"]}_${selected?.["last name"]}_${selected?.["_id"]}.pdf`}
+                        >
+                        {({ blob, url, loading, error }) =>
+                                loading ? "Loading document..." : "Download Pdf"
+                            }
+                        </PDFDownloadLink>}
                         {Object.keys(selected).map(key=>{
                             if (key!=="_id" && key!=="__v")
                             if (selected[key]!=="" && 

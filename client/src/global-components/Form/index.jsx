@@ -19,7 +19,7 @@ function PatientIntakeForm (props) {
             "Thank you! We will get in touch with you shortly!"
       ]
       const totalSteps=titleArray.length-1
-      const [stepNum,setStepsCompleted]=useState(0)
+      const [stepNum,setStepsCompleted]=useState(5)
       const [formInputs,setFormInputs]=useState({})
       const [renderMore,setRenderMore]=useState(false)
       function upDateValidateFunctions(name,value,getErrorFromValue,setErrorMessage){
@@ -59,7 +59,7 @@ function PatientIntakeForm (props) {
       function previous(e){
             e.preventDefault()
             if (stepNum>0)setStepsCompleted(stepNum-1)
-            if(stepNum-1===4 && formInputs["Financial assistance"].value==="yes")setRenderMore(true)
+            if(stepNum-1===4 && formInputs["Financial assistance"]?.value==="yes")setRenderMore(true)
             else if(stepNum-1===0 && 
                   (formInputs["filled out by"].value!=="Patient" &&
                    formInputs["filled out by"].value!=="" && 
@@ -488,7 +488,7 @@ function PatientIntakeForm (props) {
                                                 options={["Active Patient","Survivor"]}
                                                 header={<h2>Select from below what describes you*</h2>}
                                           />
-
+                                          <div className="input-wrapper"></div>
                                     </div>
                               </div>
                               <div className="form-section">

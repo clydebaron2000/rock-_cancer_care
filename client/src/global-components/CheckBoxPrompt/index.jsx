@@ -12,7 +12,7 @@ function CheckboxPrompt(props) {
         parentEvent.target.name = props?.name
         delete parentEvent.target.value
         if (props?.options.length===1)
-            parentEvent.target.value = value[0]
+            parentEvent.target.value = (value[0])?(value[0]):null
         else 
             parentEvent.target.value=props?.options?.filter?.((_,i)=>value[i])
         devConsole.log("parent value:",parentEvent.target.value)

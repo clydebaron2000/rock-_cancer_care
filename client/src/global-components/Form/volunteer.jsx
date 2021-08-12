@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import Modal from 'react-modal'
+
 import Input from '../Input'
 import StepProgressBar from "./StepProgressBarGenerator"
 import '../../css/form.css'
@@ -119,6 +120,7 @@ function PatientIntakeForm (props) {
                               />}
                         </div>
                         <form className="form-content">
+                        
                         <div id = '0' className={(stepNum===0)?"active":(stepNum-1===0)?"prev":(stepNum+1===0)?"next":"ghost"}>
                               <div className="form-section">
                                     <h2 className="section-title">Name</h2>
@@ -733,6 +735,7 @@ function PatientIntakeForm (props) {
                         <div id='4' className={(stepNum===4)?"active":(stepNum-1===4)?"prev":(stepNum+1===1)?"next":"ghost"}>
                               <p>Thank you for your application. A Rock Cancer C.A.R.E. Ministry (RCC) Leader will review this application and contact the applicant.</p>
                         </div>
+                        
                         </form>
                         <div className="form-bottom">
                               {((stepNum===0 || stepNum === totalSteps) && !isGodMode)?<div></div>:
