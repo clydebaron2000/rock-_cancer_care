@@ -1,4 +1,4 @@
-import React, { useState} from "react"
+import { useState } from "react";
 // import { v4 as uuid } from "uuid"
 import "../../css/checkbox.css"
 import devConsole from "../../utils/devConsole"

@@ -1,4 +1,3 @@
-import React from 'react';
 import Form from '../../global-components/Form/volunteer'
 import '../../css/form.css';
 function volunteerIntakeForm () {

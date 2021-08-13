@@ -1,4 +1,3 @@
-import React from 'react';
 import Form from '../../global-components/Form'
 import '../../css/form.css';
 function PatientIntakeForm () {

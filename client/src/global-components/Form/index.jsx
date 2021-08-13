@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import {useState,lazy} from 'react'
 import Modal from 'react-modal'
 import Input from '../Input'
 import StepProgressBar from "./StepProgressBarGenerator"
@@ -6,7 +6,6 @@ import '../../css/form.css'
 import API from '../../utils/API.js'
 import options from './form'
 import devConsole from '../../utils/devConsole'
-
 function PatientIntakeForm (props) {
       const isGodMode=false
       const titleArray=[

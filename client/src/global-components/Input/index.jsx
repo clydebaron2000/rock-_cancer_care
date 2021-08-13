@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback} from 'react'
+import { useState, useEffect, useCallback } from 'react';
 // functions and other inputs
 import { v4 as uuid } from 'uuid'
 // import Autocomplete from "react-google-autocomplete"; // for addres autocompletion

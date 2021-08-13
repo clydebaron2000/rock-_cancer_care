@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import '../../css/main.css';
 import Navbar from '../../global-components/Navbar/Navbar'
 import Footer from '../../global-components/Footer/Footer'

@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import { useState, useEffect } from 'react';
 import "react-step-progress-bar/styles.css"
 // import { v4 as uuid } from 'uuid'
 import { ProgressBar, Step } from "react-step-progress-bar"
