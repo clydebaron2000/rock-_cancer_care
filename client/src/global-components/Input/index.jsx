@@ -131,7 +131,7 @@ function Input(props) {
                     )}
                 </select>
             )
-        } else if (type === "address") { // dont wanna use monney yet :)
+        } else if (type === "address") { // don't wanna use money yet :)
             // center_el=(
             //     <Autocomplete 
             //         apiKey={process.env.REACT_APP_GOOGLE_API_KEY}

@@ -63,7 +63,7 @@ function PatientIntakeForm (props) {
                   setStepsCompleted(stepNum+1)
             }
             else if (e.target.innerText==="submit"){ 
-                  // console.log("submistion to server")
+                  // console.log("submission to server")
                   // setStepsCompleted(stepNum+1)
                   devConsole.log(formInputs)
                   let data={...formInputs}
@@ -134,7 +134,7 @@ function PatientIntakeForm (props) {
                                                 required={true}
                                                 validate={value=>{
                                                       if (value.length<2)
-                                                            return "First name must be at least 2 chatacters"
+                                                            return "First name must be at least 2 characters"
                                                 }}
                                                 name="first name"
                                                 type="text"
@@ -149,7 +149,7 @@ function PatientIntakeForm (props) {
                                                 required={true}
                                                 validate={value=>{
                                                       if (value.length<2)
-                                                            return "Last name must be at least 2 chatacters"
+                                                            return "Last name must be at least 2 characters"
                                                 }}
                                                 name="last name"
                                                 type="text"
@@ -169,10 +169,10 @@ function PatientIntakeForm (props) {
                                                 required={true}
                                                 validate={value=>{
                                                       if (value.length<2)
-                                                            return "Street address must be at least 2 chatacters"
+                                                            return "Street address must be at least 2 characters"
                                                 }}
                                                 name="street address"
-                                                type="adress"
+                                                type="address"
                                                 header="Street Address"
                                           />
                                           <Input
@@ -184,7 +184,7 @@ function PatientIntakeForm (props) {
                                                 required={true}
                                                 validate={value=>{
                                                       if (value.length<2)
-                                                            return "Zip must be at least 2 chatacters"
+                                                            return "Zip must be at least 2 characters"
                                                 }}
                                                 name="zip"
                                                 type="zip"
@@ -371,7 +371,7 @@ function PatientIntakeForm (props) {
                                                 required={true}
                                                 validate={value=>{
                                                       if (value.length<2)
-                                                            return "First name must be at least 2 chatacters"
+                                                            return "First name must be at least 2 characters"
                                                 }}
                                                 name="reference first name"
                                                 type="text"
@@ -386,7 +386,7 @@ function PatientIntakeForm (props) {
                                                 required={true}
                                                 validate={value=>{
                                                       if (value.length<2)
-                                                            return "Last name must be at least 2 chatacters"
+                                                            return "Last name must be at least 2 characters"
                                                 }}
                                                 name="reference last name"
                                                 type="text"
@@ -406,10 +406,10 @@ function PatientIntakeForm (props) {
                                                 required={true}
                                                 validate={value=>{
                                                       if (value.length<2)
-                                                            return "Street address must be at least 2 chatacters"
+                                                            return "Street address must be at least 2 characters"
                                                 }}
                                                 name="reference street address"
-                                                type="adress"
+                                                type="address"
                                                 header="Street Address"
                                           />
                                           <Input
@@ -421,7 +421,7 @@ function PatientIntakeForm (props) {
                                                 required={true}
                                                 validate={value=>{
                                                       if (value.length<2)
-                                                            return "Zip must be at least 2 chatacters"
+                                                            return "Zip must be at least 2 characters"
                                                 }}
                                                 name="reference zip"
                                                 type="zip"
@@ -495,7 +495,7 @@ function PatientIntakeForm (props) {
                                                 required={true}
                                                 // validate={value=>{
                                                 //       if (value.length<2)
-                                                //             return "First name must be at least 2 chatacters"
+                                                //             return "First name must be at least 2 characters"
                                                 // }}
                                                 name="been a christian"
                                                 type="text"
@@ -508,10 +508,6 @@ function PatientIntakeForm (props) {
                                                 onBlur={onChange}
                                                 displayNone={stepNum!==2}
                                                 required={true}
-                                                // validate={value=>{
-                                                //       if (value.length<2)
-                                                //             return "Last name must be at least 2 chatacters"
-                                                // }}
                                                 name="rock attendance"
                                                 type="text"
                                                 header="How long have you been attending the Rock?"
@@ -707,7 +703,7 @@ function PatientIntakeForm (props) {
                                                 required={true}
                                                 name="describe a difficult situation question"
                                                 type="textarea"
-                                                header={<h2>Please describe a situation or eventthat was difficultfor you to observe. Please share why it was difficult
+                                                header={<h2>Please describe a situation or event that was difficult for you to observe. Please share why it was difficult
                                                       and how you reacted.*</h2>}
                                           />
                                     </div>

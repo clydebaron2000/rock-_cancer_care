@@ -6,16 +6,15 @@ import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
 import "../../../css/dashboard.css"
-import { Document, Page, Text, View, StyleSheet, PDFDownloadLink} from '@react-pdf/renderer';
+import { Document, Page, Text, PDFDownloadLink} from '@react-pdf/renderer'
 function Dashboard(props){
     const [userId,setUserID]=useUserState()
     const [userInfo,setUserInfo]=useState({})
     const [selected,setSelected]=useState({})
-    const [searchType,setSearchtype]=useState("patient")
+    const [searchType,setSearchType]=useState("patient")
     const [searchResults,setSearchResults]=useState([])
     const [nameSearch,setNameSearch]=useState("")
-
-    useEffect(_=>{
+    useEffect(_=>{ 
         devConsole.log("userID:",userId)
             API.findUserById(userId).then(res=>{
                 setUserInfo(res.data)
@@ -26,7 +25,7 @@ function Dashboard(props){
                 devConsole.error(err)
                 setUserID("")
             })
-    },[userId])
+    },[userId,setUserID])
     useEffect(_=>{
         if(searchType==="patient"){
             API.getAllPatients((nameSearch==="")?null: { "$expr": {
@@ -70,12 +69,12 @@ function Dashboard(props){
                 <Nav.Link >Volunteer Directory</Nav.Link> */}
                     <Nav.Item>
                         <Nav.Link eventKey="#patients"
-                        onClick={_=>setSearchtype("patient")}
+                        onClick={_=>setSearchType("patient")}
                         >Patients</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
                         <Nav.Link eventKey="#volunteers"
-                        onClick={_=>setSearchtype("volunteer")}
+                        onClick={_=>setSearchType("volunteer")}
                         >Volunteers</Nav.Link>
                     </Nav.Item>
                 </Nav>
