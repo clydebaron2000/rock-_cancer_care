@@ -20,7 +20,7 @@ function RadioPrompt(props) {
                     const id= uuid().slice(0,10)
                     return <div className="radio-wrapper" key={i}>
                         <input
-                            key={uuid()}
+                            key={uuid().slice(0,10)}
                             type="radio"
                             id={id}
                             value={option}

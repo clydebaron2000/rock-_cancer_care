@@ -12,7 +12,7 @@ import devConsole from '../../utils/devConsole'
 
 function Input(props) {
     // prop division to avoid usefEffect re-renders
-    const id = props?.id || uuid()
+    const id = props?.id || uuid().slice(0,10)
     // const id = null
     const name = props.name
     const parentValidation=props?.parentValidation
