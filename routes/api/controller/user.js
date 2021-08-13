@@ -23,25 +23,30 @@ module.exports = {
     create: async(req,res) => { 
         console.log("create")
         console.log(req.body)
-        console.log(req.query)
+        // console.log(req.query)
         try{
             const username = req.body.username
             const password = req.body.password
+            console.log("u:",username)
+            console.log("p:",password)
+            if (username === undefined || password === undefined ||
+                username === "" || password === ""){
+                    console.log("none")
+                    return res.status(422).json("username and password required")
+            }
+            console.log("finding")
             const found = await col.findOne({username:username}).exec()
             console.log(found)
-            if (found!=={})return res.status(409).json("username exists in database")
+            if (found!==null && found?.username !== username)return res.status(409).json("username exists in database")
             console.log("creating")
             // TODO comment out after testing
             req.body.authorization="admin"
             // req.body.authorization="manager"
             req.body.change_permissions=false
-            if (username === undefined || password === undefined ||
-                username === "" || password === "")
-                return res.status(422).json("username and password required")
             req.body.password = await bcyrpt.hash(password,10)
             col
                 .create(req.body)
-                .then(model => res.res(201).json(model))
+                .then(model => res.status(201).json(model["_id"]))
                 .catch(err => res.status(422).json(err))
         }catch{
             res.status(500).send()

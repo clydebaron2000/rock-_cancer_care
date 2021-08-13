@@ -11,7 +11,7 @@ const API = {
     },
     getAllPatients: function (body){
         devConsole.log("getAllPatients") 
-        devConsole.log(body) 
+        // devConsole.log(body) 
         return axios.get(base + 'patient/all',{params:body})
     },
     createPatient: function (body){
@@ -66,7 +66,7 @@ const API = {
 // USER
     createUser: (body)=>{
         devConsole.log("create")
-      return axios.post(base+'user', body)  
+      return axios.post(base+'user/admin', body)  
     },
     verifyUser: (body)=>{
       devConsole.log("verify")
@@ -76,6 +76,10 @@ const API = {
     getAllUsers:()=>{
       devConsole.log("get all users")
       return axios.get(base+'user/admin')
+    },
+    findUserById:(id)=>{
+      devConsole.log("findUserByID")
+      return axios.get(base+'user/admin?_id=' + id)
     },
     deleteById:(id)=>{
       devConsole.log("delete")

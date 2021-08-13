@@ -13,7 +13,7 @@ const volunteerSchema = new Schema({
     'gender': {type: String, required: true},
     'phone': {type: String, required: true},
     'email': {type: String, required: true},
-    'preferred point of contact': {type: String, required: true},
+    'preferred point of contact': {type: [String], required: true},
     'best time to contact': {type: String, required: true},
     'financial occupation':{type:String,required:true},
     'employer':{type:String},

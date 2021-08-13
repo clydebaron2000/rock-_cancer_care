@@ -8,6 +8,7 @@ import PhoneInput from './PhoneInput';
 import '../../css/inputs.css'
 import MultiSelect from './MultiSelect'
 import CheckboxPrompt from '../CheckBoxPrompt';
+import devConsole from '../../utils/devConsole'
 
 function Input(props) {
     // prop division to avoid usefEffect re-renders
@@ -66,7 +67,7 @@ function Input(props) {
     function onChange(e) {
         e?.preventDefault()
         // e.target.value=value
-        // console.log("CHANGE", e.target.value)
+        devConsole.log("CHANGE", e.target.value)
         setValue(e.target.value)
         setErrorMessage(getErrorFromValue(e.target.value))
         let parentEvent = createEventForParent(e)

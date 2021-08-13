@@ -26,6 +26,7 @@ function PatientIntakeForm (props) {
             let form = formInputs
             // console.log(name+" updating with ",value)
             form[name]={
+                  section:stepNum,
                   value:value,
                   getErrorFromValue:(value) => getErrorFromValue(value),
                   setErrorMessage:(err) => setErrorMessage(err)
@@ -55,10 +56,25 @@ function PatientIntakeForm (props) {
             // debugger
             if(hasAnyFalseValue === false || isGodMode) submitData(e)
       }
+      function previous(e){
+            e.preventDefault()
+            if (stepNum>0)setStepsCompleted(stepNum-1)
+            if(stepNum-1===4 && formInputs?.["Financial assistance"]?.value==="yes")setRenderMore(true)
+            else if(stepNum-1===0 && 
+                  (formInputs?.["filled out by"].value!=="Patient" &&
+                   formInputs?.["filled out by"].value!=="" && 
+                   formInputs?.["filled out by"].value!==undefined))setRenderMore(true)
+            else setRenderMore(false)
+      }
       function submitData(e){
             e.preventDefault()
-            setRenderMore(false)
             if (e.target.innerText==="next") {
+                  if(stepNum+1===4 && formInputs["Financial assistance"]?.value==="yes")setRenderMore(true)
+                  else if(stepNum+1===0 && 
+                       (formInputs["filled out by"].value!=="patient" &&
+                        formInputs["filled out by"].value!=="" && 
+                        formInputs["filled out by"].value!==undefined))setRenderMore(true)
+                  else setRenderMore(false)
                   // console.log("next step!")
                   setStepsCompleted(stepNum+1)
             }
@@ -85,11 +101,6 @@ function PatientIntakeForm (props) {
             let form = formInputs
             if (form[name] === undefined)form[name]={value:value,section:stepNum}
             else {
-                  // console.assert(form[name]["value"]!==value,"form value is the same "+form[name]["value"])
-                  // console.log(name)
-                  // console.log(form[name])
-                  // console.log(form[name]["value"])
-                  // console.log(value)
                   if (form[name]["value"]!==value) {
                         // console.log(name+" changed")
                         form[name]["value"]=value
@@ -248,11 +259,10 @@ function PatientIntakeForm (props) {
                                                 type="radio"
                                                 options={
                                                       ["male",
-                                                      "female",
-                                                      "other",
+                                                      "female"
                                                       ]
                                                 }
-                                                header={<h2>Gender*</h2>}
+                                                header={<h2>Gender (Biological)*</h2>}
                                           />
                                     </div>
                               </div>
@@ -478,7 +488,7 @@ function PatientIntakeForm (props) {
                                                 options={["Active Patient","Survivor"]}
                                                 header={<h2>Select from below what describes you*</h2>}
                                           />
-
+                                          <div className="input-wrapper"></div>
                                     </div>
                               </div>
                               <div className="form-section">
@@ -604,7 +614,7 @@ function PatientIntakeForm (props) {
                               </div>
                         </div>
 
-                        <div id='2' className={(stepNum===2)?"active":(stepNum-1===2)?"prev":(stepNum+1===1)?"next":"ghost"}>
+                        <div id='2' className={(stepNum===2)?"active":(stepNum-1===2)?"prev":(stepNum+1===2)?"next":"ghost"}>
                               <div className="form-section">
                                     <h2 className="section-title">Name</h2>
                                     <div className="section-inputs">
@@ -708,7 +718,7 @@ function PatientIntakeForm (props) {
                               </div>
                         </div>
  
-                        <div id='3' className={(stepNum===3)?"active":(stepNum-1===3)?"prev":(stepNum+1===1)?"next":"ghost"}>
+                        <div id='3' className={(stepNum===3)?"active":(stepNum-1===3)?"prev":(stepNum+1===3)?"next":"ghost"}>
                               <div className="form-section">
                                     {/* <h2 className="section-title"></h2> */}
                                     <div className="section-inputs">
@@ -760,7 +770,7 @@ function PatientIntakeForm (props) {
                                     </div>
                               </div>
                         </div>
-                        <div id='4' className={(stepNum===4)?"active":(stepNum-1===4)?"prev":(stepNum+1===1)?"next":"ghost"}>
+                        <div id='4' className={(stepNum===4)?"active":(stepNum-1===4)?"prev":(stepNum+1===4)?"next":"ghost"}>
                               <div className="form-section">
                                     {/* <h2 className="section-title"></h2> */}
                                     <div className="section-inputs">
@@ -833,7 +843,7 @@ function PatientIntakeForm (props) {
                                                             // }}
                                                             name="financial services needed"
                                                             type="checkbox"
-                                                            options={options.services}
+                                                            options={options.financialServices}
                                                             header={<h2>What type of financial services do you need?*</h2>}
                                                       />
                                                 </div>
@@ -883,7 +893,7 @@ function PatientIntakeForm (props) {
                               ):null} 
                         </div>
                                                             
-                        <div id='5' className={(stepNum===5)?"active":(stepNum-1===5)?"prev":(stepNum+1===1)?"next":"ghost"}>
+                        <div id='5' className={(stepNum===5)?"active":(stepNum-1===5)?"prev":(stepNum+1===5)?"next":"ghost"}>
                               <div className="form-section">
                                     {/* <h2 className="section-title"></h2> */}
                                     <p>In consideration of my reciept of Rock Cancer Ministry Funds (herin RCC), the undersigned applicant (or gaurdian, if applicable) understands and agrees that:
@@ -921,16 +931,14 @@ function PatientIntakeForm (props) {
                                     </div>
                               </div>
                         </div>
-                        <div id='7' className={(stepNum === totalSteps)?"active":(stepNum-1===7)?"prev":(stepNum+1===5)?"next":"ghost"}>
+                        <div id='6' className={(stepNum === totalSteps)?"active":(stepNum-1===totalSteps)?"prev":(stepNum+1===totalSteps)?"next":"ghost"}>
                               <p>Thank you for your application. A Rock Cancer C.A.R.E. Ministry (RCC) Leader will review this application and contact the applicant. Funds are limited and based on availability. All information is strictly confidential and is intended for RCC use only except as noted in the applicant acknowledgment section.</p>
                               <p>Please email a copy of the <a href='https://rockcancercare.org/'>intake signature form</a> to <a href="mailto:example@rockcancercare.org">example@rockcancercare.org</a> and we will process your application shortly.</p>
                         </div>
                         </form>
                         <div className="form-bottom">
                               {((stepNum===0 || stepNum === totalSteps) && !isGodMode)?<div></div>:
-                                    <button className="minor-button" onClick={_=>{
-                                          _.preventDefault()
-                                          if (stepNum>0)setStepsCompleted(stepNum-1)}}>
+                                    <button className="minor-button" onClick={previous}>
                                                 prev
                                     </button>
                               }

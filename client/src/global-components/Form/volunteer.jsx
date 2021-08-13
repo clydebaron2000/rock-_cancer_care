@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import Modal from 'react-modal'
+
 import Input from '../Input'
 import StepProgressBar from "./StepProgressBarGenerator"
 import '../../css/form.css'
@@ -23,7 +24,9 @@ function PatientIntakeForm (props) {
       function upDateValidateFunctions(name,value,getErrorFromValue,setErrorMessage){
             let form = formInputs
             // console.log(name+" updating with ",value)
+            // devConsole.log(form[name])
             form[name]={
+                  section:stepNum,
                   value:value,
                   getErrorFromValue:(value) => getErrorFromValue(value),
                   setErrorMessage:(err) => setErrorMessage(err)
@@ -34,9 +37,9 @@ function PatientIntakeForm (props) {
             e?.preventDefault()
             let hasAnyFalseValue = false
             devConsole.log("CHECKING INPUTS")
-            // console.log(formInputs)
+            devConsole.log(formInputs) 
             for (const key in formInputs){
-                  if(formInputs[key].section===stepNum){
+                  if(formInputs[key].section === stepNum){
                         let value = formInputs[key].value
                         devConsole.log(key,value)
                         devConsole.log(formInputs[key])
@@ -75,7 +78,8 @@ function PatientIntakeForm (props) {
             }
       }
       function onChange(e){
-            // console.assert(e!==undefined,"e undefined")
+            devConsole.assert(e!==undefined,"e undefined")
+            devConsole.log(e.target.value)
             let name = e.target.name
             if (name === undefined || name === "")return
             let value = e.target.value
@@ -85,8 +89,8 @@ function PatientIntakeForm (props) {
                   // console.assert(form[name]["value"]!==value,"form value is the same "+form[name]["value"])
                   // console.log(name)
                   // console.log(form[name])
-                  // console.log(form[name]["value"])
-                  // console.log(value)
+                  // console.log(form[name]["value"]) 
+                  devConsole.log(value)
                   if (form[name]["value"]!==value) {
                         // console.log(name+" changed")
                         form[name]["value"]=value
@@ -116,6 +120,7 @@ function PatientIntakeForm (props) {
                               />}
                         </div>
                         <form className="form-content">
+                        
                         <div id = '0' className={(stepNum===0)?"active":(stepNum-1===0)?"prev":(stepNum+1===0)?"next":"ghost"}>
                               <div className="form-section">
                                     <h2 className="section-title">Name</h2>
@@ -217,7 +222,7 @@ function PatientIntakeForm (props) {
                                                 options={
                                                       ["male",
                                                       "female",
-                                                      "other",
+                                                      // "other",
                                                       ]
                                                 }
                                                 header={<h2>Gender*</h2>}
@@ -542,7 +547,7 @@ function PatientIntakeForm (props) {
                                                 required={true}
                                                 name="program selection"
                                                 type="checkbox"
-                                                options={["Leaership Role","Rock Kidz",...options.services]}
+                                                options={["Leadership Role","Rock Kidz",...options.services]}
                                                 header={<h2>In which areas are you interested in serving?*</h2>}
                                           />
                                     </div>
@@ -620,7 +625,7 @@ function PatientIntakeForm (props) {
                                                 options={["yes","no"]}
                                                 header={<h2>Have you ever been convicted of a felony?*</h2>}
                                           />
-                                          <div></div>
+                                          <div className="input-wrapper"></div>
                                     </div>
                               </div>
                         </div>
@@ -730,6 +735,7 @@ function PatientIntakeForm (props) {
                         <div id='4' className={(stepNum===4)?"active":(stepNum-1===4)?"prev":(stepNum+1===1)?"next":"ghost"}>
                               <p>Thank you for your application. A Rock Cancer C.A.R.E. Ministry (RCC) Leader will review this application and contact the applicant.</p>
                         </div>
+                        
                         </form>
                         <div className="form-bottom">
                               {((stepNum===0 || stepNum === totalSteps) && !isGodMode)?<div></div>:
