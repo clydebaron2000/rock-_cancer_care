@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback } from 'react';
 // functions and other inputs
 import { v4 as uuid } from 'uuid'
-// import Autocomplete from "react-google-autocomplete"; // for addres autocompletion
-// cusotm components
+// import Autocomplete from "react-google-autocomplete"; // for address autocompletion
+// custom components
 import RadioPrompt from '../RadioPrompt';
 import PhoneInput from './PhoneInput';
 import '../../css/inputs.css'
@@ -11,7 +11,7 @@ import CheckboxPrompt from '../CheckBoxPrompt';
 import devConsole from '../../utils/devConsole'
 
 function Input(props) {
-    // prop division to avoid usefEffect re-renders
+    // prop division to avoid useEffect re-renders
     const id = props?.id || uuid().slice(0,10)
     // const id = null
     const name = props.name
