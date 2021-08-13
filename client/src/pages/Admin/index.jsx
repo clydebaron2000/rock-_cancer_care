@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react';
 import Login from './pages/login'
 import Dashboard from './pages/dashboard'
 import {useUserState} from "./contexts/user"

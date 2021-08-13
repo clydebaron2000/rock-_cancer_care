@@ -1,5 +1,5 @@
-import React,{useContext, useState} from 'react'
-const UserContext = React.createContext()
+import { createContext, useContext, useState } from 'react';
+const UserContext = createContext()
  
 export function useUserState(){
     const context = useContext(UserContext)
