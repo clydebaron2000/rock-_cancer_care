@@ -1,4 +1,4 @@
-import React from "react";
+import React,{lazy,Suspense} from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -7,14 +7,15 @@ import {
 import './css/main.css'
 import { UserProvider } from "./pages/Admin/contexts/user";
 // pages 
-import Home from "./pages/Home"
-import PatientForm from "./pages/PatientIntakeForm/"
-import Admin from "./pages/Admin/"
-import NotFound from "./pages/NotFound/"
-import VolunteerForm from "./pages/VolunteerIntakeForm"
+const Home = lazy(_=> import("./pages/Home"))
+const PatientForm = lazy(_=> import("./pages/PatientIntakeForm/"))
+const Admin = lazy(_=> import("./pages/Admin/"))
+const NotFound = lazy(_=> import("./pages/NotFound/"))
+const VolunteerForm = lazy(_=> import("./pages/VolunteerIntakeForm"))
 function App() {
   return (
     <Router>
+      <Suspense fallback={<div>Loading...</div>}>
       <Switch>
         <Route path="/" exact component={Home} />
         {/* <Route path="/" exact component={Admin} /> */}
@@ -25,6 +26,7 @@ function App() {
         </UserProvider>
         <Route component={NotFound}/> 
       </Switch>
+      </Suspense>
     </Router>
   )
 }
