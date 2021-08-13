@@ -79,7 +79,7 @@ function PatientIntakeForm (props) {
                   setStepsCompleted(stepNum+1)
             }
             else if (e.target.innerText==="submit"){ 
-                  // console.log("submistion to server")
+                  // console.log("submission to server")
                   // setStepsCompleted(stepNum+1)
                   devConsole.log(formInputs)
                   let data={...formInputs}
@@ -172,7 +172,7 @@ function PatientIntakeForm (props) {
                                                 required={true}
                                                 validate={value=>{
                                                       if (value.length<2)
-                                                            return "First name must be at least 2 chatacters"
+                                                            return "First name must be at least 2 characters"
                                                 }}
                                                 name="first name"
                                                 type="text"
@@ -187,7 +187,7 @@ function PatientIntakeForm (props) {
                                                 required={true}
                                                 validate={value=>{
                                                       if (value.length<2)
-                                                            return "Last name must be at least 2 chatacters"
+                                                            return "Last name must be at least 2 characters"
                                                 }}
                                                 name="last name"
                                                 type="text"
@@ -207,10 +207,10 @@ function PatientIntakeForm (props) {
                                                 required={true}
                                                 validate={value=>{
                                                       if (value.length<2)
-                                                            return "Street address must be at least 2 chatacters"
+                                                            return "Street address must be at least 2 characters"
                                                 }}
                                                 name="street address"
-                                                type="adress"
+                                                type="address"
                                                 header="Street Address"
                                           />
                                           <Input
@@ -222,7 +222,7 @@ function PatientIntakeForm (props) {
                                                 required={true}
                                                 validate={value=>{
                                                       if (value.length<2)
-                                                            return "Zip must be at least 2 chatacters"
+                                                            return "Zip must be at least 2 characters"
                                                 }}
                                                 name="zip"
                                                 type="zip"
@@ -380,7 +380,7 @@ function PatientIntakeForm (props) {
                                                             required={true}
                                                             validate={value=>{
                                                                   if (value.length<2)
-                                                                        return "First name must be at least 2 chatacters"
+                                                                        return "First name must be at least 2 characters"
                                                             }}
                                                             name="filler first name"
                                                             type="text"
@@ -395,7 +395,7 @@ function PatientIntakeForm (props) {
                                                             required={true}
                                                             validate={value=>{
                                                                   if (value.length<2)
-                                                                        return "Last name must be at least 2 chatacters"
+                                                                        return "Last name must be at least 2 characters"
                                                             }}
                                                             name="filler last name"
                                                             type="text"
@@ -627,7 +627,7 @@ function PatientIntakeForm (props) {
                                                 required={true}
                                                 validate={value=>{
                                                       if (value.length<2)
-                                                            return "First name must be at least 2 chatacters"
+                                                            return "First name must be at least 2 characters"
                                                 }}
                                                 name="emergency contact first name"
                                                 type="text"
@@ -642,7 +642,7 @@ function PatientIntakeForm (props) {
                                                 required={true}
                                                 validate={value=>{
                                                       if (value.length<2)
-                                                            return "Last name must be at least 2 chatacters"
+                                                            return "Last name must be at least 2 characters"
                                                 }}
                                                 name="emergency contact last name"
                                                 type="text"
@@ -662,10 +662,10 @@ function PatientIntakeForm (props) {
                                                 required={true}
                                                 validate={value=>{
                                                       if (value.length<2)
-                                                            return "Street address must be at least 2 chatacters"
+                                                            return "Street address must be at least 2 characters"
                                                 }}
                                                 name="emergency contact street address"
-                                                type="adress"
+                                                type="address"
                                                 header="Street Address"
                                           />
                                           <Input
@@ -677,7 +677,7 @@ function PatientIntakeForm (props) {
                                                 required={true}
                                                 validate={value=>{
                                                       if (value.length<2)
-                                                            return "Zip must be at least 2 chatacters"
+                                                            return "Zip must be at least 2 characters"
                                                 }}
                                                 name="emergency contact zip"
                                                 type="zip"
@@ -738,7 +738,7 @@ function PatientIntakeForm (props) {
                               </div>
                               <div className="form-section">
                                     <h2 className="section-title">Spiritual beliefs</h2>
-                                    <p>Please let us know what services you're interested in and we will follow up with you on availability and next steps. For a description of these services please visit the <a href="https://rockcancercare.org/our-programs/">Our Programs</a> page. You can always contact us if you become interesed at a later time.</p>
+                                    <p>Please let us know what services you're interested in and we will follow up with you on availability and next steps. For a description of these services please visit the <a href="https://rockcancercare.org/our-programs/">Our Programs</a> page. You can always contact us if you become interested at a later time.</p>
                                     <div className="section-inputs">
                                           <Input
                                                 value={formInputs["religious beliefs"]?.value} 
@@ -749,7 +749,7 @@ function PatientIntakeForm (props) {
                                                 // required={true}
                                                 validate={value=>{
                                                       if (value.length<2)
-                                                            return "religious beliefs must be at least 2 chatacters"
+                                                            return "religious beliefs must be at least 2 characters"
                                                 }}
                                                 name="religious beliefs"
                                                 type="text"
@@ -802,7 +802,7 @@ function PatientIntakeForm (props) {
                                                             required={true}
                                                             validate={value=>{
                                                                   if (value.length<2)
-                                                                        return "First name must be at least 2 chatacters"
+                                                                        return "First name must be at least 2 characters"
                                                             }}
                                                             name="financial income level"
                                                             type="select"
@@ -818,7 +818,7 @@ function PatientIntakeForm (props) {
                                                             required={true}
                                                             validate={value=>{
                                                                   if (value.length<2)
-                                                                        return "First name must be at least 2 chatacters"
+                                                                        return "First name must be at least 2 characters"
                                                             }}
                                                             name="financial income source"
                                                             type="select"
@@ -896,7 +896,7 @@ function PatientIntakeForm (props) {
                         <div id='5' className={(stepNum===5)?"active":(stepNum-1===5)?"prev":(stepNum+1===5)?"next":"ghost"}>
                               <div className="form-section">
                                     {/* <h2 className="section-title"></h2> */}
-                                    <p>In consideration of my reciept of Rock Cancer Ministry Funds (herin RCC), the undersigned applicant (or gaurdian, if applicable) understands and agrees that:
+                                    <p>In consideration of my receipt of Rock Cancer Ministry Funds (herein RCC), the undersigned applicant (or guardian, if applicable) understands and agrees that:
                                     </p>
                                     <ul style={{paddingLeft: "20px"}}>
                                           <li>
@@ -906,7 +906,7 @@ function PatientIntakeForm (props) {
                                           RCC may use applicant’s biographical information in its promotional and/or marketing material
                                           </li>
                                           <li>
-                                          RCC may disclose and release to the public and government entities, the amount of funds recieved, the use of funds, and other similar and relevant information
+                                          RCC may disclose and release to the public and government entities, the amount of funds received, the use of funds, and other similar and relevant information
                                           </li>
                                           <li>
                                           The applicant shall indemnify and hold harmless RCC from any liability of funds which the grant may be used
