@@ -19,7 +19,7 @@ function PatientIntakeForm (props) {
             "Thank you! We will get in touch with you shortly!"
       ]
       const totalSteps=titleArray.length-1
-      const [stepNum,setStepsCompleted]=useState(5)
+      const [stepNum,setStepsCompleted]=useState(0)
       const [formInputs,setFormInputs]=useState({})
       const [renderMore,setRenderMore]=useState(false)
       function upDateValidateFunctions(name,value,getErrorFromValue,setErrorMessage){
