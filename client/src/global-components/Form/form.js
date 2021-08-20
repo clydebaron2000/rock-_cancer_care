@@ -25,16 +25,14 @@ const form={
         "shortness of breath",
     ],
     services:[
-        "Cancer Buddy",
         "Education and Awareness",
-        "Grocery Shopping (using your funds)",
+        "Grocery Shopping",
         "Hospital Visitation",
         "Meal Delivery",
         "Peer Support for Survivors",
         "Pet Walking",
         "Prayer & Spiritual Support",
         "Support Group",
-        "Transportation to Treatment",
         "Not sure yet",
     ],
     incomeLevel:[
