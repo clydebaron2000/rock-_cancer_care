@@ -1,0 +1,31 @@
+.document {
+  padding: 96px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.document h1 {
+  text-decoration: underline;
+  text-decoration-color: #8865ac ;
+  width: fill;
+}
+
+@media (prefers-color-scheme: dark) {
+  .document h1 {
+    text-decoration-color: #8865ac ;
+  }
+}
+
+.document * {
+  padding: 0 10px;
+}
+
+.document.preview {
+  padding: 15px;
+}
+
+.hide-print .document {
+  display: none;
+  margin: none;
+}

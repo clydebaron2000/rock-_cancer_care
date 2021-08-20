@@ -4,6 +4,7 @@ import {Table, TableBody, TableHeader, TableCell} from "@david.kucsai/react-pdf-
 import ReactToPrint from "react-to-print";
 import {useReactToPrint} from "react-to-print";
 import {forwardRef, useRef} from "react";
+import "../../../css/pdf.css"
 const docStyles= StyleSheet.create({
     page:{
         padding: "1in", 
@@ -130,7 +131,7 @@ const Info= forwardRef((props,ref)=>{
     const data=props?.data||{}
     if (Object.keys(data).length<=0)return <></>
     return (
-        <div  className="document" ref={ref} {...props}>
+        <div {...props} className={"document "+props.className} ref={ref} >
             <h1>{data["last name"]}, {data["first name"]}</h1>
             <div>
                 <h2>Personal info</h2>
@@ -195,9 +196,6 @@ const Info= forwardRef((props,ref)=>{
                 {(data?.["program selection"]===undefined)?null:<h2>Program selection & prayer</h2>}
                 {(data?.["program selection"]===undefined)?null:<div>{"program selection"}: <span>{data["program selection"]}</span></div>}
                 {(data?.["religious beliefs"]===undefined)?null:<div>{"religious beliefs"}: <span>{data["religious beliefs"]}</span></div>}
-                {(data?.["open to prayer"]===undefined)?null:<div>{"open to prayer"}: <span>{data["religious beliefs"]}</span></div>}
-            </div>
-            <div>
                 {(data?.["been a christian"]===undefined)?null:<h2>Faith</h2>}
                 {(data?.["been a christian"]===undefined)?null:<div>{"been a christian"}: <span>{data["been a christian"]}</span></div>}
                 {(data?.["rock attendance"]===undefined)?null:<div>{"rock attendance"}: <span>{data["rock attendance"]}</span></div>}
@@ -244,7 +242,11 @@ export function ToPrint(props){
                 trigger={_=><button onClick={onClick}>print</button>}
                 content={_=>ref.current}
             />
-            <Info ref={ref} {...props} className="preview"/>
+            <div className="hide-print">
+                <Info ref={ref} {...props}/>
+            </div>
+            <Info {...props} className="preview"/>
+            
         </>
     )
 }

@@ -1,0 +1,26 @@
+@import 'params/theme_colors';
+@import 'params/breakpoints';
+.document{
+    padding: 96px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    h1{
+        text-decoration: underline;
+        @include theme('text-decoration-color',$color1);
+        width: fill;
+    }
+    *{
+        padding: 0 10px;
+    }
+} 
+.document.preview{
+    padding: 15px;
+}
+
+.hide-print{
+    .document{
+        display: none;
+        margin:none;
+    }
+}

@@ -8,7 +8,7 @@ function Admin(){
     const [value,setValue]= useUserState()
     useEffect(_=>{
         if (value===undefined){
-            console.log("reset")
+            devConsole.log("reset")
             setValue("6111cb2d9fb9be3d9c3b2dc5")
         }
         devConsole.log("value",value)
