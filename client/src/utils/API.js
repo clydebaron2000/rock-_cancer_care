@@ -19,18 +19,18 @@ const API = {
         // comment below for testing
         // body = patient
         body.isCheckedByAdmin = false
-        body.lastModfied = new Date()
+        body.lastModified = new Date()
         return axios.post(base + 'patient', body)
     },
     createPatientTest: function (){
         devConsole.log('create patient test')
         let body = patient
         body.isCheckedByAdmin = false
-        body.lastModfied = new Date()
+        body.lastModified = new Date()
         return axios.post(base + 'patient', body)
     },
     updatePatient: function(body){
-        body.lastModfied = new Date()
+        body.lastModified = new Date()
         return axios.put(base + 'patient/' + body._id,body)
     },
     // Volunteer
@@ -49,18 +49,18 @@ const API = {
         // comment below for testing
         // body = volunteer
         body.isCheckedByAdmin = false
-        body.lastModfied = new Date()
+        body.lastModified = new Date()
         return axios.post(base + 'volunteer', body)
     },
     createVolunteerTest: function (){
         devConsole.log('create volunteer test')
         let body = volunteer
         body.isCheckedByAdmin = false
-        body.lastModfied = new Date()
+        body.lastModified = new Date()
         return axios.post(base + 'volunteer', body)
     },
     updateVolunteer: function(body){
-        body.lastModfied = new Date()
+        body.lastModified = new Date()
         return axios.put(base + 'Volunteer/' + body._id,body)
     },
 // USER

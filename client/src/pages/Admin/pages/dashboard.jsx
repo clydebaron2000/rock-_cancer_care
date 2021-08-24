@@ -7,7 +7,7 @@ import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
 import "../../../css/dashboard.css"
 // import { Document, Page, Text, PDFDownloadLink, PDFViewer} from '@react-pdf/renderer'
-import {PDFView,PDFDownload, ToPrint} from "./pdf.jsx"
+import {PDFFromDataVolunteerPatient} from "./pdf.jsx"
 function Dashboard(props){
     const [userId,setUserID]=useUserState()
     const [userInfo,setUserInfo]=useState({})
@@ -101,10 +101,14 @@ function Dashboard(props){
                     </div>
                 </div>
                 <div className="doc">
-                    <div>
-                        {<ToPrint data={selected}/>}                        
-                    </div>
+                    <button className='print-btn action-button'
+                        onClick={_=>window.print()}
+                    >
+                        print
+                    </button>
+                    <PDFFromDataVolunteerPatient data={selected}/>
                 </div>
+
             </div>
         </div>
     )

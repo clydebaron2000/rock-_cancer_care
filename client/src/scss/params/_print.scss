@@ -1,0 +1,20 @@
+@import './breakpoints';
+
+@mixin print($property,$default,$print){
+  #{$property}:$default;
+  @media print{
+    #{$property}:$print;
+  }
+}
+
+@mixin printBP($property,$default, $responsive, $breakpoint) {
+  // @media screen{
+    #{$property}:$default;
+      @include bp($breakpoint){
+        #{$property}:$responsive;
+      }
+  // }  
+    @media print {
+      #{$property}:$responsive;
+    }
+}

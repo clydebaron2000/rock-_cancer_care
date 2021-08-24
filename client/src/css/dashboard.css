@@ -86,3 +86,15 @@ nav .userName {
     background-color: #ffffff ;
   }
 }
+
+.content .doc .print-btn {
+  position: absolute;
+  right: 3rem;
+  z-index: +10;
+}
+
+@media print {
+  .content .doc .print-btn {
+    display: none;
+  }
+}
