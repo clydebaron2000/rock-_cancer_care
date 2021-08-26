@@ -4,7 +4,7 @@ import devConsole from "../../../utils/devConsole"
 import '../../../css/login.css'
 import API from "../../../utils/API"
 function Dashboard(){
-    const [setUserID]=useUserState()[1]
+    const setUserID=useUserState()[1]
     //for admin panel override
     // setUserID("6111cb2d9fb9be3d9c3b2dc5")
     const [username,setUsername]=useState("")

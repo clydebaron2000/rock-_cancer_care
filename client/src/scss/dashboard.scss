@@ -46,6 +46,16 @@ nav{
         } 
     }
     .doc{
+        // position: relative;
         @include theme('background-color',$background1);
+        .print-btn{
+            position: absolute;
+            right:3rem;
+            z-index: +10;
+            @media print {
+                display: none;
+            }
+        }
+        // padding-left: 2px;
     }
 }

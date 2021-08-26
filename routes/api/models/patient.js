@@ -4,7 +4,7 @@ const patientSchema = new Schema({
     isCheckedByAdmin: {type: Boolean, required: true},
     campus: {type: String},
     'patient ids paired with': {type: [String]},
-    lastModfied: {type: Date, required: true},
+    lastModified: {type: Date, required: true},
     'first name': {type: String, required: true},
     'last name': {type: String, required: true},
     'street address': {type: String, required: true},

@@ -6,7 +6,8 @@ import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
 import "../../../css/dashboard.css"
-import { Document, Page, Text, PDFDownloadLink} from '@react-pdf/renderer'
+// import { Document, Page, Text, PDFDownloadLink, PDFViewer} from '@react-pdf/renderer'
+import {PDFFromDataVolunteerPatient} from "./pdf.jsx"
 function Dashboard(props){
     const [userId,setUserID]=useUserState()
     const [userInfo,setUserInfo]=useState({})
@@ -69,12 +70,12 @@ function Dashboard(props){
                 <Nav.Link >Volunteer Directory</Nav.Link> */}
                     <Nav.Item>
                         <Nav.Link eventKey="#patients"
-                        onClick={_=>setSearchType("patient")}
+                        onClick={_=>{setSelected({});setSearchType("patient")}}
                         >Patients</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
                         <Nav.Link eventKey="#volunteers"
-                        onClick={_=>setSearchType("volunteer")}
+                        onClick={_=>{setSelected({});setSearchType("volunteer")}}
                         >Volunteers</Nav.Link>
                     </Nav.Item>
                 </Nav>
@@ -100,43 +101,14 @@ function Dashboard(props){
                     </div>
                 </div>
                 <div className="doc">
-                    <div>
-                        {
-                            (Object.keys(selected).length<1)?null:<PDFDownloadLink
-                        document={<Document>
-                            <Page >
-                            {Object.keys(selected).map(key=>{
-                            if (key!=="_id" && key!=="__v")
-                            if (selected[key]!=="" && 
-                                selected[key]!==null && 
-                                selected[key]!==undefined && 
-                                selected[key]?.length!==0){
-                                console.log(key,selected[key],typeof(selected[key]))
-                                return <Text>{key}:{`${selected[key]}`}</Text>
-                            }
-                            return null
-                        })}
-                            </Page>
-                        </Document>}
-                        fileName={`${selected?.["first name"]}_${selected?.["last name"]}_${selected?.["_id"]}.pdf`}
-                        >
-                        {({ blob, url, loading, error }) =>
-                                loading ? "Loading document..." : "Download Pdf"
-                            }
-                        </PDFDownloadLink>}
-                        {Object.keys(selected).map(key=>{
-                            if (key!=="_id" && key!=="__v")
-                            if (selected[key]!=="" && 
-                                selected[key]!==null && 
-                                selected[key]!==undefined && 
-                                selected[key]?.length!==0){
-                                console.log(key,selected[key],typeof(selected[key]))
-                                return <div>{key}:{`${selected[key]}`}</div>
-                            }
-                            return null
-                        })}
-                    </div>
+                    <button className='print-btn action-button'
+                        onClick={_=>window.print()}
+                    >
+                        print
+                    </button>
+                    <PDFFromDataVolunteerPatient data={selected}/>
                 </div>
+
             </div>
         </div>
     )

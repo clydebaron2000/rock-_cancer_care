@@ -1,0 +1,266 @@
+@media all {
+  .page-break {
+    display: none;
+  }
+}
+
+@media print {
+  html, body {
+    height: initial !important;
+    overflow: initial !important;
+    -webkit-print-color-adjust: exact;
+  }
+  html body > #root > *, body body > #root > * {
+    all: none;
+  }
+  html .document, body .document {
+    all: unset;
+    background-color: white;
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+  }
+  html .document *, body .document * {
+    display: block;
+  }
+}
+
+@page {
+  size: auto;
+  margin: 1in;
+}
+
+.document {
+  position: relative;
+}
+
+.document .header {
+  width: stretch;
+  height: fit-content;
+  max-height: 1in;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.document .header .name {
+  width: stretch;
+  height: 1in;
+  display: flex;
+  flex-direction: column;
+}
+
+.document .header .name h1, .document .header .name h2 {
+  margin: 0;
+  margin-top: 2px;
+}
+
+.document .header .name h1 {
+  font-size: 3em;
+}
+
+.document .header .name h1::after {
+  content: "";
+  display: block;
+  border-color: #8865ac ;
+  border-width: 2px;
+  border-style: solid;
+}
+
+@media (prefers-color-scheme: dark) {
+  .document .header .name h1::after {
+    border-color: #8865ac ;
+  }
+}
+
+.document .header .logo {
+  display: none;
+  aspect-ratio: 300/139;
+  height: 1in;
+}
+
+@media print {
+  .document .header .logo {
+    display: initial;
+  }
+}
+
+.document .section::after {
+  grid-column-start: 1;
+  grid-column-end: end;
+  content: "";
+  display: block;
+  border-color: #8865ac ;
+  border-width: 2px;
+  border-style: solid;
+}
+
+@media (prefers-color-scheme: dark) {
+  .document .section::after {
+    border-color: #8865ac ;
+  }
+}
+
+.document .section .row {
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  display: grid;
+  grid-gap: 2px;
+  margin: 0px;
+  margin-bottom: 2px;
+  min-height: 27;
+  max-width: 100vw;
+}
+
+.document .section .row3 {
+  grid-template-columns: repeat(12, 1fr);
+  display: grid;
+  margin-bottom: 2px;
+  grid-gap: 2px;
+  margin-bottom: 2px;
+  grid-template-rows: repeat(3, 1fr);
+  min-height: 85px;
+}
+
+.document .section .row2 {
+  grid-template-columns: repeat(12, 1fr);
+  display: grid;
+  grid-gap: 2px;
+  margin-bottom: 2px;
+  grid-template-rows: repeat(2, 1fr);
+  min-height: 56px;
+}
+
+.document .section .row .space, .document .section .row2 .space, .document .section .row3 .space {
+  border-color: #8865ac ;
+  display: block;
+  border-style: solid;
+  border-width: 0 0 0 4px;
+  padding-left: 2px;
+  min-height: 42px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .document .section .row .space, .document .section .row2 .space, .document .section .row3 .space {
+    border-color: #8865ac ;
+  }
+}
+
+.document .section .row .space *, .document .section .row2 .space *, .document .section .row3 .space * {
+  display: block;
+}
+
+.document .section .row .space .header, .document .section .row2 .space .header, .document .section .row3 .space .header {
+  font-size: 12px;
+  font-weight: bold;
+  color: #8865ac ;
+}
+
+@media (prefers-color-scheme: dark) {
+  .document .section .row .space .header, .document .section .row2 .space .header, .document .section .row3 .space .header {
+    color: #8865ac ;
+  }
+}
+
+.document .section .row .space .content, .document .section .row2 .space .content, .document .section .row3 .space .content {
+  font-size: 16px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0;
+  overflow: hidden;
+}
+
+.document .section .row .space.height2, .document .section .row2 .space.height2, .document .section .row3 .space.height2 {
+  grid-row: span 2;
+}
+
+.document .section .row .space.height2 .content, .document .section .row2 .space.height2 .content, .document .section .row3 .space.height2 .content {
+  overflow: initial;
+  white-space: initial;
+  text-overflow: initial;
+}
+
+.document .section .row .space.span2, .document .section .row2 .space.span2, .document .section .row3 .space.span2 {
+  grid-column: span 12;
+}
+
+@media (min-width: 768px) {
+  .document .section .row .space.span2, .document .section .row2 .space.span2, .document .section .row3 .space.span2 {
+    grid-column: span 2;
+  }
+}
+
+@media print {
+  .document .section .row .space.span2, .document .section .row2 .space.span2, .document .section .row3 .space.span2 {
+    grid-column: span 2;
+  }
+}
+
+.document .section .row .space.span3, .document .section .row2 .space.span3, .document .section .row3 .space.span3 {
+  grid-column: span 12;
+}
+
+@media (min-width: 768px) {
+  .document .section .row .space.span3, .document .section .row2 .space.span3, .document .section .row3 .space.span3 {
+    grid-column: span 3;
+  }
+}
+
+@media print {
+  .document .section .row .space.span3, .document .section .row2 .space.span3, .document .section .row3 .space.span3 {
+    grid-column: span 3;
+  }
+}
+
+.document .section .row .space.span4, .document .section .row2 .space.span4, .document .section .row3 .space.span4 {
+  grid-column: span 12;
+}
+
+@media (min-width: 768px) {
+  .document .section .row .space.span4, .document .section .row2 .space.span4, .document .section .row3 .space.span4 {
+    grid-column: span 4;
+  }
+}
+
+@media print {
+  .document .section .row .space.span4, .document .section .row2 .space.span4, .document .section .row3 .space.span4 {
+    grid-column: span 4;
+  }
+}
+
+.document .section .row .space.span5, .document .section .row2 .space.span5, .document .section .row3 .space.span5 {
+  grid-column: span 12;
+}
+
+@media (min-width: 768px) {
+  .document .section .row .space.span5, .document .section .row2 .space.span5, .document .section .row3 .space.span5 {
+    grid-column: span 5;
+  }
+}
+
+@media print {
+  .document .section .row .space.span5, .document .section .row2 .space.span5, .document .section .row3 .space.span5 {
+    grid-column: span 5;
+  }
+}
+
+.document .section .row .space.span6, .document .section .row2 .space.span6, .document .section .row3 .space.span6 {
+  grid-column: span 12;
+}
+
+@media (min-width: 768px) {
+  .document .section .row .space.span6, .document .section .row2 .space.span6, .document .section .row3 .space.span6 {
+    grid-column: span 6;
+  }
+}
+
+@media print {
+  .document .section .row .space.span6, .document .section .row2 .space.span6, .document .section .row3 .space.span6 {
+    grid-column: span 6;
+  }
+}
+
+.document .section .row .space.span12, .document .section .row2 .space.span12, .document .section .row3 .space.span12 {
+  grid-column: span 12;
+}
