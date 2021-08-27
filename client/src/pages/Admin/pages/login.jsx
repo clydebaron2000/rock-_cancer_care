@@ -20,7 +20,7 @@ function Dashboard(){
                 setErr("invalid username or password")
             }else{
                 setErr("")
-                setUserID(res.data._id)
+                setUserID(res.data)
             }
         }).catch(err=>{
             devConsole.error(err)
