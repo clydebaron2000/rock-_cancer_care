@@ -48,7 +48,7 @@ function Dashboard(){
                     <label htmlFor="username">Username</label>
                     <input type="text" id="username" name="username" value={username} onChange={({target})=>setUsername(target.value)}/>
                     <label htmlFor="password">Password</label>
-                    <input type="text" id="password" name="password" value={password} onChange={({target})=>setPassword(target.value)}/>
+                    <input type="password" id="password" name="password" value={password} onChange={({target})=>setPassword(target.value)}/>
                     <div className="error">{err_msg}</div>
                     <div className="button-container">
                         <button className="action-button" onClick={onSubmit}>login</button>
