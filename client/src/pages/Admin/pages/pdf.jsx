@@ -16,6 +16,7 @@ export function PDFFromDataVolunteerPatient(props) {
 	const [isEdit, setIsEdit] = useState(false)
 	useEffect(() => {
 		setData(props?.data || {})
+		setIsEdit(false)
 	}, [props.data,props.onChange])
 	function toggleIsEdit(){
 		devConsole.log(`isEdit=>`,!isEdit)
