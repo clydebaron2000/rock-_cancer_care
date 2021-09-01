@@ -31,7 +31,7 @@ const API = {
     },
     updatePatient: function(body){
         body.lastModified = new Date()
-        return axios.put(base + 'patient/' + body._id,body)
+        return axios.put(base + 'patient/',body)
     },
     // Volunteer
     getVolunteers: function (body){

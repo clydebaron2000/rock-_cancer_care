@@ -32,11 +32,21 @@ module.exports = {
             .catch(err => res.status(422).json(err))
     }, 
     create: (req,res) => { 
-        devConsole.log("recieved")
+        devConsole.log("received")
         devConsole.log(req.body)
         col
             .create(req.body)
             .then(model => res.json(model))
             .catch(err => res.status(422).json(err))
     },
+    updateOne:(req,res)=>{
+        devConsole.log('updating')
+        const {_id,...data} = req.body
+        // console.log(data)
+        // console.log(req)
+        col
+            .updateOne({_id:_id},{'last modified':data['last modified'],'notes':data['notes']})
+            .then(model => res.json(model))
+            .catch(err => res.status(422).json(err))
+    }
 }

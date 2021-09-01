@@ -6,7 +6,7 @@ const userSchema = new Schema({
   password: { type: String, required: true }, 
   authorization:{type: String, required: true },
   change_permissions:{type:Boolean, required: true },
-  // areas_assigned:{type:[String]},
+  areas_assigned:{type:[String]},
 });
 const singularCollectionName = 'User'
 const Test = mongoose.model(singularCollectionName, userSchema);

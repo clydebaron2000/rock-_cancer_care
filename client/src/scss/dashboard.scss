@@ -4,7 +4,7 @@
     @include theme('background-color',$background3);
     width: 100vw;
     height: 100vh;  
-    max-height: 100vh;
+    max-height: stretch;
     display: flex;
     flex-direction: column;
 } 
@@ -17,29 +17,33 @@ nav{
 .content{
     display: grid;
     grid-template-columns: 1fr 5fr;
-    height: fill;  
+    height: stretch;  
+    max-width: stretch;
+    // border: solid black 1px;
     .search{
         @include theme('background-color',$background1);
         overflow: auto;
-        border-right: solid 5px;
+        border-right: solid 3px;
         @include theme('border-color',$color1);  
         .searchBar{
             display: flex;
             flex-direction: row;
-            
+            &>input{
+                width: stretch;
+            }
         }     
         .list-container{
             padding-top:10px;
             ul{
                 padding:0;
                 margin:0;
-                margin-left:3px;
+                // margin-left:3px;
                 list-style-type: none;
                 li{
                     margin: 2px;
                     button{
-                        width:fill;
-                        height:fill;
+                        width:stretch;
+                        height:stretch;
                     }
                 }
             }
@@ -48,14 +52,6 @@ nav{
     .doc{
         // position: relative;
         @include theme('background-color',$background1);
-        .print-btn{
-            position: absolute;
-            right:3rem;
-            z-index: +10;
-            @media print {
-                display: none;
-            }
-        }
         // padding-left: 2px;
     }
 }
