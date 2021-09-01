@@ -7,7 +7,7 @@
     background-size: cover;
     position: relative;
     .backdrop{
-        height: -webkit-fill-available;
+        height: stretch;
         .content{
             text-align: center;
             position: absolute;

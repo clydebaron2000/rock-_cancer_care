@@ -36,6 +36,19 @@ html, body {
 
 .document{
     position:relative;
+    .button-group{
+            position: fixed;
+            right:3rem;
+            z-index: +10;
+            display: flex;
+            flex-direction: row-reverse;
+            *{
+                margin-right: 1rem;
+            }
+            @media print {
+                display: none;
+            }
+        }
     .header{
         width: stretch;
         height: fit-content;
@@ -128,6 +141,18 @@ html, body {
                         // word-wrap:break-word;
                         margin:0;
                         overflow: hidden;
+                        @media print {
+                            display: block;
+                        }
+                    }
+                    .content-input{
+                        width:stretch;
+                        @media print {
+                            display: none;
+                        }
+                    }
+                    .ghost{
+                        display: none;
                     }
                     &.height2{
                         grid-row: span 2;

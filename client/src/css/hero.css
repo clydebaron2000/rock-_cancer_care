@@ -7,7 +7,7 @@
 }
 
 .hero .backdrop {
-  height: -webkit-fill-available;
+  height: stretch;
 }
 
 .hero .backdrop .content {
