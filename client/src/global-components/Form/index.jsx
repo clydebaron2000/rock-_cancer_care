@@ -933,6 +933,9 @@ function PatientIntakeForm (props) {
                         <div id='6' className={(stepNum === totalSteps)?"active":(stepNum-1===totalSteps)?"prev":(stepNum+1===totalSteps)?"next":"ghost"}>
                               <p>Thank you for your application. A Rock Cancer C.A.R.E. Ministry (RCC) Leader will review this application and contact the applicant. Funds are limited and based on availability. All information is strictly confidential and is intended for RCC use only except as noted in the applicant acknowledgment section.</p>
                               <p>Please email a copy of the <a href='https://rockcancercare.org/'>intake signature form</a> to <a href="mailto:example@rockcancercare.org">example@rockcancercare.org</a> and we will process your application shortly.</p>
+                              {(stepNum === totalSteps)?setTimeout(() => {
+                                    window.location.href="https://rockcancercare.org/"
+                              }, 3000):null}
                         </div>
                         </form>
                         <div className="form-bottom">
