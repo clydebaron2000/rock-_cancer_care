@@ -730,6 +730,9 @@ function PatientIntakeForm (props) {
                         </div>
                         <div id='4' className={(stepNum===4)?"active":(stepNum-1===4)?"prev":(stepNum+1===1)?"next":"ghost"}>
                               <p>Thank you for your application. A Rock Cancer C.A.R.E. Ministry (RCC) Leader will review this application and contact the applicant.</p>
+                              {(stepNum === totalSteps)?setTimeout(() => {
+                                    window.location.href="https://rockcancercare.org/"
+                              }, 3000):null}
                         </div>
                         
                         </form>
