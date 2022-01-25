@@ -7,7 +7,10 @@ import devConsole from "../../../utils/devConsole";
 
 function CapitalizeEachWord(string) {
 	return string?.split(' ')?.map?.(element => {
-		return element[0].toUpperCase() + element.slice(1).toLowerCase()
+		if (element[0] != null)	
+			return element[0].toUpperCase() + element.slice(1).toLowerCase()
+		else
+			return ''
 	}).join(' ');
 }
 
