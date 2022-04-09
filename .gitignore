@@ -3,3 +3,4 @@ node_modules
 database_csv
 .env
 .vscode
+*.log
