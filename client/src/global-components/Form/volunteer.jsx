@@ -605,13 +605,13 @@ function PatientIntakeForm (props) {
                                     {/* <h2 className="section-title"></h2> */}
                                     <div className="section-inputs">
                                           <Input
-                                                value={formInputs["program selection"]?.value} 
+                                                value={formInputs["serving interests"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
                                                 onBlur={onChange}
                                                 displayNone={stepNum!==2}
                                                 required={true}
-                                                name="program selection"
+                                                name="serving interests"
                                                 type="checkbox"
                                                 options={["Leadership Role","Rock Kidz",...options.services]}
                                                 header={<h2>In which areas are you interested in serving?*</h2>}
