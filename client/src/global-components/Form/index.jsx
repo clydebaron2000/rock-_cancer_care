@@ -7,7 +7,7 @@ import API from '../../utils/API.js'
 import options from './form'
 import devConsole from '../../utils/devConsole'
 function PatientIntakeForm (props) {
-      const isGodMode=false
+      const isGodMode=true
       const titleArray=[
             "Patient Information",
             "Patient Health Information",
@@ -98,7 +98,9 @@ function PatientIntakeForm (props) {
             if (name === undefined || name === "")return
             let value = e.target.value
             let form = formInputs
-            if (form[name] === undefined)form[name]={value:value,section:stepNum}
+            if (form[name] === undefined){
+                  form[name]={value:value,section:stepNum}
+            }
             else {
                   if (form[name]["value"]!==value) {
                         // console.log(name+" changed")
@@ -211,6 +213,41 @@ function PatientIntakeForm (props) {
                                                 name="street address"
                                                 type="address"
                                                 header="Street Address"
+                                          />
+                                          <Input
+                                                value={formInputs["city"]?.value}
+                                                parentValidation={upDateValidateFunctions}
+                                                onChange={onChange}
+                                                onBlur={onChange}
+                                                displayNone={stepNum!==0}
+                                                required={true}
+                                                validate={value=>{
+                                                      if (value.length<2)
+                                                            return "city must be at least 2 characters"
+                                                }}
+                                                name="city"
+                                                type="text"
+                                                header="City"
+                                          />
+                                    </div>
+                              </div>
+                              <div className="form-section">
+                                    {/* <h2 className="section-title">Address</h2> */}
+                                    <div className="section-inputs">
+                                          <Input
+                                                value={formInputs["state"]?.value}
+                                                parentValidation={upDateValidateFunctions}
+                                                onChange={onChange}
+                                                onBlur={onChange}
+                                                displayNone={stepNum!==0}
+                                                required={true}
+                                                validate={value=>{
+                                                      if (value.length<2)
+                                                            return "state must be at least 2 characters"
+                                                }}
+                                                name="state"
+                                                type="text"
+                                                header="State"
                                           />
                                           <Input
                                                 value={formInputs["zip"]?.value}
@@ -666,6 +703,41 @@ function PatientIntakeForm (props) {
                                                 name="emergency contact street address"
                                                 type="address"
                                                 header="Street Address"
+                                          />
+                                          <Input
+                                                value={formInputs["emergency contact city"]?.value} 
+                                                parentValidation={upDateValidateFunctions}
+                                                onChange={onChange}
+                                                onBlur={onChange}
+                                                displayNone={stepNum!==2}
+                                                required={true}
+                                                validate={value=>{
+                                                      if (value.length<2)
+                                                            return "City must be at least 2 characters"
+                                                }}
+                                                name="emergency contact city"
+                                                type="text"
+                                                header="City"
+                                          />
+                                    </div>
+                              </div>
+                              <div className="form-section">
+                                    {/* <h2 className="section-title">Address</h2> */}
+                                    <div className="section-inputs">
+                                          <Input
+                                                value={formInputs["emergency contact state"]?.value} 
+                                                parentValidation={upDateValidateFunctions}
+                                                onChange={onChange}
+                                                onBlur={onChange}
+                                                displayNone={stepNum!==2}
+                                                required={true}
+                                                validate={value=>{
+                                                      if (value.length<2)
+                                                            return "State must be at least 2 characters"
+                                                }}
+                                                name="emergency contact state"
+                                                type="text"
+                                                header="State"
                                           />
                                           <Input
                                                 value={formInputs["emergency contact zip"]?.value} 

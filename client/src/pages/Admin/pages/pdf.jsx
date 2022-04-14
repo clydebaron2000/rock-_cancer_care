@@ -104,35 +104,43 @@ export function PDFFromDataVolunteerPatient(props) {
 			</div>
 			<div className="section">
 				<div className="row">
-					<div className="space span3">
-						<div className="header">Street Address</div>
-						<div className="content">{data["street address"]}</div>
-					</div>
-					<div className="space span2">
-						<div className="header">Zip</div>
-						<div className="content">{data["zip"]}</div>
-					</div>
 					<div className="space span2">
 						<div className="header">Gender</div>
 						<div className="content">{CapitalizeEachWord(data["gender"])}</div>
 					</div>
 					<div className="space span2">
+						<div className="header">Relationship Status</div>
+						<div className="content">{data["relationship status"]}</div>
+					</div>
+					<div className="space span2">
 						<div className="header">Date of Birth</div>
 						<div className="content">{data["birth date"]}</div>
 					</div>
-					<div className="space span3">
+					<div className="space span2">
 						<div className="header">Phone</div>
 						<div className="content">{data["phone"]}</div>
 					</div>
-				</div>
-				<div className="row">
-					<div className="space span5">
+					<div className="space span4">
 						<div className="header">Email</div>
 						<div className="content">{data["email"]}</div>
 					</div>
-					<div className="space span4">
-						<div className="header">Relationship Status</div>
-						<div className="content">{data["relationship status"]}</div>
+				</div>
+				<div className="row">
+				<div className="space span3">
+					<div className="header">Street Address</div>
+						<div className="content">{data["street address"]}</div>
+					</div>
+					<div className="space span2">
+						<div className="header">City</div>
+						<div className="content">{data["city"]}</div>
+					</div>
+					<div className="space span2">
+						<div className="header">State</div>
+						<div className="content">{data["state"]}</div>
+					</div>
+					<div className="space span2">
+						<div className="header">Zip</div>
+						<div className="content">{data["zip"]}</div>
 					</div>
 					{(type === "patient") ?
 						<div className="space span3">
@@ -200,10 +208,18 @@ export function PDFFromDataVolunteerPatient(props) {
 							<div className="content">{data['reference street address']}</div>
 						</div>
 						<div className="space span2">
+							<div className="header">City</div>
+							<div className="content">{data['reference city']}</div>
+						</div>
+						<div className="space span2">
+							<div className="header">State</div>
+							<div className="content">{data['reference state']}</div>
+						</div>
+						<div className="space span2">
 							<div className="header">Zip</div>
 							<div className="content">{data['reference zip']}</div>
 						</div>
-						<div className="space span5">
+						<div className="space span3">
 							<div className="header">Phone</div>
 							<div className="content">{data['reference phone']}</div>
 						</div>
@@ -306,10 +322,18 @@ export function PDFFromDataVolunteerPatient(props) {
 							<div className="content">{data['emergency contact street address']}</div>
 						</div>
 						<div className="space span2">
+							<div className="header">City</div>
+							<div className="content">{data['emergency contact city']}</div>
+						</div>
+						<div className="space span2">
+							<div className="header">State</div>
+							<div className="content">{data['emergency contact state']}</div>
+						</div>
+						<div className="space span2">
 							<div className="header">Zip</div>
 							<div className="content">{data['emergency contact zip']}</div>
 						</div>
-						<div className="space span5">
+						<div className="space span3">
 							<div className="header">Phone</div>
 							<div className="content">{data['emergency contact phone']}</div>
 						</div>

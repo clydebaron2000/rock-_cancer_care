@@ -176,6 +176,41 @@ function PatientIntakeForm (props) {
                                                 header="Street Address"
                                           />
                                           <Input
+                                                value={formInputs["city"]?.value} 
+                                                parentValidation={upDateValidateFunctions}
+                                                onChange={onChange}
+                                                onBlur={onChange}
+                                                displayNone={stepNum!==0}
+                                                required={true}
+                                                validate={value=>{
+                                                      if (value.length<2)
+                                                            return "City must be at least 2 characters"
+                                                }}
+                                                name="city"
+                                                type="text"
+                                                header="City"
+                                          />
+                                    </div>
+                              </div>
+                              <div className="form-section">
+                                    {/* <h2 className="section-title">Address</h2> */}
+                                    <div className="section-inputs">
+                                          <Input
+                                                value={formInputs["state"]?.value} 
+                                                parentValidation={upDateValidateFunctions}
+                                                onChange={onChange}
+                                                onBlur={onChange}
+                                                displayNone={stepNum!==0}
+                                                required={true}
+                                                validate={value=>{
+                                                      if (value.length<2)
+                                                            return "State must be at least 2 characters"
+                                                }}
+                                                name="state"
+                                                type="text"
+                                                header="State"
+                                          />
+                                          <Input
                                                 value={formInputs["zip"]?.value} 
                                                 parentValidation={upDateValidateFunctions}
                                                 onChange={onChange}
@@ -411,6 +446,41 @@ function PatientIntakeForm (props) {
                                                 name="reference street address"
                                                 type="address"
                                                 header="Street Address"
+                                          />
+                                          <Input
+                                                value={formInputs["reference city"]?.value} 
+                                                parentValidation={upDateValidateFunctions}
+                                                onChange={onChange}
+                                                onBlur={onChange}
+                                                displayNone={stepNum!==1}
+                                                required={true}
+                                                validate={value=>{
+                                                      if (value.length<2)
+                                                            return "City must be at least 2 characters"
+                                                }}
+                                                name="reference city"
+                                                type="text"
+                                                header="City"
+                                          />
+                                    </div>
+                              </div>
+                              <div className="form-section">
+                                    {/* <h2 className="section-title">Address</h2> */}
+                                    <div className="section-inputs">
+                                          <Input
+                                                value={formInputs["reference state"]?.value} 
+                                                parentValidation={upDateValidateFunctions}
+                                                onChange={onChange}
+                                                onBlur={onChange}
+                                                displayNone={stepNum!==1}
+                                                required={true}
+                                                validate={value=>{
+                                                      if (value.length<2)
+                                                            return "State must be at least 2 characters"
+                                                }}
+                                                name="reference state"
+                                                type="text"
+                                                header="State"
                                           />
                                           <Input
                                                 value={formInputs["reference zip"]?.value} 
