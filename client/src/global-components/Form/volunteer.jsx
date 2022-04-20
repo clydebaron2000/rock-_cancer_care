@@ -692,7 +692,7 @@ function PatientIntakeForm (props) {
                                                 header={<h2>Have you ever been convicted of a felony?*</h2>}
                                           />
                                           <div className="input-wrapper"></div>
-                                    </div>
+                                    </div> 
                               </div>
                         </div>
  
