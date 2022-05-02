@@ -4,8 +4,10 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
+import emailjs from '@emailjs/browser';
 import './css/main.css'
 import { UserProvider } from "./pages/Admin/contexts/user";
+
 // pages 
 const Home = lazy(_=> import("./pages/Home"))
 const PatientForm = lazy(_=> import("./pages/PatientIntakeForm/"))
@@ -13,6 +15,7 @@ const Admin = lazy(_=> import("./pages/Admin/"))
 const NotFound = lazy(_=> import("./pages/NotFound/"))
 const VolunteerForm = lazy(_=> import("./pages/VolunteerIntakeForm"))
 function App() {
+  emailjs.init('F8nnY-TiCpeGgSALl');
   return (
     <Router>
       <Suspense fallback={<div>Loading...</div>}>

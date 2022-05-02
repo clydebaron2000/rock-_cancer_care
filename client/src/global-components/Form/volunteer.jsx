@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Modal from 'react-modal'
-
+import emailjs from '@emailjs/browser';
 import Input from '../Input'
 import StepProgressBar from "./StepProgressBarGenerator"
 import '../../css/form.css'
@@ -802,6 +802,11 @@ function PatientIntakeForm (props) {
                               <p>Thank you for your application. A Rock Cancer C.A.R.E. Ministry (RCC) Leader will review this application and contact the applicant.</p>
                               {(stepNum === totalSteps)?setTimeout(() => {
                                     window.location.href="https://rockcancercare.org/"
+                                    emailjs.send("service_1p7zvzi","template_snku5d7",{
+                                          "form_name": formInputs["first name"]?.value + " " + formInputs["last name"]?.value,
+                                          "form_type": "Volunteer",
+                                          "email_to": "forms@rockcancercare.org"
+                                    });
                               }, 3000):null}
                         </div>
                         
