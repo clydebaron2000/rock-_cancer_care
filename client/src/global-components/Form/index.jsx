@@ -8,7 +8,7 @@ import API from '../../utils/API.js'
 import options from './form'
 import devConsole from '../../utils/devConsole'
 function PatientIntakeForm (props) {
-      const isGodMode=true
+      const isGodMode=false
       const titleArray=[
             "Patient Information",
             "Patient Health Information",
