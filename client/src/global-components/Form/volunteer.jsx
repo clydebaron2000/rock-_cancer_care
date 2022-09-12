@@ -801,7 +801,6 @@ function PatientIntakeForm (props) {
                         <div id='4' className={(stepNum===4)?"active":(stepNum-1===4)?"prev":(stepNum+1===1)?"next":"ghost"}>
                               <p>Thank you for your application. A Rock Cancer C.A.R.E. Ministry (RCC) Leader will review this application and contact the applicant.</p>
                               {(stepNum === totalSteps)?setTimeout(() => {
-                                    window.location.href="https://rockcancercare.org/"
                                     emailjs.send("service_1p7zvzi","template_snku5d7",{
                                           "form_name": formInputs["first name"]?.value + " " + formInputs["last name"]?.value,
                                           "form_type": "Volunteer",
@@ -809,7 +808,6 @@ function PatientIntakeForm (props) {
                                     });
                               }, 3000):null}
                         </div>
-                        
                         </form>
                         <div className="form-bottom">
                               {((stepNum===0 || stepNum === totalSteps) && !isGodMode)?<div></div>:

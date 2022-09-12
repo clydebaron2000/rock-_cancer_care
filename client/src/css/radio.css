@@ -48,7 +48,7 @@
 }
 
 .radio-box input[type=radio][checked] {
-  display: grid;
+  /* display: grid; */
   place-items: center;
 }
 
