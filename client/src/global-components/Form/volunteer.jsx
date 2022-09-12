@@ -9,7 +9,7 @@ import options from './form'
 import devConsole from '../../utils/devConsole'
 
 function PatientIntakeForm (props) {
-      const isGodMode=true
+      const isGodMode=false
       const titleArray=[
             "Volunteer Information",
             "Reference Information",
