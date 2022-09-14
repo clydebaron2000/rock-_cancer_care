@@ -6,23 +6,19 @@
   flex-direction: column;
   flex-wrap: wrap;
 }
-
 .radio-box * {
   height: min-content;
 }
-
 @media (min-width: 640px) {
   .radio-box {
     flex-direction: row;
     flex-wrap: nowrap;
   }
 }
-
 .radio-box .radio-wrapper {
   display: flex;
   margin-right: 3px;
 }
-
 .radio-box input[type=radio] {
   color: #8865ac ;
   display: flex;
@@ -30,28 +26,45 @@
   margin: 2.5px;
   flex-wrap: wrap;
 }
-
 @media (prefers-color-scheme: dark) {
   .radio-box input[type=radio] {
     color: #8865ac ;
   }
 }
-
 .radio-box input[type=radio]:focus-visible, .radio-box input[type=radio]:focus {
   outline: auto;
 }
-
 @media (min-width: 640px) {
   .radio-box input[type=radio] {
     flex-wrap: nowrap;
   }
 }
-
 .radio-box input[type=radio][checked] {
-  /* display: grid; */
+  display: flex;
   place-items: center;
 }
+.radio-box input[type=radio][checked]::after {
+  content: " ";
+  width: 100%;
+  height: 100%;
+  background-color: #8865ac ;
+  border-radius: 100%;
+  outline-color: #ffffff ;
+  outline-width: 2px;
+  outline-style: solid;
+  outline-offset: -3px;
+}
 
+@media (prefers-color-scheme: dark) {
+  .radio-box input[type=radio][checked]::after {
+    background-color: #8865ac ;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .radio-box input[type=radio][checked]::after {
+    outline-color: #ffffff ;
+  }
+}
 .radio-box input[type=radio] input[type=text] {
   width: min-content;
 }

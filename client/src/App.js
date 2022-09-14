@@ -29,7 +29,7 @@ function App() {
         </UserProvider>
         <Route component={NotFound}/> 
       </Switch>
-      </Suspense>
+      </Suspense> 
     </Router>
   )
 }
