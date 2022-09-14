@@ -1,43 +1,38 @@
 div[name=phoneWrapper] input, .error input {
-  background-color: #ff000000;
+  background-color: rgba(255, 0, 0, 0);
 }
 
 div[name=phoneWrapper] .react-tel-input {
   box-sizing: none;
   font-size: inherit;
 }
-
 div[name=phoneWrapper] .react-tel-input .form-control {
   font-size: inherit;
   height: auto;
   height: 1.5rem;
   line-height: inherit;
   width: stretch;
-  background-color: #ff000000;
+  background-color: rgba(255, 0, 0, 0);
   border-radius: 5px;
   border-color: #cacaca ;
   color: black;
   border-width: 1px;
   border-style: solid;
 }
-
 @media (prefers-color-scheme: dark) {
   div[name=phoneWrapper] .react-tel-input .form-control {
     border-color: #cacaca ;
   }
 }
-
 div[name=phoneWrapper] .react-tel-input .form-control:focus-visible, div[name=phoneWrapper] .react-tel-input .form-control:focus {
-  transition: all .2s ease-in;
+  transition: all 0.2s ease-in;
   border-color: #8865ac ;
 }
-
 @media (prefers-color-scheme: dark) {
   div[name=phoneWrapper] .react-tel-input .form-control:focus-visible, div[name=phoneWrapper] .react-tel-input .form-control:focus {
     border-color: #8865ac ;
   }
 }
-
 div[name=phoneWrapper] .react-tel-input .error {
-  background-color: #ff00002e;
+  background-color: rgba(255, 0, 0, 0.1803921569);
 }

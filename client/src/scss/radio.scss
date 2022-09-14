@@ -33,10 +33,21 @@
             flex-wrap: nowrap;
         }
         &[checked]{
-            display: grid;
+            // display: grid;
+            display: flex;
             place-items: center;
             // transition: all 1s;
-            // &:after{
+            &::after{
+                content: " ";
+                width: 100%;
+                height: 100%;
+                @include theme('background-color',$color1);
+                border-radius:100%;
+                @include theme('outline-color',$background1);
+                outline-width: 2px;
+                outline-style: solid; 
+                outline-offset: -3px;
+            }
             //     animation: both fade-in .2s;
             //     transition: all 1s ease-in-out;
             //     @keyframes fade-in {

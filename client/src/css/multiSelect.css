@@ -1,7 +1,6 @@
 .error .error__control {
-  background-color: #ff00002e;
+  background-color: rgba(255, 0, 0, 0.1803921569);
 }
-
 .error .error__menu {
   background-color: white;
 }

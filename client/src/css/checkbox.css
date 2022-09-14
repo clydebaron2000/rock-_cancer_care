@@ -5,20 +5,16 @@
   width: stretch;
   grid-template-columns: 1fr 1fr;
 }
-
 .checkbox-box * {
   height: min-content;
 }
-
 .checkbox-box .checkbox-wrapper {
   display: flex;
   margin: 5px;
 }
-
 .checkbox-box .checkbox-wrapper label {
   vertical-align: top;
 }
-
 .checkbox-box .checkbox-wrapper input[type=checkbox] {
   color: #8865ac ;
   vertical-align: top;
@@ -28,24 +24,20 @@
   margin-top: 2px;
   flex-wrap: wrap;
 }
-
 @media (prefers-color-scheme: dark) {
   .checkbox-box .checkbox-wrapper input[type=checkbox] {
     color: #8865ac ;
   }
 }
-
 .checkbox-box .checkbox-wrapper input[type=checkbox]:focus-visible, .checkbox-box .checkbox-wrapper input[type=checkbox]:focus {
   outline: auto;
 }
-
 @media (min-width: 640px) {
   .checkbox-box .checkbox-wrapper input[type=checkbox] {
     margin: 2.5px;
     flex-wrap: nowrap;
   }
 }
-
 .checkbox-box .checkbox-wrapper input[type=checkbox][checked] {
   display: grid;
   place-items: center;
@@ -58,7 +50,6 @@
 .vertical {
   flex-direction: column;
 }
-
 .vertical .checkbox-wrapper:nth-child(2n) {
   flex-basis: 100%;
   width: 0;

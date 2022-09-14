@@ -5,30 +5,25 @@
   display: grid;
   place-items: center;
 }
-
 @media (prefers-color-scheme: dark) {
   .overlay {
     background-color: #4f4f4f ;
   }
 }
-
 .overlay .login-card {
   background-color: #ffffff ;
   padding: 10px;
   border-radius: 10px;
 }
-
 @media (prefers-color-scheme: dark) {
   .overlay .login-card {
     background-color: #ffffff ;
   }
 }
-
 .overlay .login-card form {
   margin: 5px;
   width: 300px;
 }
-
 .overlay .login-card form label {
   color: #8865ac ;
   font-family: Arial, Helvetica, sans-serif;
@@ -36,13 +31,11 @@
   position: relative;
   top: 10px;
 }
-
 @media (prefers-color-scheme: dark) {
   .overlay .login-card form label {
     color: #8865ac ;
   }
 }
-
 .overlay .login-card form input {
   margin-top: 20px;
   width: stretch;
@@ -54,31 +47,26 @@
   border-width: 1px;
   border-style: solid;
 }
-
 @media (prefers-color-scheme: dark) {
   .overlay .login-card form input {
     border-color: #cacaca ;
   }
 }
-
 .overlay .login-card form input:focus-visible, .overlay .login-card form input:focus {
-  transition: all .2s ease-in;
+  transition: all 0.2s ease-in;
   border-color: #8865ac ;
   outline: initial;
   outline-offset: 2px;
 }
-
 @media (prefers-color-scheme: dark) {
   .overlay .login-card form input:focus-visible, .overlay .login-card form input:focus {
     border-color: #8865ac ;
   }
 }
-
 .overlay .login-card form .button-container {
   display: flex;
   flex-direction: row-reverse;
 }
-
 .overlay .login-card form .error {
   display: block;
   font-size: 13px;

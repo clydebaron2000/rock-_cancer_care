@@ -6,7 +6,6 @@
   display: flex;
   flex-direction: column;
 }
-
 @media (prefers-color-scheme: dark) {
   .background {
     background-color: #4f4f4f ;
@@ -16,15 +15,13 @@
 nav {
   background-color: #ffffff ;
 }
-
 @media (prefers-color-scheme: dark) {
   nav {
     background-color: #ffffff ;
   }
 }
-
 nav .userName {
-  padding: .5rem;
+  padding: 0.5rem;
 }
 
 .content {
@@ -33,58 +30,47 @@ nav .userName {
   height: stretch;
   max-width: stretch;
 }
-
 .content .search {
   background-color: #ffffff ;
   overflow: auto;
   border-right: solid 3px;
   border-color: #8865ac ;
 }
-
 @media (prefers-color-scheme: dark) {
   .content .search {
     background-color: #ffffff ;
   }
 }
-
 @media (prefers-color-scheme: dark) {
   .content .search {
     border-color: #8865ac ;
   }
 }
-
 .content .search .searchBar {
   display: flex;
   flex-direction: row;
 }
-
 .content .search .searchBar > input {
   width: stretch;
 }
-
 .content .search .list-container {
   padding-top: 10px;
 }
-
 .content .search .list-container ul {
   padding: 0;
   margin: 0;
   list-style-type: none;
 }
-
 .content .search .list-container ul li {
   margin: 2px;
 }
-
 .content .search .list-container ul li button {
   width: stretch;
   height: stretch;
 }
-
 .content .doc {
   background-color: #ffffff ;
 }
-
 @media (prefers-color-scheme: dark) {
   .content .doc {
     background-color: #ffffff ;

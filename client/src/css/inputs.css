@@ -1,7 +1,6 @@
 .input-wrapper {
   width: stretch;
 }
-
 .input-wrapper input, .input-wrapper select, .input-wrapper textarea {
   width: stretch;
   background-color: none;
@@ -12,43 +11,35 @@
   border-width: 1px;
   border-style: solid;
 }
-
 @media (prefers-color-scheme: dark) {
   .input-wrapper input, .input-wrapper select, .input-wrapper textarea {
     border-color: #cacaca ;
   }
 }
-
 .input-wrapper input:focus-visible, .input-wrapper input:focus, .input-wrapper select:focus-visible, .input-wrapper select:focus, .input-wrapper textarea:focus-visible, .input-wrapper textarea:focus {
-  transition: all .2s ease-in;
+  transition: all 0.2s ease-in;
   border-color: #8865ac ;
   outline: initial;
   outline-offset: 2px;
 }
-
 @media (prefers-color-scheme: dark) {
   .input-wrapper input:focus-visible, .input-wrapper input:focus, .input-wrapper select:focus-visible, .input-wrapper select:focus, .input-wrapper textarea:focus-visible, .input-wrapper textarea:focus {
     border-color: #8865ac ;
   }
 }
-
 .input-wrapper textarea {
   min-height: 4rem;
 }
-
 .input-wrapper input[type=radio] {
   height: initial;
   width: min-content;
 }
-
 .input-wrapper .input-label {
   color: black;
 }
-
 .input-wrapper .error {
-  background-color: #ff00002e;
+  background-color: rgba(255, 0, 0, 0.1803921569);
 }
-
 .input-wrapper .input-error {
   display: block;
   font-size: 13px;
