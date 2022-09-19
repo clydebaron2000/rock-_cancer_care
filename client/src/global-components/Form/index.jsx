@@ -1007,12 +1007,13 @@ function PatientIntakeForm (props) {
                               <p>Thank you for your application. A Rock Cancer C.A.R.E. Ministry (RCC) Leader will review this application and contact the applicant. Funds are limited and based on availability. All information is strictly confidential and is intended for RCC use only except as noted in the applicant acknowledgment section.</p>
                               <p>Please email a copy of the <a href='https://rockcancercare.org/'>intake signature form</a> to <a href="mailto:example@rockcancercare.org">example@rockcancercare.org</a> and we will process your application shortly.</p>
                               {(stepNum === totalSteps)?setTimeout(() => {
-                                    window.location.href="https://rockcancercare.org/"
                                     emailjs.send("service_1p7zvzi","template_snku5d7",{
                                           "form_name": formInputs["first name"]?.value + " " + formInputs["last name"]?.value,
                                           "form_type": "Patient Intake",
                                           "email_to": "forms@rockcancercare.org"
                                     });
+                                    window.location.href="https://rockcancercare.org/"
+                                    return null;
                               }, 3000):null}
                         </div>
                         </form>

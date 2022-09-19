@@ -805,7 +805,10 @@ function PatientIntakeForm (props) {
                                           "form_name": formInputs["first name"]?.value + " " + formInputs["last name"]?.value,
                                           "form_type": "Volunteer",
                                           "email_to": "forms@rockcancercare.org"
+                                          // "email_to": "clydebaron2000@gmail.com"
                                     });
+                                    window.location.href="https://rockcancercare.org/"
+                                    return null;
                               }, 3000):null}
                         </div>
                         </form>
